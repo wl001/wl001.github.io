@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>ES6中Number的一些扩展方法 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="ES6对Number对象新增了isInteger函数、极小常量Number.EPSILON、安全整数；还将window对象下的4个函数移植到了Number对象下；此外，对Math对象扩展了17个新函数">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中Number的一些扩展方法">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/01/22/ES_Number/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="ES6对Number对象新增了isInteger函数、极小常量Number.EPSILON、安全整数；还将window对象下的4个函数移植到了Number对象下；此外，对Math对象扩展了17个新函数">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-13T03:18:45.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="ES6中Number的一些扩展方法">
+<meta name="twitter:description" content="ES6对Number对象新增了isInteger函数、极小常量Number.EPSILON、安全整数；还将window对象下的4个函数移植到了Number对象下；此外，对Math对象扩展了17个新函数">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,274 +147,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ES_Number" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
+    <h1 class="article-title" itemprop="name">
+      ES6中Number的一些扩展方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
+        
+        <a href="/2018/01/22/ES_Number/" class="archive-article-date">
   	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6对Number对象新增了isInteger函数、极小常量Number.EPSILON、安全整数；还将window对象下的4个函数移植到了Number对象下；此外，对Math对象扩展了17个新函数<br><a id="more"></a></p>
+<ul>
+<li>在ES5中，我们存在几个全局函数 isNaN函数，isFinite函数，parseInt函数，parseFloat函数等，对于这些全局函数的使用很简单，就拿isNaN函数来举例。</li>
+<li><p>ES5中的写法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNaN(2.5);  //结果：<span class="literal">false</span></span><br><span class="line">window.isNaN(2.5);//结果：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以上两种写法均可，isNaN是全局函数，本身就是属于window对象下的一个方法，所以大部分人会使用第一种写法。</p>
+</li>
+<li>但是在ES6的标准中，isNaN方法被移植到了Number对象上，也就是原本属于全局对象window下的函数，现在属于Number对象上了，同样被处理的函数还有isFinite函数，parseInt函数，parseFloat函数。</li>
+<li>被移植后的函数使用方式是这样的：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number.isNaN(2.5); //结果：<span class="literal">false</span></span><br><span class="line">Number.isNaN(NaN); //结果：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在使用之前必须指明它是Number对象下的函数，否则会被默认为window下的函数。</p>
+<h5 id="新特性：Number-isNaN函数"><a href="#新特性：Number-isNaN函数" class="headerlink" title="新特性：Number.isNaN函数"></a>新特性：Number.isNaN函数</h5><ul>
+<li>Number.isNaN函数：用于判断传入的是否是非数值，注意：是判断非数值，而不是判断数值，IsNaN的全称是： is not a number。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number.isNaN(2.5); //结果：<span class="literal">false</span></span><br><span class="line">Number.isNaN(NaN); //结果：<span class="literal">true</span> 非数值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Number-isNaN和-isNaN的区别"><a href="#Number-isNaN和-isNaN的区别" class="headerlink" title="Number.isNaN和 isNaN的区别"></a>Number.isNaN和 isNaN的区别</h4><ul>
+<li>传统的isNaN函数会把非数值的参数转化成数值再进行判断，而Number. isNaN只对数值类型有效，非数值类型的参数一律返回false<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isNaN(<span class="string">'abc'</span>);//结果：<span class="literal">true</span></span><br><span class="line">//<span class="string">'abc'</span>无法转为一个数值，返回<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">Number.isNaN(<span class="string">'abc'</span>); //结果：<span class="literal">false</span></span><br><span class="line">//<span class="string">'abc'</span>是字符串，Number.isNaN不做类型转换，直接返回<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>所以我们在使用这个函数到时候还要小心，当返回false的时候，不一定就是一个数值，有可能是一个非数值类型的参数。</p>
+</blockquote>
+<h5 id="新特性：Number-isFinite函数"><a href="#新特性：Number-isFinite函数" class="headerlink" title="新特性：Number.isFinite函数"></a>新特性：Number.isFinite函数</h5><ul>
+<li>Number.isFinite函数：用来检查一个数值是否有穷大<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number.isFinite(1);</span><br><span class="line">//结果：<span class="literal">true</span>，数值1是有穷</span><br><span class="line"></span><br><span class="line">Number.isFinite(Infinity);</span><br><span class="line">//结果：<span class="literal">false</span>，Infinity表示无穷大的特殊值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>isFinite函数跟isNaN函数一样，也只是对数值类型有效，对非数值类型的参数一律返回false。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number.isFinite(<span class="string">'abc'</span>); //结果：<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>当Number.isFinite函数返回false的时候，参数不一定就是一个有穷的数值类型，也有可能是一个非数值类型的参数。如：字符串’abc’<h5 id="新特性：Number-parseInt函数"><a href="#新特性：Number-parseInt函数" class="headerlink" title="新特性：Number.parseInt函数"></a>新特性：Number.parseInt函数</h5></li>
+<li>parseInt函数：解析一个字符串，返回一个整数。parseInt函数同样是从window对象下移植到Number对象下，但是它的作用没有任何变化。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//传统用法：</span><br><span class="line"> parseInt(<span class="string">'12.3abc'</span>);</span><br><span class="line"> //结果：返回数值12</span><br><span class="line"></span><br><span class="line"> //ES6用法：</span><br><span class="line"> Number.parseInt(<span class="string">'12.3abc'</span>);</span><br><span class="line"> //结果：返回数值12</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="新特性：Number-parseFloat函数"><a href="#新特性：Number-parseFloat函数" class="headerlink" title="新特性：Number.parseFloat函数"></a>新特性：Number.parseFloat函数</h5><p>`  parseFloat函数：解析一个字符串，并返回一个浮点数。跟parseInt一样，被移植到Number对象下，作用保持不变<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> //传统用法：</span><br><span class="line">parseFloat(<span class="string">'12.3abc'</span>);</span><br><span class="line">//结果：返回数值12.3</span><br><span class="line"></span><br><span class="line">//ES6用法：</span><br><span class="line">Number.parseFloat(<span class="string">'12.3abc'</span>);</span><br><span class="line">//结果：返回数值12.3</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>其实这么做的目的是慢慢地减少全局性的函数，把全局函数合理地规划到其他对象下，渐渐实现语言的模块化。<h5 id="新增特性：Number-isInteger函数-判断是否是整数（常用）"><a href="#新增特性：Number-isInteger函数-判断是否是整数（常用）" class="headerlink" title="新增特性：Number.isInteger函数 判断是否是整数（常用）"></a>新增特性：Number.isInteger函数 判断是否是整数（常用）</h5></li>
+<li>Number.isInteger函数：用来判断是否是整数。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number.isInteger(3.2);</span><br><span class="line">//结果：<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Number.isInteger(3);</span><br><span class="line">//结果：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：在javascript内部对整数和浮点数采用一样的存储方式，因此小数点后如果都是0的浮点数，都会被认为是整数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number.isInteger(3.0);</span><br><span class="line">//结果：<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">Number.isInteger(3.00);</span><br><span class="line">//结果：<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="Number-EPSILON-极小常量"><a href="#Number-EPSILON-极小常量" class="headerlink" title="Number.EPSILON 极小常量"></a>Number.EPSILON 极小常量</h5><ul>
+<li><p>Number.EPSILON常量：定义一个极小的数值。这个值很小，我们可以在控制台下打印出来看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number.EPSILON);</span><br><span class="line">  //结果：2.220446049250313e-16</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入这么小的一个常量的目的在于，为浮点数计算设置一个误差范围。因为浮点数的计算是不精确的。如果误差小于Number.EPSILON,我们就可以认为得到了正确的结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(0.1+0.2);      //0.30000000000000004</span><br><span class="line">console.log(0.1+0.2-0.3); //5.551115123125783e-17</span><br><span class="line">console.log((0.1+0.2-0.3).toFixed(20));     //<span class="string">"0.00000000000000005551"</span></span><br><span class="line"></span><br><span class="line">// 那么我们再来看看0.1+0.2-0.3的值是否小于Number.EPSILON</span><br><span class="line">//如果小于，返回<span class="literal">true</span>，那我们便可以认为结果正确</span><br><span class="line">(0.1+0.2-0.3).toFixed(20)&lt;Number.EPSILON;   // <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其实，Number.EPSILON就是一个可接受的误差范围</p>
+<h5 id="安全整数"><a href="#安全整数" class="headerlink" title="安全整数"></a>安全整数</h5></li>
+<li>ES6为我们引入了安全整数的概念。什么？整数还有安全和不安全的说法？原来JavaScript能够准确表示的整数范围在-2^53到2^53之间，超过这个范围，无法精确表示这个值。故称之为不安全。</li>
+<li>为此，ES6定义了两个常量来表示这个范围的最大值和最小值：Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER。</li>
+<li><p>此外，如果给你一个数值，你不知道它是否超出了这个安全范围，你可以使用ES6给我们新增的一个函数Number.isSafeInteger来进行判断。`</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Number.isSafeInteger(Number.MAX_SAFE_INTEGER);</span><br><span class="line">//结果：<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">Number.isSafeInteger(Number.MAX_SAFE_INTEGER+1);</span><br><span class="line">//结果：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们用最大安全整数Number.MAX_SAFE_INTEGER来做试验，第一行代码的结果返回的值是true，也就表示Number.MAX_SAFE_INTEGER属于安全范围，第二行代码，我们对Number.MAX_SAFE_INTEGER进行了+1，相加后的数值超过安全范围，isSafeInteger函数就返回了false，表示不在安全范围内。</p>
+<h4 id="ES6给Math对象新增了17个函数，挑选几个常用的来讲解一下"><a href="#ES6给Math对象新增了17个函数，挑选几个常用的来讲解一下" class="headerlink" title="ES6给Math对象新增了17个函数，挑选几个常用的来讲解一下"></a>ES6给Math对象新增了17个函数，挑选几个常用的来讲解一下</h4><h5 id="新特性：Math-trunc函数返回整数部分-常用"><a href="#新特性：Math-trunc函数返回整数部分-常用" class="headerlink" title="新特性：Math.trunc函数返回整数部分 (常用)"></a>新特性：Math.trunc函数返回整数部分 (常用)</h5></li>
+<li><p>Math.trunc函数：用于去除一个数的小数部分，返回整数部分。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.trunc(3);</span><br><span class="line">//结果：3</span><br><span class="line"></span><br><span class="line">Math.trunc(3.1);</span><br><span class="line">//结果：3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果传入的参数是整数，就直接返回整数，如果是小数，就去除了小数部分</p>
+<h5 id="新特性：Math-sign函数"><a href="#新特性：Math-sign函数" class="headerlink" title="新特性：Math.sign函数"></a>新特性：Math.sign函数</h5></li>
+<li><p>Math.sign函数：用来判断一个数到底是正数、负数、还是零。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Math.sign(3);</span><br><span class="line">//结果：1</span><br><span class="line"></span><br><span class="line">Math.sign(-3);</span><br><span class="line">//结果：-1</span><br><span class="line"></span><br><span class="line">Math.sign(0);</span><br><span class="line">//结果：0</span><br><span class="line"></span><br><span class="line">Math.sign(<span class="string">'abc'</span>);</span><br><span class="line">//结果：NaN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数如果是正数，结果返回1；如果是负数，结果返回-1；如果是0，结果返回0；如果是一个非数值类型的参数，结果返回：NaN。</p>
+<h5 id="新特性：Math-cbrt函数"><a href="#新特性：Math-cbrt函数" class="headerlink" title="新特性：Math.cbrt函数"></a>新特性：Math.cbrt函数</h5></li>
+<li><p>Math.cbrt函数：用于计算一个数的立方根。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.cbrt(8);</span><br><span class="line">//结果：2</span><br><span class="line"></span><br><span class="line">Math.cbrt(27);</span><br><span class="line">//结果：3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2的立方是8，那么8作为参数，开立方根得到的值就是2,3的立方是27，那么27求立方根就得到了3，这就是Math.cbrt函数的作用。</p>
+</li>
+</ul>
+<blockquote>
+<p>除了这三个函数以外，剩下的新增函数都是一些高中时期的数学方法，只不过是ES6将他们的运算封装成一个方法，方便大家使用</p>
+</blockquote>
+<ul>
+<li>Math.acosh(x) 返回 x 的反双曲余弦。</li>
+<li>Math.asinh(x) 返回 x 的反双曲正弦。</li>
+<li>Math.atanh(x) 返回 x 的反双曲正切。</li>
+<li>Math.clz32(x) 返回 x 的 32 位二进制整数表示形式的前导 0 的个数。</li>
+<li>Math.sinh(x) 返回x的双曲正弦。</li>
+<li>Math.cosh(x) 返回 x 的双曲余弦。</li>
+<li>Math.expm1(x) 返回 eˆx - 1。</li>
+<li>Math.fround(x) 返回 x 的单精度浮点数形式。</li>
+<li>Math.hypot(…values) 返回所有参数的平方和的平方根。</li>
+<li>Math.imul(x, y) 返回两个参数以 32 位整数形式相乘的结果。</li>
+<li>Math.log1p(x) 返回 1 + x 的自然对数。</li>
+<li>Math.log10(x) 返回以 10 为底的x的对数。</li>
+<li>Math.log2(x) 返回以 2 为底的 x 的对数。</li>
+<li>Math.tanh(x) 返回 x 的双曲正切。</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -424,136 +303,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/01/22/ES_Number/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/01/22/ES_字符串扩展/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ES6字符串String新特性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/22/ES_Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6中Array的一些扩展方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +434,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

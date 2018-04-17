@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>Mxgraph收集、使用汇总 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="mxGraph 是一个 JS 绘图组件适用于需要在网页中设计/编辑 Workflow/BPM流程图、图表、网络图和普通图形的 Web 应用程序。mxgraph 下载包中包括javescript 写的前端程序,也包括多个和后端程序(java/C#等等)集成的例子。">
+<meta name="keywords" content="Mxgraph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mxgraph收集、使用汇总">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/01/16/mxGraph/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="mxGraph 是一个 JS 绘图组件适用于需要在网页中设计/编辑 Workflow/BPM流程图、图表、网络图和普通图形的 Web 应用程序。mxgraph 下载包中包括javescript 写的前端程序,也包括多个和后端程序(java/C#等等)集成的例子。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/images/myGraph.png">
+<meta property="og:updated_time" content="2018-03-06T05:35:29.790Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="Mxgraph收集、使用汇总">
+<meta name="twitter:description" content="mxGraph 是一个 JS 绘图组件适用于需要在网页中设计/编辑 Workflow/BPM流程图、图表、网络图和普通图形的 Web 应用程序。mxgraph 下载包中包括javescript 写的前端程序,也包括多个和后端程序(java/C#等等)集成的例子。">
+<meta name="twitter:image" content="https://github.com/images/myGraph.png">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,415 +149,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mxGraph" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mxgraph收集、使用汇总
+    </h1>
+  
+
+        
+        <a href="/2018/01/16/mxGraph/" class="archive-article-date">
+  	<time datetime="2018-01-16T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mxGraph 是一个 JS 绘图组件适用于需要在网页中设计/编辑 Workflow/BPM流程图、图表、网络图和普通图形的 Web 应用程序。mxgraph 下载包中包括javescript 写的前端程序,也包括多个和后端程序(java/C#等等)集成的例子。<br><a id="more"></a></p>
+<ul>
+<li>git开源项目地址：<a href="https://github.com/jgraph/mxgraph">https://github.com/jgraph/mxgraph</a></li>
+<li>借鉴资料 <a href="http://www.cnblogs.com/shawWey/p/7116548.html" target="_blank" rel="noopener">http://www.cnblogs.com/shawWey/p/7116548.html</a><h5 id="mxgraph核心文件介绍"><a href="#mxgraph核心文件介绍" class="headerlink" title="mxgraph核心文件介绍"></a>mxgraph核心文件介绍</h5></li>
+</ul>
+<ul>
+<li>这个js库包含8大块。mxClient这个js包含并动态导入了所有文件。 当前版本信息存储在mxClient.VERSION。</li>
+<li>editor编辑器包提供实现图编辑器所需的类。这个包中的主要类是mxEditor。</li>
+<li>view视图和model模型包实现了由mxGraph表示的图形组件。它是一个mxGraphModel，包含mxcell，以及mxGraphView中缓存单元格的状态。根据mxStylesheet.样式表中定义的外观，使用mxcell渲染器来绘制单元格。撤销历史在mxUndoManager中实现。要在图上显示一个图标，可以使用mxCellOverlay。验证规则使用 mxMultiplicity进行定义。</li>
+<li>handler处理程序、layout 布局和shape 形状包分别包含事件监听器、布局算法和形状。图形事件监听器包括mxRubberband进行框线选择、mxTooltipHandler用于工具提示和mxGraphHandle用于基本单元格修改。</li>
+<li>mxCompactTreeLayout 实现了树布局算法，而shape 形状包提供了各种形状，它们是mxShape的子类。</li>
+<li>util包提供了实用程序类，包括用于复制粘贴的mxClipboard、mxDatatransfer用于拖放的操作、mxConstants 用于键的和样式表的值、mxEvent和mxUtils用于跨浏览器事件处理和通用功能、用于国际化的mxResources和控制台输出的mxLog。</li>
+<li>io包实现了一个通用的mxObjectCodec，用于将JavaScript对象转换为XML。最主要的类是mxCodec。mxCodecRegistry是定制codecs的全局注册表。<h5 id="1-画板相关操作"><a href="#1-画板相关操作" class="headerlink" title="1 画板相关操作"></a>1 画板相关操作</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var container = document.getElementById(<span class="string">"main"</span>);</span><br><span class="line"> //设置背景样式</span><br><span class="line">container.style.background = <span class="string">'url(editors/images/grid.gif)'</span>;</span><br><span class="line">container.style.height = <span class="string">"300px"</span>;</span><br><span class="line">container.style.padding = <span class="string">"20px"</span>;</span><br><span class="line">//创建一个画板</span><br><span class="line">var graph = new mxGraph(container);</span><br><span class="line"> //获取顶层，可以认为是父节点</span><br><span class="line">var parent = graph.getDefaultParent();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="创建画板的另一种方式"><a href="#创建画板的另一种方式" class="headerlink" title="创建画板的另一种方式"></a>创建画板的另一种方式</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 创建图的div</span><br><span class="line">var container = document.createElement(<span class="string">'div'</span>);</span><br><span class="line">container.style.position = <span class="string">'absolute'</span>;</span><br><span class="line">container.style.overflow = <span class="string">'hidden'</span>;</span><br><span class="line">container.style.left = <span class="string">'0px'</span>;</span><br><span class="line">container.style.top = <span class="string">'0px'</span>;</span><br><span class="line">container.style.right = <span class="string">'0px'</span>;</span><br><span class="line">container.style.bottom = <span class="string">'0px'</span>;</span><br><span class="line">document.querySelector(<span class="string">'.Highlight'</span>).appendChild(container);</span><br><span class="line">//在容器中创建图形</span><br><span class="line">var graph = new mxGraph(container);</span><br></pre></td></tr></table></figure>
+<h5 id="2-style的使用，插入背景图"><a href="#2-style的使用，插入背景图" class="headerlink" title="2 style的使用，插入背景图"></a>2 style的使用，插入背景图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">  // 声明一个object</span><br><span class="line"> var style = &#123;&#125;;</span><br><span class="line"> // 克隆一个object</span><br><span class="line"> style = mxUtils.clone(style);</span><br><span class="line"> // 不设置这个属性 背景图片不出来</span><br><span class="line"> style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_LABEL;</span><br><span class="line"> // 边框颜色</span><br><span class="line"> style[mxConstants.STYLE_STROKECOLOR] = &apos;#999999&apos;;</span><br><span class="line"> // 边框大小</span><br><span class="line"> style[mxConstants.STYLE_STROKEWIDTH] = 10;</span><br><span class="line"> // 字体颜色</span><br><span class="line"> style[mxConstants.STYLE_FONTCOLOR] = &apos;#FFFF00&apos;;</span><br><span class="line"> // 文字水平方式</span><br><span class="line"> style[mxConstants.STYLE_ALIGN] = mxConstants.ALIGN_CENTER;</span><br><span class="line"> // 文字垂直对齐</span><br><span class="line"> style[mxConstants.STYLE_VERTICAL_ALIGN] = mxConstants.ALIGN_BOTTOM;</span><br><span class="line"> // 字体大小</span><br><span class="line"> style[mxConstants.STYLE_FONTSIZE] = 30;</span><br><span class="line"> // 底图水平对齐</span><br><span class="line"> style[mxConstants.STYLE_IMAGE_ALIGN] = mxConstants.ALIGN_CENTER;</span><br><span class="line"> // 底图垂直对齐</span><br><span class="line"> style[mxConstants.STYLE_IMAGE_VERTICAL_ALIGN] = mxConstants.ALIGN_CENTER;</span><br><span class="line"> // 图片路径</span><br><span class="line"> style[mxConstants.STYLE_IMAGE] = &apos;images/icons48/gear.png&apos;;</span><br><span class="line"> style[mxConstants.STYLE_IMAGE_WIDTH] = 150;</span><br><span class="line"> // 背景图片高</span><br><span class="line"> style[mxConstants.STYLE_IMAGE_HEIGHT] = 200;</span><br><span class="line"> // 即使下边定义了全局设置，但这里单独设置上边间距仍单独有效</span><br><span class="line"> style[mxConstants.STYLE_SPACING_TOP] = 30;//上边间距</span><br><span class="line"> // 四边间距设置</span><br><span class="line"> style[mxConstants.STYLE_SPACING] = 10;</span><br><span class="line"> // 把定义好的样式object push到stylesheet</span><br><span class="line"> graph.getStylesheet().putCellStyle(&quot;style1&quot;, style);</span><br><span class="line"> //v1这个节点单独样式使用</span><br><span class="line">var v1 = graph.insertVertex(parent, null, &quot;text1&quot;, 50, 50, 200, 200, &quot;style1&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//公共使用样式</span><br><span class="line">   graph.getStylesheet().putDefaultVertexStyle(style);</span><br></pre></td></tr></table></figure>
+<h5 id="3-创建线的默认连接样式"><a href="#3-创建线的默认连接样式" class="headerlink" title="3 创建线的默认连接样式"></a>3 创建线的默认连接样式</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">style = [];</span><br><span class="line">style[mxConstants.STYLE_SHAPE] = mxConstants.SHAPE_CONNECTOR;</span><br><span class="line">// 边框颜色</span><br><span class="line">style[mxConstants.STYLE_STROKECOLOR] = <span class="string">'#6482B9'</span>;</span><br><span class="line">// 文字水平方式</span><br><span class="line">style[mxConstants.STYLE_ALIGN] = mxConstants.ALIGN_CENTER;</span><br><span class="line">// 文字垂直对齐</span><br><span class="line">style[mxConstants.STYLE_VERTICAL_ALIGN] = mxConstants.ALIGN_MIDDLE;</span><br><span class="line">style[mxConstants.STYLE_EDGE] = mxEdgeStyle.ElbowConnector;</span><br><span class="line">style[mxConstants.STYLE_ENDARROW] = mxConstants.ARROW_CLASSIC;</span><br><span class="line">// 字体大小</span><br><span class="line">style[mxConstants.STYLE_FONTSIZE] = <span class="string">'10'</span>;</span><br><span class="line">graph.getStylesheet().putDefaultEdgeStyle(style);</span><br><span class="line"></span><br><span class="line">//连接线，连接线上显示的内容，连接的两个节点，连接线的样式</span><br><span class="line">var e1 = graph.insertEdge(parent, null, <span class="string">'我1连2'</span>, v1, v2,</span><br><span class="line"> <span class="string">"strokeWidth=3;labelBackgroundColor=white;fontStyle=1"</span>);</span><br><span class="line">　　//直角连线</span><br><span class="line">var e2 = graph.insertEdge(parent, null, <span class="string">''</span>, v1, v2,</span><br><span class="line"><span class="string">'edgeStyle=orthogonalEdgeStyle;'</span>);</span><br><span class="line">　　//曲折连线</span><br><span class="line">var e2 = graph.insertEdge(parent, null, <span class="string">''</span>, v3, v2,</span><br><span class="line"> <span class="string">'edgeStyle=elbowEdgeStyle;elbow=horizontal;orthogonal=0;entryPerimeter=1;'</span>);</span><br><span class="line">　　//虚线连线</span><br><span class="line">graph.insertEdge(parent, null, null, step1, step2, <span class="string">'crossover'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 一些常用的方法</li>
+</ul>
+<h5 id="insertVertex-绘制图形"><a href="#insertVertex-绘制图形" class="headerlink" title="insertVertex 绘制图形"></a>insertVertex 绘制图形</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//mxGraph.prototype.insertVertex = <span class="keyword">function</span>(parent,id,value,x,y,width,height,style,relative)</span><br><span class="line">//parent画板父层，value值，x，y为坐标起点，width宽，height高</span><br><span class="line">//style样式  stylename;image=imageUrl</span><br><span class="line">//relative相对位置</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'第一个盒子'</span>, 50, 50, 80, 30,<span class="string">"style1"</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="insertEdge-连线"><a href="#insertEdge-连线" class="headerlink" title="insertEdge 连线"></a>insertEdge 连线</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//mxGraph.prototype.insertEdge = <span class="keyword">function</span>(parent,id,value,<span class="built_in">source</span>,target,style)</span><br><span class="line">//parent画板父层，value连线值，<span class="built_in">source</span>起点，target重点，style样式</span><br><span class="line">graph.insertEdge(parent, null, <span class="string">'box1 connect to box2'</span>, v1, v2 , <span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="添加按钮和对按钮进行操作"><a href="#添加按钮和对按钮进行操作" class="headerlink" title="添加按钮和对按钮进行操作"></a>添加按钮和对按钮进行操作</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 添加修改背景颜色按钮</span><br><span class="line">  document.body.appendChild(mxUtils.button(<span class="string">'修改背景颜色'</span>, <span class="keyword">function</span>(evt)&#123;</span><br><span class="line">      // Alaer</span><br><span class="line">      mxUtils.alert(<span class="string">"Oh! You will Click me!!"</span>);</span><br><span class="line">      // 获取单元</span><br><span class="line">      var cell = graph.getModel().getCell(v1.id);</span><br><span class="line">      // 修改样式</span><br><span class="line">      graph.setCellStyles(mxConstants.STYLE_FILLCOLOR, <span class="string">"#000000"</span>, [cell]);</span><br><span class="line">      graph.setCellStyles(mxConstants.STYLE_FONTCOLOR, <span class="string">"#FFFFFF"</span>, [cell]);</span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line">  / 添加还原背景颜色按钮</span><br><span class="line"> document.body.appendChild(mxUtils.button(<span class="string">'还原背景颜色'</span>, <span class="keyword">function</span>(evt)&#123;</span><br><span class="line">     // 获取单元</span><br><span class="line">     var cell = graph.getModel().getCell(v1.id);</span><br><span class="line">     // 获取默认样式</span><br><span class="line">     var style = graph.getStylesheet().getDefaultVertexStyle();</span><br><span class="line">     // 还原默认样式</span><br><span class="line">     <span class="keyword">for</span>(var i <span class="keyword">in</span> mxConstants)&#123;</span><br><span class="line">         graph.setCellStyles(mxConstants[i], style[mxConstants[i]], [cell]);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;));</span><br></pre></td></tr></table></figure>
+<h5 id="一些代码功能"><a href="#一些代码功能" class="headerlink" title="一些代码功能"></a>一些代码功能</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 开启可以拖拽建立关系</span><br><span class="line"> graph.setConnectable(<span class="literal">true</span>);</span><br><span class="line"> // 开启方块上的文字编辑功能</span><br><span class="line"> graph.setCellsEditable(<span class="literal">false</span>);</span><br><span class="line"> // 启用对齐线帮助定位</span><br><span class="line"> mxGraphHandler.prototype.guidesEnabled = <span class="literal">true</span>;</span><br><span class="line"> // 选择基本元素开启</span><br><span class="line"> graph.setEnabled(<span class="literal">true</span>);</span><br><span class="line"> //开启提示</span><br><span class="line"> graph.setTooltips(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="创建不同的形状盒子"><a href="#创建不同的形状盒子" class="headerlink" title="创建不同的形状盒子"></a>创建不同的形状盒子</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 画方块 默认情况下</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'矩形'</span>, 50, 50, 150, 150);</span><br><span class="line">// 画方块 圆角矩形</span><br><span class="line">// shape=rounded 定义圆角  arcSize=10 定义圆角弧度</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'圆角矩形'</span>, 300, 50, 150, 150,</span><br><span class="line"><span class="string">"rounded=true;perimeter=ellipsePerimeter;arcSize=20;"</span>);</span><br><span class="line">// 画椭圆</span><br><span class="line">// shape=elipse 定义椭圆  perimeter=ellipsePerimeter 让连线的箭头触到边缘</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'椭圆'</span>, 550, 50, 150, 150,</span><br><span class="line"><span class="string">"shape=ellipse;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">// 画三角形</span><br><span class="line">// shape=triangl 定义三角形  perimeter=ellipsePerimeter</span><br><span class="line">//让连线的箭头触到边缘 direction=south 让三角形倒立</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'三角形'</span>, 800, 50, 150, 150,</span><br><span class="line"><span class="string">"shape=triangle;perimeter=ellipsePerimeter;direction=south;"</span>);</span><br><span class="line">// 画菱形</span><br><span class="line">// shape=rhombus 定义菱形</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'三角形'</span>, 1050, 50, 150, 150,</span><br><span class="line"><span class="string">"shape=rhombus;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">// 画柱形</span><br><span class="line">// shape=cylinder 定义柱形</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'柱形'</span>, 1300, 50, 150, 150,</span><br><span class="line"> <span class="string">"shape=cylinder;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">// 画人</span><br><span class="line">// shape=actor 定义演员</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'演员'</span>, 50, 300, 150, 150,</span><br><span class="line"> <span class="string">"shape=actor;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">// 画云</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'云'</span>, 300, 300, 150, 150,</span><br><span class="line"><span class="string">"shape=cloud;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">//矩形默认情况下</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'矩形'</span>, 550, 300, 150, 150,</span><br><span class="line"> <span class="string">"shape=rectangle;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">//泳道</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'泳道'</span>, 800, 300, 150, 150,</span><br><span class="line"> <span class="string">"shape=swimlane;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line"> //双圆</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'双圆'</span>, 1050, 300, 150, 150,</span><br><span class="line"><span class="string">"shape=doubleEllipse;perimeter=ellipsePerimeter;"</span>);</span><br><span class="line">//六边形</span><br><span class="line">graph.insertVertex(parent, null, <span class="string">'六边形'</span>, 1300, 300, 150, 150,</span><br><span class="line"> <span class="string">"shape=hexagon;perimeter=ellipsePerimeter;"</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/myGraph.png" alt="cmd-markdown-logo"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mxgraph</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/01/16/mxGraph/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/01/16/mxGraph样式封装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mxgraph盒子样式封装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/15/Git使用上传项目到github/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git使用上传项目到github</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

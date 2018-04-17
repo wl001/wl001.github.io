@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>JavaScript 个人公共库组建 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="一些通用的方法封装成一个公共的第三方的库">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 个人公共库组建">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/12/05/JsPublicFun/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="一些通用的方法封装成一个公共的第三方的库">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-26T09:36:08.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="JavaScript 个人公共库组建">
+<meta name="twitter:description" content="一些通用的方法封装成一个公共的第三方的库">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,415 +147,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JsPublicFun" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript 个人公共库组建
+    </h1>
+  
+
+        
+        <a href="/2017/12/05/JsPublicFun/" class="archive-article-date">
+  	<time datetime="2017-12-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一些通用的方法封装成一个公共的第三方的库<br><a id="more"></a></p>
+<h5 id="封装库代码"><a href="#封装库代码" class="headerlink" title="封装库代码"></a>封装库代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * nomp (JS库) 当前库依赖第三方库:</span><br><span class="line"> * zy.net:  ajax异步数据请求等封装</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> /** 入口对象 */</span><br><span class="line">var nomp = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">/** ajax异步数据请求等封装 */</span><br><span class="line">nomp.net = &#123;</span><br><span class="line">/**</span><br><span class="line">     * AJAX loadHTMLL 动态加载HTML</span><br><span class="line">     * @method loadHTML</span><br><span class="line">     * @param &#123;String&#125; url 请求页面链接地址</span><br><span class="line">     * @param &#123;Object&#125; container 显示公共页面的div容器</span><br><span class="line">     * @param &#123;Function&#125; callback 回调函数</span><br><span class="line">     */</span><br><span class="line">    loadHTML: <span class="keyword">function</span>(url,container, callback)&#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="built_in">type</span>:<span class="string">"get"</span>,</span><br><span class="line">            dataType:<span class="string">"html"</span>,</span><br><span class="line">            url: url,</span><br><span class="line">            cache: <span class="literal">true</span>,</span><br><span class="line">            async: <span class="literal">false</span>,</span><br><span class="line">            success:<span class="keyword">function</span>(msg)&#123;</span><br><span class="line">                container.css(&#123;</span><br><span class="line">                    opacity : <span class="string">'0.0'</span></span><br><span class="line">                &#125;).html(msg).delay(50).animate(&#123;</span><br><span class="line">                    opacity : <span class="string">'1.0'</span></span><br><span class="line">                &#125;, 300);</span><br><span class="line">                setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">                    <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">                        callback(msg);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 300);</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="keyword">function</span> (xhr, ajaxOptions, thrownError) &#123;</span><br><span class="line">                ucs.ui.msg(<span class="string">'提示信息'</span>,<span class="string">'加载失败！'</span>,<span class="string">'s'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    /**</span><br><span class="line">       * POST 方式调用API服务</span><br><span class="line">       * @method post</span><br><span class="line">       * @param &#123;String&#125; url 请求链接地址</span><br><span class="line">       * @param &#123;Object&#125; param 发送请求参数json对象</span><br><span class="line">       * @param &#123;Function&#125; callback 回调函数</span><br><span class="line">       */</span><br><span class="line">    post:<span class="keyword">function</span>(url, param, callback)&#123;</span><br><span class="line">          $.ajax(&#123;</span><br><span class="line">              <span class="built_in">type</span> : <span class="string">"POST"</span>,</span><br><span class="line">              dataType : <span class="string">"json"</span>,</span><br><span class="line">              async: <span class="literal">false</span>,</span><br><span class="line">              url : url,</span><br><span class="line">              data:param,</span><br><span class="line">              success : <span class="keyword">function</span>(msg) &#123;</span><br><span class="line">                  <span class="built_in">return</span> callback(msg);</span><br><span class="line">              &#125;,</span><br><span class="line">              error: <span class="keyword">function</span> (XMLHttpRequest, textStatus, errorThrown) &#123;</span><br><span class="line"></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      /**</span><br><span class="line">       * GET 方式调用API服务（支持跨域提交）</span><br><span class="line">       * @method post</span><br><span class="line">       * @param &#123;String&#125; url 请求链接地址</span><br><span class="line">       * @param &#123;Object&#125; param 发送请求参数json对象或表单对象：$(<span class="string">'#formid'</span>).serialize();</span><br><span class="line">       * @param &#123;Function&#125; callback 回调函数</span><br><span class="line">       */</span><br><span class="line">       get:<span class="keyword">function</span>(url, param, callback)&#123;</span><br><span class="line">             $.ajax(&#123;</span><br><span class="line">                 url: url,</span><br><span class="line">                 <span class="built_in">type</span>: <span class="string">"get"</span>,</span><br><span class="line">                 async: <span class="literal">false</span>,</span><br><span class="line">                 timeout: 10000,</span><br><span class="line">                 cache: <span class="literal">true</span>,</span><br><span class="line">                 dataType: <span class="string">"jsonp"</span>,</span><br><span class="line">                 jsonp: <span class="string">"cb"</span>,</span><br><span class="line">                 data:param,</span><br><span class="line">                 success : <span class="keyword">function</span>(msg) &#123;</span><br><span class="line">                     <span class="built_in">return</span> callback(msg);</span><br><span class="line">                 &#125;,</span><br><span class="line">                 error: <span class="keyword">function</span> (XMLHttpRequest, textStatus, errorThrown) &#123;</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;);</span><br><span class="line">         &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/12/05/JsPublicFun/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/12/15/Git使用上传项目到github/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Git使用上传项目到github
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/30/JavaScript Dom操作insertAdjacentHTML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript的 insertAdjacentHTML  API</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>vue2实现店铺的星级评价及封装成veu插件 支持vue.use(star) | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="星级评价在店铺中多次使用，因此作为组件进行编写，及封装成插件的方法">
+<meta name="keywords" content="Vue2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2实现店铺的星级评价及封装成veu插件 支持vue.use(star)">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/08/17/Vue_star_components/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="星级评价在店铺中多次使用，因此作为组件进行编写，及封装成插件的方法">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-23T02:36:48.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="vue2实现店铺的星级评价及封装成veu插件 支持vue.use(star)">
+<meta name="twitter:description" content="星级评价在店铺中多次使用，因此作为组件进行编写，及封装成插件的方法">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,36 +147,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Vue_star_components" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
+    <h1 class="article-title" itemprop="name">
+      vue2实现店铺的星级评价及封装成veu插件 支持vue.use(star)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/17/Vue_star_components/" class="archive-article-date">
+  	<time datetime="2017-08-17T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>星级评价在店铺中多次使用，因此作为组件进行编写，及封装成插件的方法<br><a id="more"></a></p>
+<h5 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h5><ul>
+<li><p>星级评价的标准是该店铺的得分，样式以星星的尺寸来划分总共有三种，分别是48,36和24</p>
+</li>
+<li><p>调用插件时传入两个参数，第一个星星的size，数据类型为number，第二个店铺的评分score，数据类型为number</p>
+</li>
+</ul>
+<h5 id="1-组件形式-star-vue（插件形式就是多个调用的js）"><a href="#1-组件形式-star-vue（插件形式就是多个调用的js）" class="headerlink" title="1 组件形式   star.vue（插件形式就是多个调用的js）"></a>1 组件形式   star.vue（插件形式就是多个调用的js）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">"star"</span> :class=<span class="string">"starType"</span>&gt;</span><br><span class="line">      &lt;span v-for=<span class="string">"itemClass in itemClasses"</span> :class=<span class="string">"itemClass"</span> class=<span class="string">"star-item "</span>&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  const LENGTH = 5;</span><br><span class="line">  const CLS_ON = <span class="string">'on'</span>;</span><br><span class="line">  const CLS_HALF = <span class="string">'half'</span>;</span><br><span class="line">  const CLS_OFF = <span class="string">'off'</span>;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    props: &#123;//接受父组件参数数据 来进行数据传递</span><br><span class="line">      size:&#123;</span><br><span class="line">        <span class="built_in">type</span>: Number</span><br><span class="line">      &#125;,</span><br><span class="line">      score:&#123;</span><br><span class="line">        <span class="built_in">type</span>: Number</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed:&#123;//计算属性</span><br><span class="line">      starType:<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">'star-'</span>+this.size</span><br><span class="line">      &#125;,</span><br><span class="line">      itemClasses:<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        <span class="built_in">let</span> result = [];</span><br><span class="line">        <span class="built_in">let</span> score = Math.floor(this.score * 2) / 2 //分数</span><br><span class="line">        <span class="built_in">let</span> hasDecimal = score % 1 !== 0;//半星</span><br><span class="line">        <span class="built_in">let</span> <span class="built_in">integer</span> = Math.floor(score);//全星</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">let</span> i = 0;i &lt; <span class="built_in">integer</span>; i++)&#123;</span><br><span class="line">          result.push(CLS_ON) //全星的样式</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(hasDecimal)&#123;</span><br><span class="line">          result.push(CLS_HALF)//半星的样式</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(result.length&lt; LENGTH )&#123;</span><br><span class="line">          result.push(CLS_OFF)//空白星星样式</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span>  result;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="css代码"><a href="#css代码" class="headerlink" title="css代码"></a>css代码</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .star&#123;</span><br><span class="line">    font-size: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  .star .star-item&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">   .star<span class="number">-48</span> .star-item&#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width:<span class="number">20</span>px;</span><br><span class="line">    height:<span class="number">20</span>px;</span><br><span class="line">    margin-right: <span class="number">22</span>px;</span><br><span class="line">    background-size:<span class="number">20</span>px <span class="number">20</span>px ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-48</span> .star-item:last-child&#123;</span><br><span class="line">    margin-right: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-48</span> .on&#123;</span><br><span class="line">    background-image:url(star48_on@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-48</span> .half&#123;</span><br><span class="line">    background-image:url(star48_half@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">   .star<span class="number">-48</span> .off&#123;</span><br><span class="line">    background-image:url(star48_off@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-36</span> .star-item&#123;</span><br><span class="line">    width:<span class="number">15</span>px;</span><br><span class="line">    height:<span class="number">15</span>px;</span><br><span class="line">    margin-right: <span class="number">16</span>px;</span><br><span class="line">    background-size:<span class="number">15</span>px <span class="number">15</span>px ;</span><br><span class="line">  &#125;</span><br><span class="line">   .star<span class="number">-36</span>  .on&#123;</span><br><span class="line">    background-image:url(star36_on@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-36</span>  .half&#123;</span><br><span class="line">    background-image:url(star36_half@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-36</span>  .off&#123;</span><br><span class="line">    background-image:url(star36_off@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">   .star<span class="number">-24</span> .star-item&#123;</span><br><span class="line">    width:<span class="number">10</span>px;</span><br><span class="line">    height:<span class="number">10</span>px;</span><br><span class="line">    margin-right: <span class="number">3</span>px;</span><br><span class="line">    background-size:<span class="number">10</span>px <span class="number">10</span>px ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-24</span> .on&#123;</span><br><span class="line">    background-image:url(star24_on@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-24</span> .half&#123;</span><br><span class="line">    background-image:url(star24_half@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line">  .star<span class="number">-24</span> .off&#123;</span><br><span class="line">    background-image:url(star24_off@<span class="number">2</span>x.png) ;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="在引用页面引用当前的组件方式"><a href="#在引用页面引用当前的组件方式" class="headerlink" title="在引用页面引用当前的组件方式"></a>在引用页面引用当前的组件方式</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;star  :size=<span class="string">"48"</span> :score=<span class="string">"seller.score"</span>&gt;&lt;/Star_&gt;</span><br><span class="line">&lt;/body</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">   import star from <span class="string">'../star/star.vue'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">        components:&#123;</span><br><span class="line">          star</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>下面我们来实现vue.use(Star_)插件的形式调用. star.vue不变  请看最上面的代码</p>
+</blockquote>
+<h5 id="在star-vue同级创建-index-js-名字无所谓只要路径没问题"><a href="#在star-vue同级创建-index-js-名字无所谓只要路径没问题" class="headerlink" title="在star.vue同级创建 index.js(名字无所谓只要路径没问题)"></a>在star.vue同级创建 index.js(名字无所谓只要路径没问题)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> StarComponent <span class="keyword">from</span> <span class="string">'./star.vue'</span></span><br><span class="line">const Star_ing = &#123;</span><br><span class="line">  install: function(Vue) &#123;</span><br><span class="line">//  Star_ 引用的组件名称&lt;Star_&gt;&lt;/Star_&gt;</span><br><span class="line">    Vue.component(<span class="string">'Star_'</span>, StarComponent)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Star_ing</span><br></pre></td></tr></table></figure>
+<p>在main.js入口文件下引用该组件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Star <span class="keyword">from</span> <span class="string">'./components/star'</span> //自定义星星等级组件</span><br><span class="line"></span><br><span class="line">Vue.use(Star)</span><br><span class="line"></span><br><span class="line">引用方式</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;Star_  :size="48" :score="seller.score"&gt;&lt;/Star_&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>这样就可以在各个页面用的到的地方引用了</p>
+<ul>
+<li>参数详解 :class v-for的一些基础语法什么的就不多说了 不懂得可以看看官网</li>
+<li>:class =’starType’ 返回的是一个字符串，该字符串由’star-‘ + this.size拼接而成，this.size是调用组件时传入的num 拼接后，会出现三个类名，分别是star-48，star-36，star-24，这三个类名决定了星星的大小</li>
+<li>v-for=”itemClass in itemClasses” :class=”itemClass” 是循环数组然后拿出span的样式决定星星的状态</li>
+<li>使用props进行数据传递 接受父组件传过来的参数 size 和 score 和定义参数的类型number</li>
+<li>const LENGTH = 5;  星星长度</li>
+<li>const CLS_ON = ‘on’;  全星的class name</li>
+<li>const CLS_HALF = ‘half’;  半星的class name</li>
+<li>const CLS_OFF = ‘off’;  空白星星的class name</li>
+<li>let result = []; 定义了一个数组，该数组用于存放星星的类名</li>
+<li>let score = Math.floor(this.score * 2) / 2 ，将分数乘以二并向下取整之后除以二，得到x.0或者是x.5的数字</li>
+<li>let hasDecimal = score % 1 !== 0;hasDecimal的值是true或者false对score取余，有余数时hasDecimal为true，无余数时返回false</li>
+<li>let integer = Math.floor(score);//对score再次向下取整</li>
+<li>for循环，根据integer的数值确定向result数组中push类名CLS_ON的个数，由此可以得到全星个数</li>
+<li>if语句hasDecimal为true则有半星，false则无半星</li>
+<li>while语句全星循环的半星判断执行完之后对result数组的长度进行判断，小于总长度则向数组中push空白星</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,374 +241,114 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/08/17/Vue_star_components/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/11/05/demo_1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          银行卡号 每隔4位数字加一个空格
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/10/hexo_blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何搭建hexo博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +372,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

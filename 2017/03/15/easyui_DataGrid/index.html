@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>Easyui Datagrid的增删改查 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="本实例使用EasyUI创建表格，元素，窗口，以及各种请求。增加，修改，查询及其他知识基本涵盖完全。有用到js创建和html创建.">
+<meta name="keywords" content="EasyUi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Easyui Datagrid的增删改查">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/03/15/easyui_DataGrid/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="本实例使用EasyUI创建表格，元素，窗口，以及各种请求。增加，修改，查询及其他知识基本涵盖完全。有用到js创建和html创建.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-23T07:23:38.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="Easyui Datagrid的增删改查">
+<meta name="twitter:description" content="本实例使用EasyUI创建表格，元素，窗口，以及各种请求。增加，修改，查询及其他知识基本涵盖完全。有用到js创建和html创建.">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,415 +147,176 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-easyui_DataGrid" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Easyui Datagrid的增删改查
+    </h1>
+  
+
+        
+        <a href="/2017/03/15/easyui_DataGrid/" class="archive-article-date">
+  	<time datetime="2017-03-15T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本实例使用EasyUI创建表格，元素，窗口，以及各种请求。增加，修改，查询及其他知识基本涵盖完全。有用到js创建和html创建.<br><a id="more"></a></p>
+<h5 id="easyui-datagrid的增删改查"><a href="#easyui-datagrid的增删改查" class="headerlink" title="easyui datagrid的增删改查"></a>easyui datagrid的增删改查</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;table style=<span class="string">"width:100%;"</span> id=<span class="string">"datagrid"</span>&gt;&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    $(<span class="string">'#datagrid'</span>).datagrid(&#123;</span><br><span class="line">        url : <span class="string">'datagrid.json'</span>,</span><br><span class="line">        method : <span class="string">'post'</span>,</span><br><span class="line">        rownumbers:<span class="literal">true</span>,//显示一个行号 并不是按id来的</span><br><span class="line">        width :600,</span><br><span class="line">        toolbar:<span class="string">"#tb"</span>,//工具栏</span><br><span class="line">        idField : <span class="string">'id'</span>,</span><br><span class="line">        nowrap:<span class="literal">true</span>,//是否在一行显示所有数据 默认为<span class="literal">true</span></span><br><span class="line">        pagination:<span class="literal">true</span>,//添加分页条</span><br><span class="line">        pageNumber : 1,</span><br><span class="line">        pageSize:10,//设置分页时设置每页多少条。默认为10。</span><br><span class="line">        pageList:[5,10,15],//设置分页时初始化条数选择大小。默认为[10,20,30,40,50]。</span><br><span class="line">        title : <span class="string">'用户列表'</span>,</span><br><span class="line">        striped: <span class="literal">true</span>,  //奇偶条显示不同的颜色</span><br><span class="line">        iconCls : <span class="string">'icon-search'</span>,//图标</span><br><span class="line">        sortOrder : <span class="string">'DESC'</span>,//排序方式</span><br><span class="line">        remoteSort:<span class="literal">true</span>,//设置服务器对数据进行排序。默认为 <span class="literal">true</span>。</span><br><span class="line">        align : <span class="string">'center'</span>,</span><br><span class="line">        loadMsg : <span class="string">'正在加载中...'</span>,//缓冲信息提示</span><br><span class="line">        selectOnCheck:$(this).is(<span class="string">':checked'</span>),//点击并勾选checkbox</span><br><span class="line">        queryParams:&#123;&#125;//在请求远程数据的时候发送额外的参数。</span><br><span class="line">        singleSelect:<span class="literal">false</span>,//只选择一行</span><br><span class="line">        striped: <span class="literal">true</span>, //行背景交换</span><br><span class="line">         //加载成功后，消除所有选项</span><br><span class="line">        onLoadSuccess:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">           $(<span class="string">'#search_table'</span>).datagrid(<span class="string">'clearSelections'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        //在载入远程数据产生错误的时候触发</span><br><span class="line">        onLoadError: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            alert(<span class="string">'数据失败'</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        //更改easyui的默认自动传参数</span><br><span class="line">        onBeforeLoad: <span class="keyword">function</span> (params) &#123;//发送加载数据的请求前触发</span><br><span class="line">            params.pagesize = params.rows;//更改向后台自动的参数名称</span><br><span class="line">            delete params.rows;</span><br><span class="line">        &#125;,</span><br><span class="line">        columns:[[</span><br><span class="line">            &#123;</span><br><span class="line">                field : <span class="string">'id'</span>,//对应后台字段值</span><br><span class="line">                title : <span class="string">'编号'</span>,</span><br><span class="line">                sortable : <span class="literal">true</span>,//列使用排序</span><br><span class="line">                checkbox : <span class="literal">true</span>,//复选框</span><br><span class="line">                resizable:<span class="literal">false</span>,//True 就允许此列被调整尺寸。</span><br><span class="line">                width : 100</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                field : <span class="string">'user'</span>,</span><br><span class="line">                title : <span class="string">'帐号'</span>,</span><br><span class="line">                resizable:<span class="literal">false</span>,</span><br><span class="line">                sortable : <span class="literal">true</span>,</span><br><span class="line">                width : 100</span><br><span class="line">            &#125;</span><br><span class="line">        ]],</span><br><span class="line">        //在用户双击一行的时候触发</span><br><span class="line">        onDblClickRow: <span class="keyword">function</span> (rowIndex, rowData) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        //在用户点击一个单元格的时候触发</span><br><span class="line">        onClickCell: <span class="keyword">function</span> (rowIndex, rowData) &#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    var a = &#123;</span><br><span class="line">       param: &#123;&#125;</span><br><span class="line">     &#125;;</span><br><span class="line">   //增加按钮</span><br><span class="line">    $(<span class="string">'#add'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        a.param = <span class="string">'add'</span>;</span><br><span class="line">        $(<span class="string">'.header_title'</span>).html(<span class="string">'添加信息'</span>);</span><br><span class="line">        $(<span class="string">'#add_information'</span>).modal();//弹出模态框</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">     //修改按钮</span><br><span class="line">    $(<span class="string">'#modify'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        a.param = <span class="string">'edit'</span>;</span><br><span class="line">        $(<span class="string">'.header_title'</span>).html(<span class="string">'修改信息'</span>);</span><br><span class="line">        //返回所有被选中的行，当没有记录被选中的时候将返回一个空数组。</span><br><span class="line">        var rows  =  $(<span class="string">'#box1'</span>).datagrid(<span class="string">'getSelections'</span>);</span><br><span class="line">        <span class="keyword">if</span>(rows.length ==1)&#123;</span><br><span class="line">            $(<span class="string">'#add_information'</span>).modal();//弹出模态框</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            nomp.ui.msg(<span class="string">'警告'</span>,<span class="string">'请选择需要操作的数据'</span>,<span class="string">'w'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    //dialog中的确定按钮</span><br><span class="line">    $(<span class="string">'#enter'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.param ==<span class="string">'add'</span>)&#123;</span><br><span class="line">           nomp.easyui.validate();//点击确定按钮启用表单验证</span><br><span class="line">           //判断表单验证是否通过 通过为<span class="literal">true</span></span><br><span class="line">           var b = $(<span class="string">'#from_'</span>).form(<span class="string">'validate'</span>);</span><br><span class="line">           <span class="keyword">if</span>(b)&#123;</span><br><span class="line">               $(<span class="string">'#from_'</span>).form(<span class="string">'submit'</span>,&#123;</span><br><span class="line">                   url:url,</span><br><span class="line">                   //像后台提交多余参数 但是表单内的name会自动像后台传参</span><br><span class="line">                   onSubmit: <span class="keyword">function</span>(param)&#123;</span><br><span class="line">                       param.like = $(<span class="string">'#like'</span>).val();//多余参数</span><br><span class="line">                       <span class="built_in">return</span> $(this).form(<span class="string">'enableValidation'</span>).form(<span class="string">'validate'</span>);</span><br><span class="line">                   &#125;,</span><br><span class="line">                   beforeSend : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                       //显示加载时的状态</span><br><span class="line">                       $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'loading'</span>);</span><br><span class="line">                   &#125;,</span><br><span class="line">                    success:<span class="keyword">function</span>(data)&#123;</span><br><span class="line">                       $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'loaded'</span>);//载入完毕隐藏</span><br><span class="line">                       $(<span class="string">'#add_information'</span>).modal(<span class="string">'hide'</span>);//关闭表单弹出框</span><br><span class="line">                       $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'load'</span>);//刷新当前页</span><br><span class="line">                    &#125;</span><br><span class="line">               &#125;）</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a.param ==<span class="string">'edit)&#123;</span></span><br><span class="line"><span class="string">           //返回所有被选中的行</span></span><br><span class="line"><span class="string">            var row_val = $('</span><span class="comment">#datagrid').datagrid('getSelected');</span></span><br><span class="line">            $(<span class="string">'#add_form'</span>).form(<span class="string">'submit'</span>,&#123;</span><br><span class="line">                url:url,</span><br><span class="line">                //像后台提交多余参数 但是表单内的name会自动像后台传参</span><br><span class="line">                onSubmit: <span class="keyword">function</span>(param)&#123;</span><br><span class="line">                    <span class="built_in">return</span> $(this).form(<span class="string">'enableValidation'</span>).form(<span class="string">'validate'</span>);</span><br><span class="line">                &#125;,</span><br><span class="line">                success:<span class="keyword">function</span>(data)&#123;</span><br><span class="line">                    $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'loaded'</span>);//载入完毕隐藏</span><br><span class="line">                    $(<span class="string">'#add_information'</span>).modal(<span class="string">'hide'</span>);//关闭表单弹出框</span><br><span class="line">                    $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'load'</span>);//刷新当前页</span><br><span class="line">                    nomp.ui.msg(<span class="string">'提示信息'</span>,<span class="string">'修改成功！'</span>,<span class="string">'s'</span>);</span><br><span class="line">                &#125;,</span><br><span class="line">                error:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    //删除</span><br><span class="line">    $(<span class="string">'#remove'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var row  =  $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'getSelections'</span>);</span><br><span class="line">        <span class="keyword">if</span>(row.length&gt;0)&#123;</span><br><span class="line">            $.messager.confirm(<span class="string">'警告操作'</span>,<span class="string">'你确定删除选择的信息吗?删除后不能恢复！'</span>,</span><br><span class="line">                <span class="keyword">function</span>(flag)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                        var ids = [];</span><br><span class="line">                        //循环选中要删除的数据然后放到ids里面</span><br><span class="line">                        <span class="keyword">for</span> (var i = 0; i &lt; row.length; i ++) &#123;</span><br><span class="line">                            ids.push(row[i].id);</span><br><span class="line">                        &#125;</span><br><span class="line">                        $.ajax(&#123;</span><br><span class="line">                            url:<span class="string">'1.php'</span>,</span><br><span class="line">                            <span class="built_in">type</span>:<span class="string">'POST'</span>,</span><br><span class="line">                            data:&#123;</span><br><span class="line">                                ids :ids.join(<span class="string">','</span>)//像后台传递参数</span><br><span class="line">                            &#125;,</span><br><span class="line">                            beforeSend : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                                //删除时显示载入状态</span><br><span class="line">                                $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'loading'</span>);</span><br><span class="line">                            &#125;,</span><br><span class="line">                            success : <span class="keyword">function</span>(data)&#123;</span><br><span class="line">                                $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'loaded'</span>);</span><br><span class="line">                                $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'load'</span>);</span><br><span class="line">                                //所有行取消选定</span><br><span class="line">                                $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'unselectAll'</span>);</span><br><span class="line">                                $.messager.show(&#123;</span><br><span class="line">                                    width:300,</span><br><span class="line">                                    title: <span class="string">'提示'</span>,</span><br><span class="line">                                    msg:data+<span class="string">'用户被删除'</span></span><br><span class="line">                                &#125;)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $.messager.alert(<span class="string">'提示信息'</span>,<span class="string">'请选择你要进行操作的数据！'</span>,<span class="string">'warning'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    //查询</span><br><span class="line">    $(<span class="string">'#search'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       $(<span class="string">'#datagrid'</span>).datagrid(<span class="string">'load'</span>,&#123;</span><br><span class="line">           user : $(<span class="string">'input[name="c_user"]'</span>).val(),</span><br><span class="line">           data_f : $(<span class="string">'input[name="date_from"]'</span>).val(),</span><br><span class="line">           data_to : $(<span class="string">'input[name="date_to"]'</span>).val()</span><br><span class="line">       &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EasyUi</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/03/15/easyui_DataGrid/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/03/15/easyui_Tree/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Easyui Tree对节点进行，添加，修改，删除操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/05/eclipse/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">eclipse方便快捷解决端口被占用的问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

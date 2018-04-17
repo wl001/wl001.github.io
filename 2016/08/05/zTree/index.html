@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>zTree -- jQuery 树插件 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="zTree 是一个依靠 jQuery 实现的多功能 “树插件”。优异的性能、灵活的配置、多种功能的组合是 zTree 最大优点">
+<meta name="keywords" content="zTree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zTree -- jQuery 树插件">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2016/08/05/zTree/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="zTree 是一个依靠 jQuery 实现的多功能 “树插件”。优异的性能、灵活的配置、多种功能的组合是 zTree 最大优点">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-26T02:11:56.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="zTree -- jQuery 树插件">
+<meta name="twitter:description" content="zTree 是一个依靠 jQuery 实现的多功能 “树插件”。优异的性能、灵活的配置、多种功能的组合是 zTree 最大优点">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,415 +147,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zTree" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zTree -- jQuery 树插件
+    </h1>
+  
+
+        
+        <a href="/2016/08/05/zTree/" class="archive-article-date">
+  	<time datetime="2016-08-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>zTree 是一个依靠 jQuery 实现的多功能 “树插件”。优异的性能、灵活的配置、多种功能的组合是 zTree 最大优点<br><a id="more"></a><br>官方网站 <a href="http://www.treejs.cn/v3/main.php#_zTreeInfo" target="_blank" rel="noopener">http://www.treejs.cn/v3/main.php#_zTreeInfo</a></p>
+<h5 id="ztree实例代码"><a href="#ztree实例代码" class="headerlink" title="ztree实例代码"></a>ztree实例代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="string">"treeDemo"</span> class=<span class="string">"ztree"</span>&gt;&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line">$(function()&#123;</span><br><span class="line">	//目录树配置</span><br><span class="line">	var setting = &#123;</span><br><span class="line">		view : &#123;</span><br><span class="line">			showLine : false, //是否显示节点之间的连线</span><br><span class="line">			showIcon : true, //是否显示节点的图标</span><br><span class="line">			fontCss : &#123;//字体颜色</span><br><span class="line">				color : &quot;black&quot;</span><br><span class="line">			&#125;,</span><br><span class="line">			//鼠标移动到节点上时，显示用户自定义控件</span><br><span class="line">			addHoverDom : addHoverDom, //添加节点</span><br><span class="line">			removeHoverDom : removeHoverDom, //删除节点</span><br><span class="line">			selectedMulti : false	//是否允许同时选中多个节点</span><br><span class="line">			//用于在节点上固定显示用户自定义控件</span><br><span class="line">			//addDiyDom:addDiyDomToInterTree,</span><br><span class="line"></span><br><span class="line">		&#125;,</span><br><span class="line">		check : &#123;</span><br><span class="line">		    //设置 zTree 的节点上是否显示 checkbox</span><br><span class="line">			enable : false</span><br><span class="line">		&#125;,</span><br><span class="line">		data : &#123;</span><br><span class="line">			simpleData : &#123;</span><br><span class="line">			//节点采用简单数据模式</span><br><span class="line">				enable : true</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		edit : &#123;</span><br><span class="line">		    //设置节点是否处于编辑状态  显示编辑和删除组件图标</span><br><span class="line">			enable : false,</span><br><span class="line">			idKey : &quot;id&quot;,</span><br><span class="line">			pIdKey : &quot;pid&quot;,</span><br><span class="line">			rootPId : 0</span><br><span class="line">		&#125;,</span><br><span class="line">		callback : &#123;</span><br><span class="line">			onClick : zTreeOnClick, //被点击的节点回掉函数</span><br><span class="line">			onAsyncSuccess:zTreeOnAsyncSuccess</span><br><span class="line">		&#125;,</span><br><span class="line">		async : &#123; //异步加载目录</span><br><span class="line">			type : &quot;post&quot;,</span><br><span class="line">			enable : true,</span><br><span class="line">			url : &apos;json/tree.json&apos;,</span><br><span class="line">			autoParam:[&quot;id&quot;],</span><br><span class="line">			dataFilter : ajaxDataFilter</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	//用于捕获异步加载正常结束的事件回调函数</span><br><span class="line">	function zTreeOnAsyncSuccess()&#123;</span><br><span class="line">		var nodew = ztreeObj.getNodesByParam(&quot;id&quot;,&quot;0&quot;, null);</span><br><span class="line">		// 展开当前选择的第一个节点（包括其全部子节点）</span><br><span class="line">		ztreeObj.expandNode(nodew[0], true, false, false);</span><br><span class="line">	&#125;</span><br><span class="line">	//ztree数据过滤</span><br><span class="line">	function ajaxDataFilter(treeId, parentNode, responseData) &#123;</span><br><span class="line">		if (responseData) &#123;</span><br><span class="line">			return responseData;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	//ztree按钮组件</span><br><span class="line">	function addHoverDom(treeId, treeNode) &#123;</span><br><span class="line">		//treeNode节点信息</span><br><span class="line">		var currentNode = treeNode;</span><br><span class="line">		var sObj = $(&quot;#&quot; + treeNode.tId + &quot;_span&quot;);</span><br><span class="line">		if (treeNode.editNameFlag||$(&quot;#addBtn_&quot;+treeNode.tId).length&gt;0)</span><br><span class="line">			return;</span><br><span class="line">		var addStr = &quot;&lt;span class=&apos;button add&apos; id=&apos;addBtn_&quot;</span><br><span class="line">		  + treeNode.tId</span><br><span class="line">		  + &quot;&apos; title=&apos;添加&apos; onfocus=&apos;this.blur();&apos;&gt;&lt;/span&gt;&quot;;</span><br><span class="line"></span><br><span class="line">		var editStr = &quot;&lt;span class=&apos;button edit&apos; id=&apos;editBtn_&quot;</span><br><span class="line">		+ treeNode.tId</span><br><span class="line">		+ &quot;&apos; title=&apos;修改&apos; onfocus=&apos;this.blur();&apos;&gt;&lt;/span&gt;&quot;;</span><br><span class="line"></span><br><span class="line">		var removeStr = &quot;&lt;span class=&apos;button remove&apos; id=&apos;removeBtn_&quot;</span><br><span class="line">		+ treeNode.tId</span><br><span class="line">		+ &quot;&apos; title=&apos;删除&apos; onfocus=&apos;this.blur();&apos;&gt;&lt;/span&gt;&quot;;</span><br><span class="line">		sObj.after(addStr);</span><br><span class="line"></span><br><span class="line">		if (treeNode.id != &apos;0&apos;) &#123;</span><br><span class="line">			sObj.after(removeStr);</span><br><span class="line">			sObj.after(editStr);</span><br><span class="line">		&#125;</span><br><span class="line">		var addbtn = $(&quot;#addBtn_&quot; + treeNode.tId);</span><br><span class="line">		var editbtn = $(&quot;#editBtn_&quot; + treeNode.tId);</span><br><span class="line">		var removebtn = $(&quot;#removeBtn_&quot; + treeNode.tId);</span><br><span class="line">		//添加部门按钮监听</span><br><span class="line">		if (addbtn)</span><br><span class="line">			addbtn.bind(&quot;click&quot;, function() &#123;</span><br><span class="line">				alert(&apos;添加&apos;)</span><br><span class="line">				console.log(currentNode.id + currentNode.name )</span><br><span class="line">			&#125;);</span><br><span class="line">		//编辑部门按钮监听</span><br><span class="line">		if (editbtn)</span><br><span class="line">			editbtn.bind(&quot;click&quot;, function() &#123;</span><br><span class="line">				alert(&apos;修改&apos;)</span><br><span class="line">			&#125;);</span><br><span class="line">		//删除按钮监听</span><br><span class="line">		if (removebtn)</span><br><span class="line">			removebtn.bind(&quot;click&quot;, function() &#123;</span><br><span class="line">				alert(&apos;删除&apos;)</span><br><span class="line">			&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	//鼠标从按钮悬浮移开</span><br><span class="line">	function removeHoverDom(treeId, treeNode) &#123;</span><br><span class="line">		$(&quot;#addBtn_&quot; + treeNode.tId).unbind().remove();</span><br><span class="line">		$(&quot;#editBtn_&quot; + treeNode.tId).unbind().remove();</span><br><span class="line">		$(&quot;#removeBtn_&quot; + treeNode.tId).unbind().remove();</span><br><span class="line">	&#125;</span><br><span class="line">     //节点上固定显示用户自定义控件</span><br><span class="line">     function addDiyDomToInterTree(treeId, treeNode) &#123;</span><br><span class="line">     	if(treeNode.type===&apos;device&apos;)&#123;</span><br><span class="line">     		var aObj = $(&quot;#&quot; + treeNode.tId + &quot;_a&quot;);</span><br><span class="line">     		if ($(&quot;#diyBtn_&quot;+ treeId + treeNode.id).length&gt;0) return;</span><br><span class="line">     		var editStr = &quot;&lt;span id=&apos;diyBtn_space_&quot;+ treeId + treeNode.id+ &quot;&apos; &gt; &lt;/span&gt;&quot;</span><br><span class="line">     			+ &quot;&lt;button type=&apos;button&apos; class=&apos;diyBtn1&apos; style=&apos;border:none;&apos; id=&apos;diyBtn_&quot;+ treeId + treeNode.id</span><br><span class="line">     			+ &quot;&apos; onfocus=&apos;this.blur();&apos; title=&apos;删除设备&apos;&gt;&lt;img src=&apos;pmc/images/index/del_dev_icon.png&apos; alt=&apos;删除&apos;&gt;&lt;/button&gt;&quot;;</span><br><span class="line">     		aObj.append(editStr);</span><br><span class="line">     		var btn = $(&quot;#diyBtn_&quot;+ treeId + treeNode.id);</span><br><span class="line">     		if (btn)&#123;</span><br><span class="line">     			btn.bind(&quot;click&quot;, function()&#123;</span><br><span class="line">     				var treeObj = $.fn.zTree.getZTreeObj(treeId);</span><br><span class="line">     				treeObj.removeNode(treeNode,true);</span><br><span class="line">     			&#125;);</span><br><span class="line">     		&#125;</span><br><span class="line">     	&#125;</span><br><span class="line">     	if(treeNode.type ===&apos;root&apos;)&#123;</span><br><span class="line">     		var aObj = $(&quot;#&quot; + treeNode.tId + &quot;_a&quot;);</span><br><span class="line">     		var editStr = &quot;&lt;span id=&apos;diyBtn_space_&quot;+ treeId +treeNode.id+ &quot;&apos; &gt; &lt;/span&gt;&quot;</span><br><span class="line">     			+ &quot;&lt;button type=&apos;button&apos; class=&apos;diyBtn1&apos; style=&apos;border:none;&apos; id=&apos;diyBtn_&quot;+ treeId + treeNode.id</span><br><span class="line">     			+ &quot;&apos; onfocus=&apos;this.blur();&apos; title=&apos;删除全部&apos;&gt;&lt;img src=&apos;pmc/images/index/del_dev_icon.png&apos; alt=&apos;删除&apos;&gt;&lt;/button&gt;&quot;;</span><br><span class="line">     		aObj.append(editStr);</span><br><span class="line">     		var btn = $(&quot;#diyBtn_&quot;+ treeId+treeNode.id);</span><br><span class="line">     		if (btn)&#123;</span><br><span class="line">     			btn.bind(&quot;click&quot;, function()&#123;</span><br><span class="line">     				var treeObj = $.fn.zTree.getZTreeObj(treeId);</span><br><span class="line">     				treeObj.removeNode(treeNode,true);</span><br><span class="line">     			&#125;);</span><br><span class="line">     		&#125;</span><br><span class="line">     	&#125;</span><br><span class="line">     &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//调用tree插件</span><br><span class="line">    $(document).ready(function()&#123;</span><br><span class="line">    	$(document).ready(function()&#123;</span><br><span class="line">    	    //也可以ajax直接加入NodeData节点数据，只配置setting省略async</span><br><span class="line">    	    //$.fn.zTree.init($(&quot;#treeDemo&quot;), setting，NodeData);</span><br><span class="line">    		ztreeObj = $.fn.zTree.init($(&quot;#treeDemo&quot;), setting);</span><br><span class="line">    	&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">	//点击目录条，获取信息和表格加载相对应的信息</span><br><span class="line">    function zTreeOnClick(event, treeId, treeNode) &#123;</span><br><span class="line">    	var zTree = treeNode.id;</span><br><span class="line">    	console.log(zTree);</span><br><span class="line">    	// bootTable.refreshData(treeNode.id, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">zTree</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2016/08/05/zTree/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2016/11/05/baiduMap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          百度地图
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

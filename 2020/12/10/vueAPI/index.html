@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>vue2总结一些小功能 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="本篇文章收集一些vue2的API和功能，留着参考。">
+<meta name="keywords" content="Vue2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2总结一些小功能">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2020/12/10/vueAPI/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-31T07:59:20.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="vue2总结一些小功能">
+<meta name="twitter:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,36 +147,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vueAPI" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
+    <h1 class="article-title" itemprop="name">
+      vue2总结一些小功能
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/12/10/vueAPI/" class="archive-article-date">
+  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本篇文章收集一些vue2的API和功能，留着参考。<br><a id="more"></a></p>
+<h5 id="一-、keep-alive"><a href="#一-、keep-alive" class="headerlink" title="一 、keep-alive"></a>一 、keep-alive</h5><p>实现router切换状态保留 如果加载的数据ok 就不用重复加载了。代码示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">"tab"</span>&gt;</span><br><span class="line">      &lt;router-link class=<span class="string">"tab-item"</span> to=<span class="string">"/goods"</span> tag=<span class="string">"li"</span> active-class=<span class="string">"active"</span>&gt;</span><br><span class="line">        &lt;a  href=<span class="string">"javascript:;"</span>&gt;商品&lt;/a&gt;</span><br><span class="line">      &lt;/router-link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">     &lt;!--实现router切换状态保留 果加载的数据ok 就不用重复加载了--&gt;</span><br><span class="line">      &lt;keep-alive&gt;</span><br><span class="line">        &lt;!--:seller=<span class="string">"seller"</span> 向子组件传递数据--&gt;</span><br><span class="line">        &lt;router-view :seller=<span class="string">"seller"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">      &lt;/keep-alive&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="二-、ref-引用指向-DOM节点"><a href="#二-、ref-引用指向-DOM节点" class="headerlink" title="二 、ref 引用指向 DOM节点"></a>二 、ref 引用指向 DOM节点</h5><p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"parent"</span>&gt;</span><br><span class="line">  &lt;user-profile ref=<span class="string">"profile"</span>&gt;&lt;/user-profile&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">// 访组件实例</span><br><span class="line">this.<span class="variable">$refs</span>.profile</span><br></pre></td></tr></table></figure></p>
+<p>获取屏幕高度和更改样式示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">  @import <span class="string">"./main.css"</span>;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=<span class="string">"main"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"header_"</span> ref=<span class="string">"header_"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"leftAside"</span> ref=<span class="string">"leftAside"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"content_"</span> ref=<span class="string">"content_"</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">      <span class="built_in">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">      // //浏览器高度</span><br><span class="line">      <span class="built_in">let</span> w = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;</span><br><span class="line">      <span class="built_in">let</span> wH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;</span><br><span class="line">      <span class="built_in">let</span> topH = this.<span class="variable">$refs</span>.header_.offsetHeight;</span><br><span class="line">      this.<span class="variable">$refs</span>.leftAside.style.height = (w - topH) +<span class="string">'px'</span></span><br><span class="line">      <span class="built_in">let</span> centreW = this.<span class="variable">$refs</span>.leftAside.offsetWidth;</span><br><span class="line">      this.<span class="variable">$refs</span>.content_.style.width = (wH - centreW) +<span class="string">'px'</span></span><br><span class="line">      this.<span class="variable">$refs</span>.content_.style.height = (w - topH) +<span class="string">'px'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>关于 ref 注册时间的重要说明：因为 ref 本身是作为渲染结果被创建的，在初始渲染的时候你不能访问它们 - 它们还不存在！$refs 也不是响应式的，应当避免在模板或计算属性中使用 $refs。</p>
+<h5 id="三、Vue-nextTick-callback-context"><a href="#三、Vue-nextTick-callback-context" class="headerlink" title="三、Vue.nextTick( [callback, context] )"></a>三、Vue.nextTick( [callback, context] )</h5><p>异步更新队列、为了在数据变化之后等待 Vue 完成更新 DOM可以在数据变化之后立即使用 Vue.nextTick(callback) 。这样回调函数在 DOM 更新完成后就会调用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'example'</span>, &#123;</span><br><span class="line">  template: <span class="string">'&lt;span&gt;&#123;&#123; message &#125;&#125;&lt;/span&gt;'</span>,</span><br><span class="line">  data: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      message: <span class="string">'没有更新'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateMessage: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.message = <span class="string">'更新完成'</span></span><br><span class="line">      console.log(this.<span class="variable">$el</span>.textContent) // =&gt; <span class="string">'没有更新'</span></span><br><span class="line">      this.<span class="variable">$nextTick</span>(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        console.log(this.<span class="variable">$el</span>.textContent) // =&gt; <span class="string">'更新完成'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="四-、set-全局操作"><a href="#四-、set-全局操作" class="headerlink" title="四 、set 全局操作"></a>四 、set 全局操作</h5><p>对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    userProfile: &#123;</span><br><span class="line">      name: <span class="string">'Anika'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">//你可以添加一个新的 age 属性到嵌套的 userProfile 对象或者更改：</span><br><span class="line">Vue.set(vm.userProfile, <span class="string">'age'</span>, 27);</span><br><span class="line">Vue.set(vm.userProfile, <span class="string">'name'</span>, <span class="string">'tom'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>有时你可能需要为已有对象赋予多个新属性，在这种情况下，应该用两个对象的属性创建一个新的对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.userProfile = Object.assign(&#123;&#125;, this.userProfile, &#123;</span><br><span class="line">  age: 27,</span><br><span class="line">  favoriteColor: <span class="string">'Vue Green'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="五-、Vue-filter-id-definition-自定义过滤器"><a href="#五-、Vue-filter-id-definition-自定义过滤器" class="headerlink" title="五 、Vue.filter( id, [definition] )自定义过滤器"></a>五 、Vue.filter( id, [definition] )自定义过滤器</h5><p>注册或获取全局过滤器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 注册</span><br><span class="line">Vue.filter(<span class="string">'my-filter'</span>, <span class="keyword">function</span> (value) &#123;</span><br><span class="line">  // 返回处理后的值</span><br><span class="line">  <span class="built_in">return</span>  ；</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// getter，返回已注册的过滤器</span><br><span class="line">var myFilter = Vue.filter(<span class="string">'my-filter'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="六-、Vue-directive-id-definition-自定义属性指令"><a href="#六-、Vue-directive-id-definition-自定义属性指令" class="headerlink" title="六 、Vue.directive( id, [definition] )自定义属性指令"></a>六 、Vue.directive( id, [definition] )自定义属性指令</h5><p> 详细用法 <a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/custom-directive.html</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 注册</span><br><span class="line">Vue.directive(<span class="string">'my-directive'</span>, &#123;</span><br><span class="line">  <span class="built_in">bind</span>: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  inserted: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  update: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  componentUpdated: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  unbind: <span class="function"><span class="title">function</span></span> () &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 注册 (指令函数)</span><br><span class="line">Vue.directive(<span class="string">'my-directive'</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  // 这里将会被 `<span class="built_in">bind</span>` 和 `update` 调用</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// getter，返回已注册的指令</span><br><span class="line">var myDirective = Vue.directive(<span class="string">'my-directive'</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="七-、-自定义插件-Vue-use-plugin"><a href="#七-、-自定义插件-Vue-use-plugin" class="headerlink" title="七 、 自定义插件 Vue.use( plugin )"></a>七 、 自定义插件 Vue.use( plugin )</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import StarComponent from <span class="string">'./star.vue'</span></span><br><span class="line">const Star_ing = &#123;</span><br><span class="line">  install: <span class="keyword">function</span>(Vue) &#123;</span><br><span class="line">    Vue.component(<span class="string">'Star_'</span>, StarComponent)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default Star_ing</span><br><span class="line">Vue.use(Star)//使用插件</span><br><span class="line">//调用插件</span><br><span class="line">&lt;Star_&gt;&lt;/Star_&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="八-、使用-Prop-传递数据"><a href="#八-、使用-Prop-传递数据" class="headerlink" title="八 、使用 Prop 传递数据"></a>八 、使用 Prop 传递数据</h5><p>组件实例的作用域是孤立的。这意味着不能在子组件的模板内直接引用父组件的数据。父组件的数据需要通过 prop 才能下发到子组件中。详细地址：<a href="https://cn.vuejs.org/v2/guide/components.html#Prop" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html#Prop</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//父组件</span><br><span class="line">&lt;router-view :seller=<span class="string">"seller"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">//子组件</span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">        props: &#123;</span><br><span class="line">            seller: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Object</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="九-、-emit-触发事件"><a href="#九-、-emit-触发事件" class="headerlink" title="九 、$emit 触发事件"></a>九 、$emit 触发事件</h5><ul>
+<li>$emit是触发当前实例上的事件。附加参数都会传给监听器回调。</li>
+<li>详细地址<a href="https://cn.vuejs.org/v2/guide/components.html#使用-v-on-绑定自定义事件" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html#使用-v-on-绑定自定义事件</a></li>
+<li>非父子组件的通信 <a href="https://cn.vuejs.org/v2/guide/components.html#非父子组件的通信" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html#非父子组件的通信</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//子组件</span><br><span class="line"><span class="built_in">export</span> default&#123;</span><br><span class="line">   methods:&#123;</span><br><span class="line">      click:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">      // 子组件通过 <span class="variable">$emit</span>触发父组件的add方法</span><br><span class="line">        this.<span class="variable">$emit</span>(<span class="string">'add'</span>, event.target);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//父组件</span><br><span class="line">&lt;cartcontrol  @add=<span class="string">"addFood"</span> :food=<span class="string">"food"</span>&gt;&lt;/cartcontrol&gt;</span><br><span class="line"><span class="built_in">export</span> default&#123;</span><br><span class="line">   addFood(target) &#123;</span><br><span class="line">        this._drop(target);</span><br><span class="line">   &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>使用 $on(eventName) 监听事件<br>使用 $emit(eventName) 触发事件</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,374 +229,105 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2020/12/10/vueAPI/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/22/ES_兼容浏览器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6 兼容浏览器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

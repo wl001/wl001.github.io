@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>ES6中Array的一些扩展方法 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="description" content="ES6为数组带来了很多很实用的方法：Array.of( )、Array.from( )、find( )、findIndex( )、fill( )、entries( )、values()，此外还有一个更简洁的语法：数组推导，能让我们更方便地生成一个新数组。">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中Array的一些扩展方法">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/01/22/ES_Array/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="ES6为数组带来了很多很实用的方法：Array.of( )、Array.from( )、find( )、findIndex( )、fill( )、entries( )、values()，此外还有一个更简洁的语法：数组推导，能让我们更方便地生成一个新数组。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-27T15:11:50.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="ES6中Array的一些扩展方法">
+<meta name="twitter:description" content="ES6为数组带来了很多很实用的方法：Array.of( )、Array.from( )、find( )、findIndex( )、fill( )、entries( )、values()，此外还有一个更简洁的语法：数组推导，能让我们更方便地生成一个新数组。">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,312 +147,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ES_Array" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
+    <h1 class="article-title" itemprop="name">
+      ES6中Array的一些扩展方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
+        
+        <a href="/2018/01/22/ES_Array/" class="archive-article-date">
   	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6为数组带来了很多很实用的方法：Array.of( )、Array.from( )、find( )、findIndex( )、fill( )、entries( )、values()，此外还有一个更简洁的语法：数组推导，能让我们更方便地生成一个新数组。<br><a id="more"></a></p>
+<h5 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h5><ul>
+<li>扩展运算符（spread）是三个点（…）。它好比 rest 参数的逆运算</li>
+<li><p>将一个数组转为用逗号分隔的参数序列。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(...[1, 2, 3])</span><br><span class="line">  // 1 2 3</span><br><span class="line"></span><br><span class="line"> console.log(1, ...[2, 3, 4], 5)</span><br><span class="line"> // 1 2 3 4 5</span><br><span class="line"></span><br><span class="line"> console.log( [...document.querySelectorAll(<span class="string">'div'</span>)])</span><br><span class="line">  // [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>该运算符主要用于函数调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> add(a , b)&#123;</span><br><span class="line">   <span class="built_in">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line">const number = [10,12]</span><br><span class="line">console.log(add(...number))</span><br><span class="line">//22</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扩展运算符与正常的函数参数可以结合使用，非常灵活。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> f(v, w, x, y, z) &#123;</span><br><span class="line">    <span class="built_in">return</span> [v, w, x, y, z]</span><br><span class="line">&#125;</span><br><span class="line">const args = [0, 1];</span><br><span class="line"></span><br><span class="line">console.log(f(-1, ...args, 2, ...[3]))</span><br><span class="line">//[-1, 0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扩展运算符后面还可以放置表达式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> x = -1</span><br><span class="line">const arr = [</span><br><span class="line">    ...(x &gt; 0 ? [<span class="string">'a'</span>] : []),<span class="string">'b'</span>,</span><br><span class="line">];</span><br><span class="line">console.log(arr)</span><br><span class="line">//[b]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> x = 1</span><br><span class="line">  const arr = [</span><br><span class="line">      ...(x &gt; 0 ? [<span class="string">'a'</span>] : []),<span class="string">'b'</span>,</span><br><span class="line">  ];</span><br><span class="line">  console.log(arr)</span><br><span class="line">  //[<span class="string">"a"</span>, <span class="string">"b"</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果扩展运算符后面是一个空数组，则不产生任何效果。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...[], 1]</span><br><span class="line">// [1]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替代函数的 apply 方法</p>
+</li>
+<li>由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// ES5 的写法</span><br><span class="line">    <span class="keyword">function</span> f(x, y, z) &#123;</span><br><span class="line">      // ...</span><br><span class="line">    &#125;</span><br><span class="line">    var args = [0, 1, 2];</span><br><span class="line">    f.apply(null, args);</span><br><span class="line"></span><br><span class="line">    // ES6的写法</span><br><span class="line">    <span class="keyword">function</span> f(x, y, z) &#123;</span><br><span class="line">      // ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">let</span> args = [0, 1, 2];</span><br><span class="line">    f(...args);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>下面是扩展运算符取代apply方法的一个实际的例子，应用Math.max方法，简化求出一个数组最大元素的写法。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// ES5 的写法</span><br><span class="line">Math.max.apply(null, [14, 3, 77])</span><br><span class="line"></span><br><span class="line">// ES6 的写法</span><br><span class="line">Math.max(...[14, 3, 77])</span><br><span class="line"></span><br><span class="line">// 等同于</span><br><span class="line">Math.max(14, 3, 77);</span><br></pre></td></tr></table></figure>
+<p>-上面代码中，由于 JavaScript 不提供求数组最大元素的函数，所以只能套用Math.max函数，将数组转为一个参数序列，然后求最大值。有了扩展运算符以后，就可以直接用Math.max了。</p>
+<h4 id="扩展运算符的应用"><a href="#扩展运算符的应用" class="headerlink" title="扩展运算符的应用"></a>扩展运算符的应用</h4><p>（1）复制数组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a1 = [1, 2];</span><br><span class="line">const a2 = a1;</span><br><span class="line"></span><br><span class="line">a2[0] = 2;</span><br><span class="line">a1 // [2, 2]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>a2并不是a1的克隆，而是指向同一份数据的另一个指针。修改a2，会直接导致a1的变化。</li>
+<li><p>ES5 只能用变通方法来复制数组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a1 = [1, 2];</span><br><span class="line">const a2 = a1.concat();</span><br><span class="line"></span><br><span class="line">a2[0] = 2;</span><br><span class="line">a1 // [1, 2]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>a1会返回原数组的克隆，再修改a2就不会对a1产生影响。</p>
+</li>
+<li>扩展运算符提供了复制数组的简便写法。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a1 = [1, 2];</span><br><span class="line">// 写法一</span><br><span class="line">const a2 = [...a1];</span><br><span class="line">// 写法二</span><br><span class="line">const [...a2] = a1;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（2）合并数组</p>
+<ul>
+<li>扩展运算符提供了数组合并的新写法。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// ES5</span><br><span class="line">var arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</span><br><span class="line">var arr2 = [<span class="string">'c'</span>];</span><br><span class="line">var arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"></span><br><span class="line">// ES5的合并数组</span><br><span class="line">arr1.concat(arr2, arr3);</span><br><span class="line">// [ <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span> ]</span><br><span class="line"></span><br><span class="line">// ES6的合并数组</span><br><span class="line">[...arr1, ...arr2, ...arr3]</span><br><span class="line">// [ <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span> ]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（3）与解构赋值结合<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</span><br><span class="line">console.log(first) // 1</span><br><span class="line">console.log(rest) // [2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">const [first, ...rest] = [];</span><br><span class="line">console.log(first) // undefined</span><br><span class="line">console.log(rest)  // []</span><br><span class="line"></span><br><span class="line">const [first, ...rest] = [<span class="string">"foo"</span>];</span><br><span class="line">console.log(first)  // <span class="string">"foo"</span></span><br><span class="line">console.log(rest)   // []</span><br></pre></td></tr></table></figure></p>
+<h4 id="扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。"><a href="#扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。" class="headerlink" title="扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。"></a>扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const [...butLast, last] = [1, 2, 3, 4, 5];</span><br><span class="line">// 报错</span><br><span class="line"></span><br><span class="line">const [first, ...middle, last] = [1, 2, 3, 4, 5];</span><br><span class="line">// 报错</span><br></pre></td></tr></table></figure>
+<p>（4）字符串<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...<span class="string">'hello'</span>]</span><br><span class="line">// [ <span class="string">"h"</span>, <span class="string">"e"</span>, <span class="string">"l"</span>, <span class="string">"l"</span>, <span class="string">"o"</span> ]</span><br></pre></td></tr></table></figure></p>
+<p>能够正确识别四个字节的 Unicode 字符。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'x\uD83D\uDE80y'</span>.length // 4</span><br><span class="line">[...<span class="string">'x\uD83D\uDE80y'</span>].length // 3</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> length(str) &#123;</span><br><span class="line">  <span class="built_in">return</span> [...str].length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">length(<span class="string">'x\uD83D\uDE80y'</span>) // 3</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>凡是涉及到操作四个字节的 Unicode 字符的函数，都有这个问题。因此，最好都用扩展运算符改写。<h5 id="Array-of-函数"><a href="#Array-of-函数" class="headerlink" title="Array.of()函数"></a>Array.of()函数</h5></li>
+<li><p>函数作用：将一组值，转换成数组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Array.of(<span class="string">'w'</span>,<span class="string">'i'</span>,<span class="string">'r'</span>)//[<span class="string">"w"</span>, <span class="string">"i"</span>, <span class="string">"r"</span>]返回数组</span><br><span class="line">Array.of([<span class="string">'w'</span>,<span class="string">'o'</span>])//[[<span class="string">'w'</span>,<span class="string">'o'</span>]]返回嵌套数组</span><br><span class="line">Array.of(undefined)//[undefined]依然返回数组</span><br><span class="line">Array.of()//[]返回一个空数组</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array.of()方法永远返回一个数组，参数不分类型，只分数量，数量为0返回空数组。</p>
+<h5 id="Array-from-函数"><a href="#Array-from-函数" class="headerlink" title="Array.from( )函数"></a>Array.from( )函数</h5></li>
+<li><p>函数作用：可以将类似数组的对象或者可遍历的对象转换成真正的数组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Array.from(&#123;<span class="string">'0'</span>:<span class="string">'w'</span>,<span class="string">'1'</span>:<span class="string">'b'</span>,length:2&#125;)</span><br><span class="line">//[<span class="string">"w"</span>, <span class="string">"b"</span>],返回数组的长度取决于对象中的length，故此项必须有！</span><br><span class="line"></span><br><span class="line">Array.from(&#123;<span class="string">'0'</span>:<span class="string">'w'</span>,<span class="string">'1'</span>:<span class="string">'b'</span>,length:4&#125;)</span><br><span class="line">//[<span class="string">"w"</span>, <span class="string">"b"</span>, undefined, undefined],数组后2项没有属性去赋值，故undefined</span><br><span class="line"></span><br><span class="line">Array.from(&#123;<span class="string">'0'</span>:<span class="string">'w'</span>,<span class="string">'1'</span>:<span class="string">'b'</span>,length:1&#125;)</span><br><span class="line">//[<span class="string">"w"</span>],length小于key的数目，按序添加数组</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> divs=document.getElementsByTagName(<span class="string">'div'</span>);</span><br><span class="line">Array.from(divs)//返回div元素数组</span><br><span class="line">Array.from(<span class="string">'wbiokr'</span>)//[<span class="string">"w"</span>, <span class="string">"b"</span>, <span class="string">"i"</span>, <span class="string">"o"</span>, <span class="string">"k"</span>, <span class="string">"r"</span>]</span><br><span class="line">Array.from([1,2,3],<span class="keyword">function</span>(x)&#123; <span class="built_in">return</span> x+1&#125;)</span><br><span class="line">//[2, 3, 4],第二个参数为回调函数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array.from可以把带有lenght属性类似数组的对象转换为数组，也可以把字符串等可以遍历的对象转换为数组，它接收2个参数，转换对象与回调函数</p>
+<h5 id="find-函数"><a href="#find-函数" class="headerlink" title="find( )函数"></a>find( )函数</h5></li>
+<li><p>函数作用：找出数组中符合条件的第一个元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1,2,3,4,5,6];</span><br><span class="line"> arr.find(<span class="keyword">function</span>(value)&#123;</span><br><span class="line">     <span class="built_in">return</span> value &gt; 2;</span><br><span class="line"> &#125;);</span><br><span class="line"> //结果：value=3 返回第一个符合条件的x值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find()函数的参数是一个匿名函数，数组的每个元素都会进入匿名函数执行，直到结果为true，find函数就会返回value的值：3。倘若所有元素都不符合匿名函数的条件，find( )函数就会返回undefind</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr1=[4,2,3,<span class="string">'sdf'</span>,-2];</span><br><span class="line">   var b =arr1.find(<span class="keyword">function</span>(num,index,arr)&#123;</span><br><span class="line">       <span class="keyword">if</span>(x&lt;4)&#123;</span><br><span class="line">           console.log(x) //2 3 -2</span><br><span class="line">           console.log(i) //1 2 4</span><br><span class="line">           console.log(arr) //[4, 2, 3, <span class="string">"sdf"</span>, -2]</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回调函数默认返回值x</p>
+</li>
+<li>find的参数为回调函数，回调函数可以接收3个参数，值num、下标index、数组arr<h5 id="findIndex-函数"><a href="#findIndex-函数" class="headerlink" title="findIndex( )函数"></a>findIndex( )函数</h5></li>
+<li><p>函数作用：返回符合条件的第一个数组成员的位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [7,8,9,10];</span><br><span class="line"> arr.findIndex(<span class="keyword">function</span>(value)&#123;</span><br><span class="line">     <span class="built_in">return</span> value &gt; 8;</span><br><span class="line"> &#125;);</span><br><span class="line">//结果：下标 2的 位置</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为数组元素中大于8的元素是9，而元素9的位置正式2，（数组元素是从0算起）。倘若所有元素都不符合匿名函数的条件，findIndex( )函数就会返回-1。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr=[1,2,234,<span class="string">'sdf'</span>,-2];</span><br><span class="line"></span><br><span class="line">arr.findIndex(<span class="keyword">function</span>(x,i,arr)&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;2)&#123;console.log(x,i,arr)&#125;</span><br><span class="line">&#125;)</span><br><span class="line">//结果：1 0 [1, 2, 234, <span class="string">"sdf"</span>, -2]，-2 4 [1, 2, 234, <span class="string">"sdf"</span>, -2]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="indIndex和find差不多，不过默认返回的是索引。"><a href="#indIndex和find差不多，不过默认返回的是索引。" class="headerlink" title="indIndex和find差不多，不过默认返回的是索引。"></a>indIndex和find差不多，不过默认返回的是索引。</h4><h5 id="fill-函数"><a href="#fill-函数" class="headerlink" title="fill( )函数"></a>fill( )函数</h5><ul>
+<li><p>函数作用：用指定的值，填充到数组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1,2,3];</span><br><span class="line">arr.fill(4);</span><br><span class="line">//结果：[4,4,4]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我想只填充部分元素，fill( )函数提供了一些参数，用于指定填充的起始位置和结束位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [0,1,2,3];</span><br><span class="line">arr.fill(4,1,3);</span><br><span class="line">//结果：[0,4,4,3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面的代码中第2个参数和第3个参数的意思是：</p>
+</li>
+<li>从位置1的元素开始填充数字4，截止到位置3之前，所以是位置1、2的元素被4填充了，结果：[0,4,4.3]<h5 id="entries-函数"><a href="#entries-函数" class="headerlink" title="entries( )函数"></a>entries( )函数</h5></li>
+<li><p>对数组的键值对进行遍历，返回一个遍历器，可以用for..of对其进行遍历。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">let</span> arr=[<span class="string">'w'</span>,<span class="string">'l'</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> a of arr.entries())&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;//结果：[0,<span class="string">'w'</span>],[1,<span class="string">'l'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> [i,v] of [<span class="string">'w'</span>, <span class="string">'l'</span>].entries())&#123;</span><br><span class="line">        console.log(i,v);</span><br><span class="line">&#125;</span><br><span class="line">    //0 <span class="string">"w"</span></span><br><span class="line">    //1 <span class="string">"l"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们将entries( )函数返回的一个遍历器，用for…of进行遍历，能得到数组的键值：0和1，以及对应的数组元素：‘a‘和’b‘。</p>
+</li>
+<li>如果只想遍历数组的索引键的话，可以使用另一个实例方法。<h5 id="keys-函数"><a href="#keys-函数" class="headerlink" title="keys( )函数"></a>keys( )函数</h5></li>
+<li>函数作用：keys，对数组索引的遍历<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">for</span>(<span class="built_in">let</span> index of [<span class="string">'w'</span>, <span class="string">'l'</span>].keys()) &#123;</span><br><span class="line">        console.log(index);</span><br><span class="line"> &#125;</span><br><span class="line">//0</span><br><span class="line">//1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="values-函数"><a href="#values-函数" class="headerlink" title="values( )函数"></a>values( )函数</h5><ul>
+<li>作用：对数组的元素进行遍历<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr=[1,2,234,<span class="string">'sdf'</span>,-2];</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> a of arr.values())&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">//结果：1,2,234,sdf,-2 遍历了数组arr的值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="数组推导"><a href="#数组推导" class="headerlink" title="数组推导"></a>数组推导</h5><ul>
+<li>数组推导是非标准的</li>
+<li>数组推导是非标准的。考虑到以后，应该使用 Array.prototype.map, Array.prototype.filter, 和 arrow functions.</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -462,98 +313,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/01/22/ES_Array/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/01/22/ES_Number/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ES6中Number的一些扩展方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/22/ES_obj/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6中对象的一些扩展方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
   
 
 
@@ -577,8 +444,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

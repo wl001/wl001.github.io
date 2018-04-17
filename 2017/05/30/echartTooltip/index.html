@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Archives | 我的技术博客</title>
+  <title>echarts 自定义tooltip | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/archives/index.html">
+  <meta name="keywords" content="Echart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echarts 自定义tooltip">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/05/30/echartTooltip/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/images/e3.png">
+<meta property="og:updated_time" content="2018-04-03T08:07:31.345Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="echarts 自定义tooltip">
+<meta name="twitter:image" content="https://github.com/images/e3.png">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,415 +146,176 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-echartTooltip" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      echarts 自定义tooltip
+    </h1>
+  
+
+        
+        <a href="/2017/05/30/echartTooltip/" class="archive-article-date">
+  	<time datetime="2017-05-30T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br><a id="more"></a></p>
+<h5 id="echarts3-自定义tooltip"><a href="#echarts3-自定义tooltip" class="headerlink" title="echarts3 自定义tooltip"></a>echarts3 自定义tooltip</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line">var dataBJ = [</span><br><span class="line">    [1,55,9,56,0.46,18,6,<span class="string">"良"</span>],</span><br><span class="line">    [2,25,11,21,0.65,34,9,<span class="string">"优"</span>],</span><br><span class="line">    [3,56,7,63,0.3,14,5,<span class="string">"良"</span>],</span><br><span class="line">    [4,33,7,29,0.33,16,6,<span class="string">"优"</span>],</span><br><span class="line">    [5,42,24,44,0.76,40,16,<span class="string">"优"</span>],</span><br><span class="line">    [6,82,58,90,1.77,68,33,<span class="string">"良"</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var dataGZ = [</span><br><span class="line">    [1,26,37,27,1.163,27,13,<span class="string">"优"</span>],</span><br><span class="line">    [2,85,62,71,1.195,60,8,<span class="string">"良"</span>],</span><br><span class="line">    [3,78,38,74,1.363,37,7,<span class="string">"良"</span>],</span><br><span class="line">    [4,21,21,36,0.634,40,9,<span class="string">"优"</span>],</span><br><span class="line">    [5,41,42,46,0.915,81,13,<span class="string">"优"</span>],</span><br><span class="line">    [6,56,52,69,1.067,92,16,<span class="string">"良"</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var dataSH = [</span><br><span class="line">    [1,91,45,125,0.82,34,23,<span class="string">"良"</span>],</span><br><span class="line">    [2,65,27,78,0.86,45,29,<span class="string">"良"</span>],</span><br><span class="line">    [3,83,60,84,1.09,73,27,<span class="string">"良"</span>],</span><br><span class="line">    [4,109,81,121,1.28,68,51,<span class="string">"轻度污染"</span>],</span><br><span class="line">    [5,106,77,114,1.07,55,51,<span class="string">"轻度污染"</span>],</span><br><span class="line">    [6,109,81,121,1.28,68,51,<span class="string">"轻度污染"</span>]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var schema = [</span><br><span class="line">    &#123;name: <span class="string">'date'</span>, index: 0, text: <span class="string">'日'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'AQIindex'</span>, index: 1, text: <span class="string">'AQI指数'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'PM25'</span>, index: 2, text: <span class="string">'PM2.5'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'PM10'</span>, index: 3, text: <span class="string">'PM10'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'CO'</span>, index: 4, text: <span class="string">'一氧化碳（CO）'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'NO2'</span>, index: 5, text: <span class="string">'二氧化氮（NO2）'</span>&#125;,</span><br><span class="line">    &#123;name: <span class="string">'SO2'</span>, index: 6, text: <span class="string">'二氧化硫（SO2）'</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var itemStyle = &#123;</span><br><span class="line">    normal: &#123;</span><br><span class="line">        opacity: 0.8,</span><br><span class="line">        shadowBlur: 10,</span><br><span class="line">        shadowOffsetX: 0,</span><br><span class="line">        shadowOffsetY: 0,</span><br><span class="line">        shadowColor: <span class="string">'rgba(0, 0, 0, 0.5)'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">option = &#123;</span><br><span class="line">    backgroundColor: <span class="string">'#333'</span>,</span><br><span class="line">    color: [</span><br><span class="line">        <span class="string">'#dd4444'</span>, <span class="string">'#fec42c'</span>, <span class="string">'#80F1BE'</span></span><br><span class="line">    ],</span><br><span class="line">    legend: &#123;</span><br><span class="line">        y: <span class="string">'top'</span>,</span><br><span class="line">        data: [<span class="string">'北京'</span>, <span class="string">'上海'</span>, <span class="string">'广州'</span>],</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">            color: <span class="string">'#fff'</span>,</span><br><span class="line">            fontSize: 16</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    grid: &#123;</span><br><span class="line">        x: <span class="string">'10%'</span>,</span><br><span class="line">        x2: 150,</span><br><span class="line">        y: <span class="string">'18%'</span>,</span><br><span class="line">        y2: <span class="string">'10%'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        padding: 10,</span><br><span class="line">        backgroundColor: <span class="string">'#222'</span>,</span><br><span class="line">        borderColor: <span class="string">'#777'</span>,</span><br><span class="line">        borderWidth: 1,</span><br><span class="line">        formatter: <span class="keyword">function</span> (obj) &#123;</span><br><span class="line">            var value = obj.value;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">'&lt;div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px"&gt;'</span></span><br><span class="line">                + obj.seriesName + <span class="string">' '</span> + value[0] + <span class="string">'日：'</span></span><br><span class="line">                + value[7]</span><br><span class="line">                + <span class="string">'&lt;/div&gt;'</span></span><br><span class="line">                + schema[1].text + <span class="string">'：'</span> + value[1] + <span class="string">'&lt;br&gt;'</span></span><br><span class="line">                + schema[2].text + <span class="string">'：'</span> + value[2] + <span class="string">'&lt;br&gt;'</span></span><br><span class="line">                + schema[3].text + <span class="string">'：'</span> + value[3] + <span class="string">'&lt;br&gt;'</span></span><br><span class="line">                + schema[4].text + <span class="string">'：'</span> + value[4] + <span class="string">'&lt;br&gt;'</span></span><br><span class="line">                + schema[5].text + <span class="string">'：'</span> + value[5] + <span class="string">'&lt;br&gt;'</span></span><br><span class="line">                + schema[6].text + <span class="string">'：'</span> + value[6] + <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'value'</span>,</span><br><span class="line">        name: <span class="string">'日期'</span>,</span><br><span class="line">        nameGap: 16,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">            color: <span class="string">'#fff'</span>,</span><br><span class="line">            fontSize: 14</span><br><span class="line">        &#125;,</span><br><span class="line">        max: 31,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">                color: <span class="string">'#777'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">                color: <span class="string">'#777'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            formatter: <span class="string">'&#123;value&#125;'</span>,</span><br><span class="line">            textStyle: &#123;</span><br><span class="line">                color: <span class="string">'#fff'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'value'</span>,</span><br><span class="line">        name: <span class="string">'AQI指数'</span>,</span><br><span class="line">        nameLocation: <span class="string">'end'</span>,</span><br><span class="line">        nameGap: 20,</span><br><span class="line">        nameTextStyle: &#123;</span><br><span class="line">            color: <span class="string">'#fff'</span>,</span><br><span class="line">            fontSize: 16</span><br><span class="line">        &#125;,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">                color: <span class="string">'#777'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">                color: <span class="string">'#777'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            textStyle: &#123;</span><br><span class="line">                color: <span class="string">'#fff'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    visualMap: [</span><br><span class="line">        &#123;</span><br><span class="line">            left: <span class="string">'right'</span>,</span><br><span class="line">            top: <span class="string">'10%'</span>,</span><br><span class="line">            dimension: 2,</span><br><span class="line">            min: 0,</span><br><span class="line">            max: 250,</span><br><span class="line">            itemWidth: 30,</span><br><span class="line">            itemHeight: 120,</span><br><span class="line">            calculable: <span class="literal">true</span>,</span><br><span class="line">            precision: 0.1,</span><br><span class="line">            text: [<span class="string">'圆形大小：PM2.5'</span>],</span><br><span class="line">            textGap: 30,</span><br><span class="line">            textStyle: &#123;</span><br><span class="line">                color: <span class="string">'#fff'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            inRange: &#123;</span><br><span class="line">                symbolSize: [10, 70]</span><br><span class="line">            &#125;,</span><br><span class="line">            outOfRange: &#123;</span><br><span class="line">                symbolSize: [10, 70],</span><br><span class="line">                color: [<span class="string">'rgba(255,255,255,.2)'</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            controller: &#123;</span><br><span class="line">                inRange: &#123;</span><br><span class="line">                    color: [<span class="string">'#c23531'</span>]</span><br><span class="line">                &#125;,</span><br><span class="line">                outOfRange: &#123;</span><br><span class="line">                    color: [<span class="string">'#444'</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            left: <span class="string">'right'</span>,</span><br><span class="line">            bottom: <span class="string">'5%'</span>,</span><br><span class="line">            dimension: 6,</span><br><span class="line">            min: 0,</span><br><span class="line">            max: 50,</span><br><span class="line">            itemHeight: 120,</span><br><span class="line">            calculable: <span class="literal">true</span>,</span><br><span class="line">            precision: 0.1,</span><br><span class="line">            text: [<span class="string">'明暗：二氧化硫'</span>],</span><br><span class="line">            textGap: 30,</span><br><span class="line">            textStyle: &#123;</span><br><span class="line">                color: <span class="string">'#fff'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            inRange: &#123;</span><br><span class="line">                colorLightness: [1, 0.5]</span><br><span class="line">            &#125;,</span><br><span class="line">            outOfRange: &#123;</span><br><span class="line">                color: [<span class="string">'rgba(255,255,255,.2)'</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            controller: &#123;</span><br><span class="line">                inRange: &#123;</span><br><span class="line">                    color: [<span class="string">'#c23531'</span>]</span><br><span class="line">                &#125;,</span><br><span class="line">                outOfRange: &#123;</span><br><span class="line">                    color: [<span class="string">'#444'</span>]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'北京'</span>,</span><br><span class="line">            <span class="built_in">type</span>: <span class="string">'scatter'</span>,</span><br><span class="line">            itemStyle: itemStyle,</span><br><span class="line">            data: dataBJ</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'上海'</span>,</span><br><span class="line">            <span class="built_in">type</span>: <span class="string">'scatter'</span>,</span><br><span class="line">            itemStyle: itemStyle,</span><br><span class="line">            data: dataSH</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'广州'</span>,</span><br><span class="line">            <span class="built_in">type</span>: <span class="string">'scatter'</span>,</span><br><span class="line">            itemStyle: itemStyle,</span><br><span class="line">            data: dataGZ</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/10/vueAPI/" class="archive-article-date">
-  	<time datetime="2020-12-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/vueAPI/">vue2总结一些小功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_兼容浏览器/" class="archive-article-date">
-  	<time datetime="2018-01-22T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_兼容浏览器/">ES6 兼容浏览器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/05/30/echartTooltip/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_let/" class="archive-article-date">
-  	<time datetime="2018-01-22T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/05/30/echarts_demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          echart 案例收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/20/easyui/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery easyui的问题总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_let/">ES6 新增关键字let</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_const/" class="archive-article-date">
-  	<time datetime="2018-01-22T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_const/">ES6 新增关键字const</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_解构赋值/" class="archive-article-date">
-  	<time datetime="2018-01-22T02:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_解构赋值/">ES6新特性：解构赋值</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_字符串扩展/" class="archive-article-date">
-  	<time datetime="2018-01-22T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_字符串扩展/">ES6字符串String新特性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Number/" class="archive-article-date">
-  	<time datetime="2018-01-22T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Number/">ES6中Number的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_Array/" class="archive-article-date">
-  	<time datetime="2018-01-21T23:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_Array/">ES6中Array的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_obj/" class="archive-article-date">
-  	<time datetime="2018-01-21T22:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_obj/">ES6中对象的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/ES_fun/" class="archive-article-date">
-  	<time datetime="2018-01-21T21:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/ES_fun/">ES6中函数的一些扩展方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -577,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
