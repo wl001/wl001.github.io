@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-23T02:36:48.304Z">
+<meta property="og:updated_time" content="2018-04-21T03:52:31.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm run build">
 <meta name="twitter:description" content="本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题">
@@ -171,10 +171,13 @@
 <h5 id="npm-run-build之后dist中的index-html如何打开运行"><a href="#npm-run-build之后dist中的index-html如何打开运行" class="headerlink" title="npm run build之后dist中的index.html如何打开运行"></a>npm run build之后dist中的index.html如何打开运行</h5><ul>
 <li>一、首先下载本地服务器Wamp Server</li>
 <li>将dist文件夹扔到本地服务器下的www文件夹下，localhost运行后发现一片空白也不报错或者js路径不对</li>
-<li>解决方法 找到config下的index.js目录 修改assetsPublicPath配置 / 改为./<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assetsPublicPath: <span class="string">'./'</span>,</span><br></pre></td></tr></table></figure>
+<li><p>解决方法 找到config下的index.js目录 修改assetsPublicPath配置 / 改为./</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assetsPublicPath: <span class="string">'./'</span>,</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>开发完vue项目后进行 npm run build命令后，默认的是当前文件夹下的./static.</p>
+</li>
+<li>assetsPublicPath 可以更改默认路径，参数更改成路径即可</li>
 </ul>
-<p>亲测有效</p>
 
       
 
@@ -448,19 +451,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
