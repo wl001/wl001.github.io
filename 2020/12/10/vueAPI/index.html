@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-31T07:59:20.177Z">
+<meta property="og:updated_time" content="2018-04-30T05:45:40.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2总结一些小功能">
 <meta name="twitter:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
@@ -180,6 +180,7 @@
 <h5 id="六-、Vue-directive-id-definition-自定义属性指令"><a href="#六-、Vue-directive-id-definition-自定义属性指令" class="headerlink" title="六 、Vue.directive( id, [definition] )自定义属性指令"></a>六 、Vue.directive( id, [definition] )自定义属性指令</h5><p> 详细用法 <a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/custom-directive.html</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 注册</span><br><span class="line">Vue.directive(<span class="string">'my-directive'</span>, &#123;</span><br><span class="line">  <span class="built_in">bind</span>: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  inserted: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  update: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  componentUpdated: <span class="function"><span class="title">function</span></span> () &#123;&#125;,</span><br><span class="line">  unbind: <span class="function"><span class="title">function</span></span> () &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 注册 (指令函数)</span><br><span class="line">Vue.directive(<span class="string">'my-directive'</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  // 这里将会被 `<span class="built_in">bind</span>` 和 `update` 调用</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// getter，返回已注册的指令</span><br><span class="line">var myDirective = Vue.directive(<span class="string">'my-directive'</span>)</span><br></pre></td></tr></table></figure></p>
 <h5 id="七-、-自定义插件-Vue-use-plugin"><a href="#七-、-自定义插件-Vue-use-plugin" class="headerlink" title="七 、 自定义插件 Vue.use( plugin )"></a>七 、 自定义插件 Vue.use( plugin )</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import StarComponent from <span class="string">'./star.vue'</span></span><br><span class="line">const Star_ing = &#123;</span><br><span class="line">  install: <span class="keyword">function</span>(Vue) &#123;</span><br><span class="line">    Vue.component(<span class="string">'Star_'</span>, StarComponent)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default Star_ing</span><br><span class="line">Vue.use(Star)//使用插件</span><br><span class="line">//调用插件</span><br><span class="line">&lt;Star_&gt;&lt;/Star_&gt;</span><br></pre></td></tr></table></figure>
 <h5 id="八-、使用-Prop-传递数据"><a href="#八-、使用-Prop-传递数据" class="headerlink" title="八 、使用 Prop 传递数据"></a>八 、使用 Prop 传递数据</h5><p>组件实例的作用域是孤立的。这意味着不能在子组件的模板内直接引用父组件的数据。父组件的数据需要通过 prop 才能下发到子组件中。详细地址：<a href="https://cn.vuejs.org/v2/guide/components.html#Prop" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html#Prop</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//父组件</span><br><span class="line">&lt;router-view :seller=<span class="string">"seller"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">//子组件</span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">        props: &#123;</span><br><span class="line">            seller: &#123;</span><br><span class="line">                <span class="built_in">type</span>: Object</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="另外props的写法"><a href="#另外props的写法" class="headerlink" title="另外props的写法"></a>另外props的写法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">简写</span><br><span class="line">props: [<span class="string">'demo-first'</span>, <span class="string">'demo-second'</span>]</span><br><span class="line">带类型</span><br><span class="line">props: &#123;</span><br><span class="line">    <span class="string">'demo-first'</span>: Number,</span><br><span class="line">    <span class="string">'demo-second'</span>: Number</span><br><span class="line">&#125;</span><br><span class="line">带多种检查</span><br><span class="line">props: &#123;</span><br><span class="line">    <span class="string">'demo-first'</span>: &#123;</span><br><span class="line">        <span class="built_in">type</span>: Number,</span><br><span class="line">        default: 0</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="九-、-emit-触发事件"><a href="#九-、-emit-触发事件" class="headerlink" title="九 、$emit 触发事件"></a>九 、$emit 触发事件</h5><ul>
 <li>$emit是触发当前实例上的事件。附加参数都会传给监听器回调。</li>
 <li>详细地址<a href="https://cn.vuejs.org/v2/guide/components.html#使用-v-on-绑定自定义事件" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html#使用-v-on-绑定自定义事件</a></li>
@@ -189,6 +190,7 @@
 <blockquote>
 <p>使用 $on(eventName) 监听事件<br>使用 $emit(eventName) 触发事件</p>
 </blockquote>
+<p>#####</p>
 
       
 
@@ -435,15 +437,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
