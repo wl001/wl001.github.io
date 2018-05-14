@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题和webpack的配置信息">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-02T00:59:59.444Z">
+<meta property="og:updated_time" content="2018-05-14T03:05:20.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack配置和vue run build打包处理">
 <meta name="twitter:description" content="本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题和webpack的配置信息">
@@ -169,19 +169,24 @@
       
         <p>本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题和webpack的配置信息<br><a id="more"></a><br>Wamp Server下载地址：<a href="http://www.downza.cn/soft/30324.html" target="_blank" rel="noopener">http://www.downza.cn/soft/30324.html</a></p>
 <h5 id="npm-run-build之后dist中的index-html如何打开运行"><a href="#npm-run-build之后dist中的index-html如何打开运行" class="headerlink" title="npm run build之后dist中的index.html如何打开运行"></a>npm run build之后dist中的index.html如何打开运行</h5><ul>
-<li>一、首先下载本地服务器Wamp Server</li>
+<li>npm全局装个http-server<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>-然后在对应目录用命令行输入http-server就可以看到类似<a href="http://localhost:8081的可访问地址，在浏览器访问就好了" target="_blank" rel="noopener">http://localhost:8081的可访问地址，在浏览器访问就好了</a></p>
+<ul>
+<li>也可以下载本地服务器Wamp Server</li>
 <li>将dist文件夹扔到本地服务器下的www文件夹下，localhost运行后发现一片空白也不报错或者js路径不对</li>
 <li><p>解决方法 找到config下的index.js目录 修改assetsPublicPath配置 / 改为./</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assetsPublicPath: <span class="string">'./'</span>,</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开发完vue项目后进行 npm run build命令后，默认的是当前文件夹下的./static.</p>
 </li>
-<li>assetsPublicPath 可以更改默认路径，参数更改成路径即可<h5 id="vue-cli-webpack全局引入jquery"><a href="#vue-cli-webpack全局引入jquery" class="headerlink" title="vue-cli webpack全局引入jquery"></a>vue-cli webpack全局引入jquery</h5>1 下载jquery<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run jquery --save-dev</span><br></pre></td></tr></table></figure>
+<li>assetsPublicPath 可以更改默认路径，参数更改成路径即可<h5 id="vue-cli-webpack全局引入jquery"><a href="#vue-cli-webpack全局引入jquery" class="headerlink" title="vue-cli webpack全局引入jquery"></a>vue-cli webpack全局引入jquery</h5>1 下载jquery<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>2 在webpack.base.conf.js里加入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(<span class="string">"webpack"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>3 module.exports的中间加入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line"> new webpack.optimize.CommonsChunkPlugin(<span class="string">'common.js'</span>),</span><br><span class="line"> new webpack.ProvidePlugin(&#123;</span><br><span class="line">     jQuery: <span class="string">"jquery"</span>,</span><br><span class="line">     $: <span class="string">"jquery"</span></span><br><span class="line"> &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>4 main.js 引入就ok了 import $ from ‘jquery’<br>参考地址 <a href="https://segmentfault.com/a/1190000007020623" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007020623</a></p>
+<p>4 main.js 引入就ok了 import $ from ‘jquery’<br>参开地址 <a href="https://segmentfault.com/a/1190000007020623" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007020623</a></p>
 
       
 
@@ -296,11 +301,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/18/VueProps/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/15/webpack/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vue2父组件传递props异步数据到子组件
+          手动配置webpack 版本3.8.1
         
       </div>
     </a>
@@ -502,6 +507,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
              
               <li class="article-tag-list-item">
