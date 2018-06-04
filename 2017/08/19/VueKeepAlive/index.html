@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>vue2父组件传递props异步数据到子组件 | 我的技术博客</title>
+  <title>keep-alive需求对某个页面进行缓存 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇文章介绍了 vue2父组件传递props异步数据到 子组件 的问题，留作参考。">
+  <meta name="description" content="本文记录一下vue2的 使用方式，进行页面分别缓存和不缓存，按需加载">
 <meta name="keywords" content="Vue2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2父组件传递props异步数据到子组件">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/07/18/VueProps/index.html">
+<meta property="og:title" content="keep-alive需求对某个页面进行缓存">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/08/19/VueKeepAlive/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="本篇文章介绍了 vue2父组件传递props异步数据到 子组件 的问题，留作参考。">
+<meta property="og:description" content="本文记录一下vue2的 使用方式，进行页面分别缓存和不缓存，按需加载">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-23T02:36:48.321Z">
+<meta property="og:updated_time" content="2018-06-02T14:20:01.314Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2父组件传递props异步数据到子组件">
-<meta name="twitter:description" content="本篇文章介绍了 vue2父组件传递props异步数据到 子组件 的问题，留作参考。">
+<meta name="twitter:title" content="keep-alive需求对某个页面进行缓存">
+<meta name="twitter:description" content="本文记录一下vue2的 使用方式，进行页面分别缓存和不缓存，按需加载">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -84,7 +84,7 @@
 				
 					<a class="github" target="_blank" href="https://github.com/wl001" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="http://chuangzaoshi.com/" title="weibo"><i class="icon-weibo"></i></a>
 		        
 			</div>
 		</nav>
@@ -121,7 +121,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/wl001" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="http://chuangzaoshi.com/" title="weibo"><i class="icon-weibo"></i></a>
 			        
 				</div>
 			</nav>
@@ -147,29 +147,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VueProps" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VueKeepAlive" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      vue2父组件传递props异步数据到子组件
+      keep-alive需求对某个页面进行缓存
     </h1>
   
 
         
-        <a href="/2017/07/18/VueProps/" class="archive-article-date">
-  	<time datetime="2017-07-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
+        <a href="/2017/08/19/VueKeepAlive/" class="archive-article-date">
+  	<time datetime="2017-08-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇文章介绍了 vue2父组件传递props异步数据到 子组件 的问题，留作参考。<br><a id="more"></a></p>
-<h5 id="父组件-App-vue"><a href="#父组件-App-vue" class="headerlink" title="父组件 App.vue"></a>父组件 App.vue</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  // seller为异步获取的数据，传递给子组件使用</span><br><span class="line">    &lt;Header_ :seller=<span class="string">"seller"</span>&gt;&lt;/Header_&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Header_ from <span class="string">'./components/header/header.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      seller:&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span></span>()&#123;//vue2的钩子函数</span><br><span class="line">  //mockjs模拟的后台数据</span><br><span class="line">    this.<span class="variable">$http</span>.get(<span class="string">'seller'</span>).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">        this.seller = data.body;//需要这样获取到数据</span><br><span class="line">    &#125;,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">      console.log(<span class="string">'数据请求错误'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  components:&#123;//组件</span><br><span class="line">    Header_</span><br><span class="line">  &#125;,</span><br><span class="line">  name: <span class="string">'app'</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="子组件-header-vue"><a href="#子组件-header-vue" class="headerlink" title="子组件 header.vue"></a>子组件 header.vue</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=<span class="string">"aaa"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"header"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"content-wrapper"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"avatar"</span>&gt;</span><br><span class="line">        &lt;img width=<span class="string">"64"</span> height=<span class="string">"64"</span> :src=<span class="string">"seller.avatar"</span>&gt;</span><br><span class="line">        &lt;p style=<span class="string">"border:1px solid red;height:30px; "</span>&gt;&#123;&#123;seller.name&#125;&#125;&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    props:&#123;//接收父组件数据</span><br><span class="line">      seller:&#123;</span><br><span class="line">        <span class="built_in">type</span>: Object</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+        <p>本文记录一下vue2的 <keep-alive>使用方式，进行页面分别缓存和不缓存，按需加载<br><a id="more"></a></keep-alive></p>
+<h5 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a>keep-alive</h5><ul>
+<li><p>keep-alive是进行路由加载缓存页面信息的;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>但是有时候有的页面需要缓存，不想每次切换路由的时候在发起请求重新加载，这个涉及到我们的路由元信息</p>
+</li>
+<li><p>router.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default new Router(&#123;</span><br><span class="line">      routes: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">'/'</span>,</span><br><span class="line">          redirect: <span class="string">'/home'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">'/home'</span>,</span><br><span class="line">          name: <span class="string">'Home'</span>,</span><br><span class="line">          component: Home,</span><br><span class="line">          meta:&#123;</span><br><span class="line">            keepAlive:<span class="literal">true</span></span><br><span class="line">          &#125;</span><br><span class="line">          //this.<span class="variable">$router</span>.meta.keepAlive 为<span class="literal">true</span>就缓存页面否则不缓存</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下边就是我们的主要话题了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--需要缓存的页面--&gt;</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">  &lt;router-view v-if=<span class="string">"<span class="variable">$route</span>.meta.keepAlive"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line">&lt;!--不需要缓存的页面--&gt;</span><br><span class="line">&lt;router-view v-if=<span class="string">"!<span class="variable">$route</span>.meta.keepAlive"</span>&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="activated-钩子函数"><a href="#activated-钩子函数" class="headerlink" title="activated 钩子函数"></a>activated 钩子函数</h5><ul>
+<li><p>需求是点击不同的城市 首页加载不同城市的数据 但是keep-alive对路由进行了数据缓存,在下次更换城市的时候数据不会发生ajax请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">     &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line"> &lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决方式 当使用keep-alive的时候会多出 activated钩子函数 是页面重新激活时时候运行</p>
+</li>
+<li>当页面加载的时候 判断当前页面加载的城市和上一次页面加载的城市是否相同 如果不同就发送一次ajax请求<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">activated</span></span>()&#123;</span><br><span class="line">  <span class="keyword">if</span> (this.lastCity !== this.city) &#123;</span><br><span class="line">    this.lastCity = this.city;</span><br><span class="line">    this.getHomeInfo()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
 
@@ -270,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/07/18/VueProps/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/08/19/VueKeepAlive/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +303,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/18/VueKeepAlive/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/19/Vuex/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vue2父组件传递props异步数据到子组件
+          Veux的详细实现方式
         
       </div>
     </a>
   
   
-    <a href="/2017/07/16/VueCliProty/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue-cli proxyTable 解决开发环境的跨域问题</div>
+    <a href="/2017/08/17/Vue_star_components/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue2实现店铺的星级评价及封装成vue插件 支持vue.use(star)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -441,6 +460,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Vue2</a>
               </li>
              
@@ -457,11 +480,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +516,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
             
             <div class="clearfix"></div>
@@ -549,6 +572,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
         <ul class="search-ul">
           
             <li class="search-li">
+              <a href="https://gitee.com/zhanchiaoxiang/events" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码云</a>
+            </li>
+          
+            <li class="search-li">
               <a href="https://www.qdfuns.com/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>前端网</a>
             </li>
           
@@ -578,10 +605,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           
             <li class="search-li">
               <a href="http://study.163.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>网易云课堂</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://gitee.com/zhanchiaoxiang/events" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码云</a>
             </li>
           
         </ul>
