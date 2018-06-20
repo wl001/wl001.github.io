@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="angular动态更改className">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-09T07:40:02.988Z">
+<meta property="og:updated_time" content="2018-06-12T06:45:12.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ng-class用法总结">
 <meta name="twitter:description" content="angular动态更改className">
@@ -174,11 +174,12 @@
 </li>
 <li><p>这种方式完全没错，是angular提供的一种改变class的方式，但是在controller涉及了classname在我看来是乎总是那么诡异，我希望的是controller是一个干净的纯javascript意义的object。</p>
 <h5 id="2-字符串数组形式。"><a href="#2-字符串数组形式。" class="headerlink" title="2 字符串数组形式。"></a>2 字符串数组形式。</h5></li>
-<li><p>字符串数组形式是针对class简单变化，具有排斥cd性的变化，true是什么class，false是什么class</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div ng-class=<span class="string">"&#123;true: 'active', false: 'inactive'&#125;[isActive]"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="variable">$scope</span>.isActive = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<li>字符串数组形式是针对class简单变化，具有排斥cd性的变化，true是什么class，false是什么class<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div ng-class=<span class="string">"&#123;true: 'active', false: 'inactive'&#125;[isActive]"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="variable">$scope</span>.isActive = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>isActive表达式为true，则 active，否则是inactive。</p>
-<h5 id="3-对象key-value处理。"><a href="#3-对象key-value处理。" class="headerlink" title="3 对象key/value处理。"></a>3 对象key/value处理。</h5></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ng-class=<span class="string">"&#123;'用户名': 'chinese_user', 'userName': 'Englisg_uesr'&#125;[loginView.username]"</span></span><br><span class="line">//根据loginView.username的传值为用户名 class则为chinese_user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>isActive表达式为true，则 active，否则是inactive。<h5 id="3-对象key-value处理。"><a href="#3-对象key-value处理。" class="headerlink" title="3 对象key/value处理。"></a>3 对象key/value处理。</h5></li>
 <li><p>对象key/value处理主要针对复杂的class混合</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ng-class= <span class="string">"&#123;'selected': isSelected, 'car': isCar&#125;"</span>&gt;</span><br></pre></td></tr></table></figure>
 </li>
@@ -453,11 +454,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,6 +503,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
