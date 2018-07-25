@@ -995,7 +995,8 @@ body {
 .article-entry code {
   background: #eee;
   padding: 0 .3em;
-  border: none
+  border: none;
+  letter-spacing: 1px;
 }
 
 .article-entry pre code {
@@ -2124,14 +2125,20 @@ pre .css ~ * .id, pre .id {
 }
 
 .article-inner h3 {
-  font-size: 19px;
-  font-size: 1.1875rem;
-  line-height: 1.1052631579;
-  margin-top: 2.9473684211em;
-  margin-bottom: 1.4736842105em
+  font-size: 1.2em;
+  text-indent: 4px;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-top: 20px !important;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  border-left: 5px solid #FF8276;
+  box-shadow: 0px 5px 5px #9FB6CD;
+  border-bottom: 1px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7;
 }
 
-.article-inner h4, .article-inner h5, .article-inner h6 {
+.article-inner h3 .article-inner h4, .article-inner h5, .article-inner h6 {
   font-size: 16px;
   font-size: 1rem;
   /*line-height: 1.3125;*/
@@ -2177,9 +2184,10 @@ pre .css ~ * .id, pre .id {
   color:#FFFFFF !important;
 }
 .article-entry li code, .article-entry p code {
-  padding: 1px 3px;
+  padding: 5px 10px 3px 10px;
   margin: 0 3px;
-  background: #ddd;
+  color: red;
+  /*background: #eee;*/
   border: 1px solid #ccc;
   font-family: Menlo, Monaco, Andale Mono, lucida console, Courier New, monospace;
   word-wrap: break-word;
@@ -2247,9 +2255,14 @@ pre .css ~ * .id, pre .id {
 }
 
 .article-entry h2{
-  margin-top: 0px;
+  margin-top: 20px !important;
   font-weight: 700;
   color: #574c4c;
+  padding: 6px 15px;
+  border-bottom:1px solid #999;
+  border-left:1px solid #999;
+  border-right:1px solid #999;
+  box-shadow: 0px 5px 5px #9FB6CD;
 }
 .article-entry h5{
   font-size: 1.2em;
