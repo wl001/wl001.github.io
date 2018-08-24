@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="JavaScript的Array知识汇总:包括数组基本操作，以及一些数组去重、冒泡排序、快速排序的一些实现思路">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-18T07:22:17.071Z">
+<meta property="og:updated_time" content="2018-08-01T02:33:22.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的Array知识汇总">
 <meta name="twitter:description" content="JavaScript的Array知识汇总:包括数组基本操作，以及一些数组去重、冒泡排序、快速排序的一些实现思路">
@@ -265,7 +265,7 @@
 <li>每一个数组都按着这个规律找</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">15</span>,<span class="number">14</span>,<span class="number">13</span>,<span class="number">16</span>,<span class="number">11</span>]</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">qucik</span>(<span class="params">ary</span>)</span>&#123;</span><br><span class="line">       <span class="comment">//如果传递进来的数组只有一项或者为空，则不再继续取中间项拆分</span></span><br><span class="line">       <span class="keyword">if</span>(ary.length&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> ary; <span class="comment">//返回当前数组</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//-&gt;获取中间项的索引：把中间项的值获取到，在原有数组当中杉树中间项</span></span><br><span class="line">       <span class="keyword">var</span> centerIndex = <span class="built_in">Math</span>.floor(ary.length/<span class="number">2</span>);</span><br><span class="line">       <span class="comment">//删除返回的是新数组 第一项才是值 要注意</span></span><br><span class="line">       centerIndex = ary.splice(centerIndex,<span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">       <span class="comment">//-&gt;用剩余数组的每一项和中间项进行比较，比中间项大的放在右边，比他小的放在左边（左右两边都是新数组）</span></span><br><span class="line">       <span class="keyword">var</span> aryLeft = [];</span><br><span class="line">       <span class="keyword">var</span> aryRight = [];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; ary.length; i++) &#123;</span><br><span class="line">           <span class="keyword">var</span> cur = ary[i];<span class="comment">//当前项</span></span><br><span class="line">           cur &lt; centerIndex ? aryLeft.push(cur):aryRight.push(cur)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//但是左边的数组aryLeft和右边的数组aryRight还没有排序需要相同的处理方式 递归算法解决</span></span><br><span class="line">      <span class="keyword">return</span> qucik(aryLeft).concat(centerIndex, qucik(aryRight))</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">console</span>.log(qucik(ary));</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">15</span>,<span class="number">14</span>,<span class="number">13</span>,<span class="number">16</span>,<span class="number">11</span>]</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">qucik</span>(<span class="params">ary</span>)</span>&#123;</span><br><span class="line">       <span class="comment">//如果传递进来的数组只有一项或者为空，则不再继续取中间项拆分</span></span><br><span class="line">       <span class="keyword">if</span>(ary.length&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> ary; <span class="comment">//返回当前数组</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//-&gt;获取中间项的索引：把中间项的值获取到，在原有数组当中删除中间项</span></span><br><span class="line">       <span class="keyword">var</span> centerIndex = <span class="built_in">Math</span>.floor(ary.length/<span class="number">2</span>);</span><br><span class="line">       <span class="comment">//删除返回的是新数组 第一项才是值 要注意</span></span><br><span class="line">       centerIndex = ary.splice(centerIndex,<span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">       <span class="comment">//-&gt;用剩余数组的每一项和中间项进行比较，比中间项大的放在右边，比他小的放在左边（左右两边都是新数组）</span></span><br><span class="line">       <span class="keyword">var</span> aryLeft = [];</span><br><span class="line">       <span class="keyword">var</span> aryRight = [];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; ary.length; i++) &#123;</span><br><span class="line">           <span class="keyword">var</span> cur = ary[i];<span class="comment">//当前项</span></span><br><span class="line">           cur &lt; centerIndex ? aryLeft.push(cur):aryRight.push(cur)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//但是左边的数组aryLeft和右边的数组aryRight还没有排序需要相同的处理方式 递归算法解决</span></span><br><span class="line">      <span class="keyword">return</span> qucik(aryLeft).concat(centerIndex, qucik(aryRight))</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">console</span>.log(qucik(ary));</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>插入排序</p>
 <ul>
@@ -564,11 +564,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,15 +600,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,11 +632,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">

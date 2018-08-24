@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://github.com/images/constructor.png">
 <meta property="og:image" content="https://github.com/images/prototype.png">
 <meta property="og:image" content="https://github.com/images/prototype3.png">
-<meta property="og:updated_time" content="2018-07-19T01:27:11.410Z">
+<meta property="og:updated_time" content="2018-07-31T05:45:11.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础总结">
 <meta name="twitter:description" content="记录所有JavaScript的初级知识点，方便更加了解JavaScript以及更好的巩固JavaScript基础">
@@ -590,17 +590,25 @@
 </li>
 </ul>
 <h3 id="1-5-在原型上批量扩展属性和方法"><a href="#1-5-在原型上批量扩展属性和方法" class="headerlink" title="1.5 在原型上批量扩展属性和方法"></a>1.5 在原型上批量扩展属性和方法</h3><ul>
-<li><p>别名法(小名)用途不大只是少写几个单词</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//类</span><br><span class="line">  <span class="keyword">function</span> Fn(name,age)&#123;</span><br><span class="line">      this.name = name</span><br><span class="line">      this.age = age</span><br><span class="line">  &#125;</span><br><span class="line">  //正常一个一个写比较麻烦</span><br><span class="line">   Fn.prototype.aa = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">          console.log(this.age)</span><br><span class="line">    &#125;</span><br><span class="line">   var pro = Fn.prototype //-&gt;指向同一堆内存</span><br><span class="line">   pro.bb = <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br><span class="line">   pro.cc = <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<li>别名法(小名)用途不大只是少写几个单词<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//类</span><br><span class="line">  <span class="keyword">function</span> Fn(name,age)&#123;</span><br><span class="line">      this.name = name</span><br><span class="line">      this.age = age</span><br><span class="line">  &#125;</span><br><span class="line">  //正常一个一个写比较麻烦</span><br><span class="line">   Fn.prototype.aa = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">          console.log(this.age)</span><br><span class="line">    &#125;</span><br><span class="line">   var pro = Fn.prototype //-&gt;指向同一堆内存</span><br><span class="line">   pro.bb = <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br><span class="line">   pro.cc = <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重新构造原型 <strong><code>注意 浏览器自己开辟的Fn.prototype就没了Fn的prototype指向自己开辟的内存空间</code></strong></p>
-</li>
-<li><strong><code>让原型指向自己开辟的堆内存有一个问题，自己开辟的堆内存中没有constructor这个属性</code></strong>,所以实例在调取constructor的时候找到的是Object这样不好<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Fn(name,age)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.age = age</span><br><span class="line">&#125;</span><br><span class="line">Fn.prototype.cc = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(this.age)</span><br><span class="line">&#125;</span><br><span class="line">Fn.prototype = &#123;</span><br><span class="line">    //让原型指向自己开辟的堆内存有一个问题，自己开辟的堆内存中没有constructor这个属性</span><br><span class="line">    //没有constructor这个属性，所以实例在调取constructor的时候找到的是Object这样不好</span><br><span class="line">    //此时我们应该重新设置constructor保证机制的完整性</span><br><span class="line">    constructor:Fn,//指向当前类本身</span><br><span class="line">    aa:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(this.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    bb:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> var f = new Fn(<span class="string">'xxx'</span>,28)</span><br><span class="line"> f.cc() //not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+</ul>
+<h3 id="1-51-重新构造原型"><a href="#1-51-重新构造原型" class="headerlink" title="1.51 重新构造原型"></a>1.51 重新构造原型</h3><ul>
+<li>原型浏览器会默认开辟对内存自带constructor指向本身 但是重新构造原型空间改成我们自己设定的就会失去constructoe这个属性，所以要自己声明指向当前类的本身</li>
+<li><strong><code>注意 浏览器自己开辟的Fn.prototype就没了Fn的prototype指向自己开辟的内存空间</code></strong></li>
+<li><strong><code>让原型指向自己开辟的堆内存有一个问题，自己开辟的堆内存中没有constructor这个属性,所以实例在调取constructor的时候找到的是Object，这样不好</code></strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Fn(name,age)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.age = age</span><br><span class="line">&#125;</span><br><span class="line">Fn.prototype.cc = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(this.age)</span><br><span class="line">&#125;</span><br><span class="line">Fn.prototype = &#123;</span><br><span class="line">    //让原型指向自己开辟的堆内存有一个问题，自己开辟的堆内存中没有constructor这个属性</span><br><span class="line">    //没有constructor这个属性，所以实例在调取constructor的时候找到的是Object这样不好</span><br><span class="line">    //此时我们应该重新设置constructor保证机制的完整性</span><br><span class="line">    constructor:Fn,//指向当前类本身</span><br><span class="line">    aa:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        console.log(this.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    bb:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> var f = new Fn(<span class="string">'xxx'</span>,28)</span><br><span class="line"> f.cc() //not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="/images/prototype3.png"></p>
 <ul>
-<li><strong><code>只有浏览器天生给prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性，这样constructor指向就不是Fn而是Object了，为了和原来的保持一致我们需要手动增加constructor的指向</code></strong><h3 id="1-6-jQuery源码在原型上扩展属性和方法的代码片段"><a href="#1-6-jQuery源码在原型上扩展属性和方法的代码片段" class="headerlink" title="1.6 jQuery源码在原型上扩展属性和方法的代码片段"></a>1.6 jQuery源码在原型上扩展属性和方法的代码片段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    var jQuery = <span class="keyword">function</span>(selector,context)&#123;</span><br><span class="line">        <span class="built_in">return</span> new jQuery.fn.init(selector,context)</span><br><span class="line">    &#125;</span><br><span class="line">    jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">        constructor:jQuery,//指向类的本身</span><br><span class="line">        init:<span class="keyword">function</span>(selector,context)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    window.jQuery = window.$ = jQuery</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><strong><code>只有浏览器天生给prototype开辟的堆内存里面才有constructor，而我们自己开辟的这个堆内存没有这个属性，这样constructor指向就不是Fn而是Object了，为了和原来的保持一致我们需要手动增加constructor的指向</code></strong><h3 id="1-52-原型继承"><a href="#1-52-原型继承" class="headerlink" title="1.52 原型继承"></a>1.52 原型继承</h3></li>
+<li>原型继承是js最常用的一种继承方式</li>
+<li><p>核心：原型继承并不是把父类中的属性和方法克隆一份一模一样的给B，而是让B和A之间增加了原型链的的连接，以后B的实例as想要A中的getX方法，需要一级级的向上查找来使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">A</span></span>()&#123;</span><br><span class="line">    this.x = 100</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getX = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(this.x)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">B</span></span> ()&#123;</span><br><span class="line">    this.x = 200</span><br><span class="line">&#125;</span><br><span class="line">B.prototype = new A;</span><br><span class="line">var as = new B;</span><br><span class="line">as.getX()//200</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类B想继承A中所有的属性和方法（私有+公有）只需要B.prototype = new A；即可</p>
+</li>
+<li>原型继承特点：他是把父类中私有+公有的都继承到子类原型上<h3 id="1-6-jQuery源码在原型上扩展属性和方法的代码片段"><a href="#1-6-jQuery源码在原型上扩展属性和方法的代码片段" class="headerlink" title="1.6 jQuery源码在原型上扩展属性和方法的代码片段"></a>1.6 jQuery源码在原型上扩展属性和方法的代码片段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    var jQuery = <span class="keyword">function</span>(selector,context)&#123;</span><br><span class="line">        <span class="built_in">return</span> new jQuery.fn.init(selector,context)</span><br><span class="line">    &#125;</span><br><span class="line">    jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">        constructor:jQuery,//指向类的本身</span><br><span class="line">        init:<span class="keyword">function</span>(selector,context)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    window.jQuery = window.$ = jQuery</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="1-7-基于内置类原型扩展的方法"><a href="#1-7-基于内置类原型扩展的方法" class="headerlink" title="1.7 基于内置类原型扩展的方法"></a>1.7 基于内置类原型扩展的方法</h3><ul>
@@ -683,7 +691,7 @@
 <li>parseFloat() 函数可解析一个字符串，并返回一个浮点数<h5 id="null和空字符串的区别"><a href="#null和空字符串的区别" class="headerlink" title="null和空字符串的区别"></a>null和空字符串的区别</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-  比如都是去种树</span><br><span class="line">-&gt; 空字符串属于挖了个坑，但是没有种任何东西</span><br><span class="line">-&gt; null是连坑都没挖</span><br><span class="line">-&gt; 空字符串相对于null来说开辟了内存，消耗了那么一丟丢的性能</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-&gt; null--般都是暂时没有，预期中以后会有的(可能以后也没有达到预期;</span><br><span class="line">-&gt; 在JS中null一般都是手动先赋值为null,后期我们在给其赋具体值</span><br><span class="line">-&gt; undefined:完全没在预料之内的</span><br></pre></td></tr></table></figure>
+<h5 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-&gt; null空对象、一般都是暂时没有，预期中以后会有的(可能以后也没有达到预期;</span><br><span class="line">-&gt; 在JS中null一般都是手动先赋值为null,后期我们在给其赋具体值</span><br><span class="line">-&gt; undefined:未定义-&gt;连东西都没有</span><br></pre></td></tr></table></figure>
 <h5 id="4、对象数据类型object"><a href="#4、对象数据类型object" class="headerlink" title="4、对象数据类型object"></a>4、对象数据类型object</h5><ul>
 <li>var obj = {name:’王磊,age:18};</li>
 <li>每一个对象都是由零到多组“属性名(key键) :属性值 (value值)组成的，或者说有多组键值对组成的，每一组键值对中间用逗号分隔</li>
@@ -1023,11 +1031,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1055,15 +1067,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,11 +1099,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">

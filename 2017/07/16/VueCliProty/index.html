@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
   <title>Vue-cli proxyTable 解决开发环境的跨域问题 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要">
+  <meta name="description" content="参数可以看 http-proxy-middleware是一致的共通的 文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个">
 <meta name="keywords" content="Vue2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-cli proxyTable 解决开发环境的跨域问题">
 <meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/07/16/VueCliProty/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要">
+<meta property="og:description" content="参数可以看 http-proxy-middleware是一致的共通的 文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-01T06:13:33.037Z">
+<meta property="og:updated_time" content="2018-08-07T02:14:27.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-cli proxyTable 解决开发环境的跨域问题">
-<meta name="twitter:description" content="文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要">
+<meta name="twitter:description" content="参数可以看 http-proxy-middleware是一致的共通的 文章来源 https://www.jianshu.com/p/95b2caf7e0da 在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。 https://vuejs-templates.github.io/webpack/proxy.html 这个">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -169,11 +169,12 @@
       
         <a id="more"></a>
 <ul>
+<li>参数可以看 http-proxy-middleware是一致的共通的</li>
 <li>文章来源 <a href="https://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">https://www.jianshu.com/p/95b2caf7e0da</a></li>
 <li>在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。</li>
 <li><a href="https://vuejs-templates.github.io/webpack/proxy.html" target="_blank" rel="noopener">https://vuejs-templates.github.io/webpack/proxy.html</a></li>
 <li><p>这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要请求的地址是api.xxxxxxxx.com/list/1，可以按照如下设置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/list'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxxxxxxx.com'</span>,//接口域名</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/list'</span>: <span class="string">'/list'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/list'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxxxxxxx.com'</span>,//接口域名</span><br><span class="line">    logLevel:<span class="string">'debug'</span>,//在控制台看更多的信息和域名指向</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/list'</span>: <span class="string">'/list'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>这样我们在写url的时候，只用写成/list/1就可以代表api.xxxxxxxx.com/list/1.</p>
 </li>
@@ -183,7 +184,7 @@
 <li><p>vue-cli的这个设置来自于其使用的插件http-proxy-middleware</p>
 </li>
 <li>github：<a href="https://github.com/chimurai/http-proxy-middleware">https://github.com/chimurai/http-proxy-middleware</a></li>
-<li>深入了解的话可以看该插件配置说明，似乎还支持websocket，很强大的插件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">    <span class="string">'/api'</span>:&#123;</span><br><span class="line">      //服务器接口</span><br><span class="line">      target:<span class="string">'http://localhost:8080'</span>,</span><br><span class="line">      //接下来希望做一个路径替换</span><br><span class="line">      pathRewrite:&#123;</span><br><span class="line">      //一旦请求的地址是以API开头的那么就替换请求到/static/mock的文件夹下</span><br><span class="line">      //当访问api的时候axios.get(<span class="string">'/api/index.json'</span>)会自动帮你替换成axios.get(<span class="string">'/static/mock/index.json'</span>)</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">'/static/mock'</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>深入了解的话可以看该插件配置说明，似乎还支持websocket，很强大的插件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">    <span class="string">'/api'</span>:&#123;</span><br><span class="line">      //服务器接口</span><br><span class="line">      target:<span class="string">'http://localhost:8080'</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,//是否跨域</span><br><span class="line">      //接下来希望做一个路径替换</span><br><span class="line">      pathRewrite:&#123;</span><br><span class="line">      //一旦请求的地址是以API开头的那么就替换请求到/static/mock的文件夹下</span><br><span class="line">      //当访问api的时候axios.get(<span class="string">'/api/index.json'</span>)会自动帮你替换成axios.get(<span class="string">'/static/mock/index.json'</span>)</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">'/static/mock'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      //如果接口验证的话可以设置请求头</span><br><span class="line">      header:&#123;</span><br><span class="line">        <span class="string">'Cookie'</span>:<span class="string">'...'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -444,11 +445,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,15 +481,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,11 +513,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
