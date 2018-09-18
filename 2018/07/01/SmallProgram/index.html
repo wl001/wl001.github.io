@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Vue图片懒加载vue-lazyload插件 | 我的技术博客</title>
+  <title>微信小程序 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一些工作中用到的插件">
-<meta name="keywords" content="插件">
+  <meta name="description" content="初探微信小程序">
+<meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue图片懒加载vue-lazyload插件">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/04/19/VuePlugin/index.html">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/07/01/SmallProgram/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="记录一些工作中用到的插件">
+<meta property="og:description" content="初探微信小程序">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T01:26:37.946Z">
+<meta property="og:updated_time" content="2018-08-03T13:29:49.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue图片懒加载vue-lazyload插件">
-<meta name="twitter:description" content="记录一些工作中用到的插件">
+<meta name="twitter:title" content="微信小程序">
+<meta name="twitter:description" content="初探微信小程序">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -147,37 +147,147 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VuePlugin" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SmallProgram" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Vue图片懒加载vue-lazyload插件
+      微信小程序
     </h1>
   
 
         
-        <a href="/2018/04/19/VuePlugin/" class="archive-article-date">
-  	<time datetime="2018-04-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
+        <a href="/2018/07/01/SmallProgram/" class="archive-article-date">
+  	<time datetime="2018-07-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录一些工作中用到的插件<br><a id="more"></a></p>
-<h5 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h5><ul>
-<li>插件地址：<a href="https://github.com/hilongjw/vue-lazyload">https://github.com/hilongjw/vue-lazyload</a></li>
-<li><p>1、安装插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-lazyload --save-dev</span><br></pre></td></tr></table></figure>
+        <p>初探微信小程序<br><a id="more"></a></p>
+<ul>
+<li>文档 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/config.html</a><h5 id="小程序单位标准（rpx）"><a href="#小程序单位标准（rpx）" class="headerlink" title="小程序单位标准（rpx）"></a>小程序单位标准（rpx）</h5></li>
+<li>单位用rpx px换算rpx 1px = 2rpx  rpx换算px  1rpx = 0.5px  inphone6下以iphone6为准</li>
+<li>线条就1px 没有任何问题<h5 id="小程序事件类型都要加-bind-会冒泡-catch-不会冒泡"><a href="#小程序事件类型都要加-bind-会冒泡-catch-不会冒泡" class="headerlink" title="小程序事件类型都要加 bind(会冒泡)catch(不会冒泡)"></a>小程序事件类型都要加 bind(会冒泡)catch(不会冒泡)</h5></li>
+<li>绑定点击事件 tap（bindtab）</li>
+<li>长按事件 longtap</li>
+<li>触摸事件 touchstart touchmove touchend  touchcancel(手指触摸动作被打断，如来电提醒，弹窗)</li>
+<li>以上三种都是冒泡事件<h3 id="1、事件event自定义传数据"><a href="#1、事件event自定义传数据" class="headerlink" title="1、事件event自定义传数据"></a>1、事件event自定义传数据</h3></li>
+<li><p>data-uid是自定义的数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view bindtap=<span class="string">'bandToDetail'</span> data-uid=<span class="string">'&#123;&#123;item.id&#125;&#125;'</span>&gt;</span><br><span class="line">  &lt;template is=<span class="string">"list"</span>  data=<span class="string">"&#123;&#123;...item&#125;&#125;"</span> &gt;&lt;/template&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>2、main.js引入插件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import VueLazyload from <span class="string">'vue-lazyload'</span></span><br><span class="line">import VueLazyLoad from <span class="string">'vue-lazyload'</span></span><br><span class="line">Vue.use(VueLazyLoad,&#123;</span><br><span class="line">   //图片路径错误时加载图片</span><br><span class="line">    error:<span class="string">'./static/error.png'</span>,</span><br><span class="line">    //预加载图片</span><br><span class="line">    loading:<span class="string">'./static/loading.png'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>通过事件源拿到自定的数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bandToDetail(e)  &#123;</span><br><span class="line">  //事件源 currentTarget点击的目标 dataset(自定义属性)</span><br><span class="line">  console.log(e.currentTarget.dataset.uid)</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">    url: <span class="string">'detail/detail?id='</span>+e.currentTarget.dataset.uid,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>vue文件中将需要懒加载的图片绑定v-bind:src 修改为v-lazy</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img class=<span class="string">"item-pic"</span> v-lazy=<span class="string">"newItem.picUrl"</span>/&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2、页面传参"><a href="#2、页面传参" class="headerlink" title="2、页面传参"></a>2、页面传参</h3><ul>
+<li><p>页面跳转的时候在路径后加上参数我们可以在别的页面获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> wx.navigateTo(&#123;</span><br><span class="line">   url: <span class="string">'../log/log?id=1'</span>,</span><br><span class="line"> &#125;)</span><br><span class="line">//获取方式 生命周期函数监听页面加载onLoad中的options就是页面带过来的参数</span><br><span class="line">  onLoad: <span class="keyword">function</span> (options) &#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      title: <span class="string">'页面传参'</span> + options.id</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面跳转组件 .wxml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url=<span class="string">'../log/log?id=10'</span>&gt;</span><br><span class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"primary"</span> &gt;跳转页面组件&lt;/button&gt;</span><br><span class="line">&lt;/navigator&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3、事件的对象"><a href="#3、事件的对象" class="headerlink" title="3、事件的对象"></a>3、事件的对象</h3><ul>
+<li>currentTarget当前组件</li>
+<li>dataset 自定义数据</li>
+<li>type 类型</li>
+<li>timeStamp 时间戳</li>
+<li>touches  触摸点数</li>
+</ul>
+<h5 id="导航组件-页面跳转"><a href="#导航组件-页面跳转" class="headerlink" title="导航组件 页面跳转"></a>导航组件 页面跳转</h5><ul>
+<li><p>不带后缀，否则功能失效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//页面跳转有返回按钮(保留当前页面跳转到内部的某个页面)</span><br><span class="line">wx.navigateTo(&#123;</span><br><span class="line">  url: <span class="string">'../home/home'</span>,</span><br><span class="line">&#125;)</span><br><span class="line">//重定向之后无法返回之前的页面 没有返回按钮</span><br><span class="line">wx.redirectTo(&#123;</span><br><span class="line">  url: <span class="string">'../home/home'</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>.wxml页面跳转组件 navigator</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator url=<span class="string">'../log/log?id=10'</span>&gt;</span><br><span class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"primary"</span> &gt;跳转页面组件&lt;/button&gt;</span><br><span class="line">&lt;/navigator&gt;</span><br><span class="line"></span><br><span class="line">/* 加上redirect 相当于redirectTo 跳转页面后没有返回按钮*/</span><br><span class="line">&lt;navigator url=<span class="string">'../log/log?id=10'</span> redirect&gt;</span><br><span class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"primary"</span> &gt;跳转页面组件&lt;/button&gt;</span><br><span class="line">&lt;/navigator&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有tabBar标签页导航只能使用wx.switchTab跳转页面wx.navigateTo会不好使</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.switchTab(&#123;</span><br><span class="line">     url: <span class="string">'../home/home'</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="小程序没有数据双向绑定"><a href="#小程序没有数据双向绑定" class="headerlink" title="小程序没有数据双向绑定"></a>小程序没有数据双向绑定</h5><ul>
+<li>那再实际项目中我们想要修改或设置data里的数据需要用setData去操作data中的数据<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">   lists:[]</span><br><span class="line">&#125;</span><br><span class="line">this.setData(&#123;</span><br><span class="line">   lists: list</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="input怎么实时获取到value"><a href="#input怎么实时获取到value" class="headerlink" title="input怎么实时获取到value"></a>input怎么实时获取到value</h3><ul>
+<li>在input上有个bindinput事件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// wxml</span><br><span class="line">&lt;input bindinput=<span class="string">"usernameInput"</span> /&gt;</span><br><span class="line">// js</span><br><span class="line">usernameInput : <span class="keyword">function</span> (event)&#123;</span><br><span class="line">  this.setData(&#123;username:event.detail.value&#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="模块化开发使用template模板"><a href="#模块化开发使用template模板" class="headerlink" title="模块化开发使用template模板"></a>模块化开发使用template模板</h5><ul>
+<li>模块化的文件只支持 html和css 不支持js和json 提取出的模板</li>
+<li><p>name一定要有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template name=<span class="string">"list"</span>&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-container'</span>&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-left'</span>&gt;</span><br><span class="line">     &lt;image class=<span class="string">'list-img'</span>src=<span class="string">"&#123;&#123;item.avatar&#125;&#125;"</span>/&gt;</span><br><span class="line">    &lt;text class=<span class="string">'list-name'</span>&gt;&#123;&#123;item.name&#125;&#125;&lt;/text&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-right'</span>&gt;</span><br><span class="line">      &lt;text class=<span class="string">'list-title'</span>&gt;&#123;&#123;item.title&#125;&#125;&lt;/text&gt;</span><br><span class="line">      &lt;text  class=<span class="string">'list-contant'</span>&gt;&#123;&#123;item.content&#125;&#125;&lt;/text&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1、使用 is 属性，声明需要的使用的模板 引入模板文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;import src=<span class="string">"templates/list.wxml"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2、将模板所需要的 data 传入，一般我们都会使用列表渲染</p>
+</li>
+<li><p>必去加 / 否则报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;import src=<span class="string">"templates/list.wxml"</span>/&gt;</span><br><span class="line">&lt;block wx:<span class="keyword">for</span>=<span class="string">'&#123;&#123;lists&#125;&#125;'</span> wx:key&gt;</span><br><span class="line">   //data传入的数据</span><br><span class="line">   &lt;template is=<span class="string">"list"</span>  data=<span class="string">"&#123;&#123;item&#125;&#125;"</span>&gt;&lt;/template&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3、然后再当前css文件下引入模板的css文件</p>
+</li>
+<li><p>home.wxss</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="string">"templates/list.wxss"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>但是这样每个页面都要是item读取的参数比较麻烦，想是不是item</code></strong> 也可也这么处理</p>
+</li>
+<li><p>template中item全都去掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template name=<span class="string">"list"</span>&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-container'</span>&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-left'</span>&gt;</span><br><span class="line">     &lt;image class=<span class="string">'list-img'</span>src=<span class="string">"&#123;&#123;avatar&#125;&#125;"</span>/&gt;</span><br><span class="line">    &lt;text class=<span class="string">'list-name'</span>&gt;&#123;&#123;name&#125;&#125;&lt;/text&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">  &lt;view class=<span class="string">'list-right'</span>&gt;</span><br><span class="line">      &lt;text class=<span class="string">'list-title'</span>&gt;&#123;&#123;title&#125;&#125;&lt;/text&gt;</span><br><span class="line">      &lt;text  class=<span class="string">'list-contant'</span>&gt;&#123;&#123;content&#125;&#125;&lt;/text&gt;</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这么调用即可 一个一个的添加进去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template is=<span class="string">"list"</span>  data=<span class="string">"&#123;&#123;...item&#125;&#125;"</span> &gt;&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="公共参数"><a href="#公共参数" class="headerlink" title="公共参数"></a>公共参数</h5><ul>
+<li>因为有的时候切换页面在当前js中声明参数并不会更改所以需要配置全局参数</li>
+<li>在全局app.js文件下声明参数的都是全局用的参数方法就是全局方法<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//读取公共参数</span><br><span class="line">var app = getApp();</span><br><span class="line">//更改全局参数</span><br><span class="line">app.flag = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="scroll-view-可滚动视图区域"><a href="#scroll-view-可滚动视图区域" class="headerlink" title="scroll-view 可滚动视图区域"></a>scroll-view 可滚动视图区域</h5><ul>
+<li>比如我们只想让某一部分滚动需要使用到<scroll-view>然后将需要滚动的区域内容包裹</scroll-view></li>
+<li><scroll-view>需要两个参数才好使 一个是滚动方向 和固定的高度值 scroll-y竖直方向</scroll-view></li>
+<li>bindscrolltolower到页面底部触发等实现上拉加载下拉刷新等功能<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;scroll-view scroll-y=<span class="string">'&#123;&#123;true&#125;&#125;'</span> style=<span class="string">'height:400px;'</span>&gt;</span><br><span class="line">  &lt;block wx:<span class="keyword">for</span>=<span class="string">'&#123;&#123;notes&#125;&#125;'</span> wx:key=<span class="string">"&#123;&#123;index&#125;&#125;"</span>&gt;</span><br><span class="line">  &lt;view class=<span class="string">'note-container'</span>&gt;</span><br><span class="line">    &lt;text class=<span class="string">'note-title'</span>&gt;&#123;&#123;item.title&#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;text class=<span class="string">'note-content'</span>&gt;&#123;&#123;item.content&#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">  &lt;/block&gt;</span><br><span class="line">&lt;/scroll-view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="判断显示-wx-if-else"><a href="#判断显示-wx-if-else" class="headerlink" title="判断显示 wx:if else"></a>判断显示 wx:if else</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;text class=<span class="string">'text_'</span> wx:<span class="keyword">if</span>=<span class="string">'&#123;&#123;isOk&#125;&#125;'</span>&gt;点击显示内容&lt;/text&gt;</span><br><span class="line">&lt;text class=<span class="string">'text_'</span> wx:<span class="keyword">else</span>&gt;判断显示&lt;/text&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="循环-wx-for"><a href="#循环-wx-for" class="headerlink" title="循环 wx:for"></a>循环 wx:for</h5><ul>
+<li>默认为item  也可以用wx:for-item来更改<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;block wx:<span class="keyword">for</span>=<span class="string">'&#123;&#123;ary&#125;&#125;'</span> wx:<span class="keyword">for</span>-item=<span class="string">'newItem'</span> wx:key=<span class="string">'&#123;&#123;index&#125;&#125;'</span>&gt;</span><br><span class="line">  &#123;&#123;newItem&#125;&#125;...</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="微信小程序的缓存"><a href="#微信小程序的缓存" class="headerlink" title="微信小程序的缓存"></a>微信小程序的缓存</h5><h5 id="微信小程序配置详解"><a href="#微信小程序配置详解" class="headerlink" title="微信小程序配置详解"></a>微信小程序配置详解</h5><h3 id="1、app的页面配置"><a href="#1、app的页面配置" class="headerlink" title="1、app的页面配置"></a>1、app的页面配置</h3><ul>
+<li>app.json文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。</li>
+<li>app的窗口配置</li>
+<li>app的tabBar配置</li>
+<li>网络超时配置及debug开启配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  //创建页面 pages文件夹下的index文件夹下的index文件包括js\css\html\json</span><br><span class="line">   <span class="string">"pages"</span> : [</span><br><span class="line">     //会自动生成对应的文件夹和目录文件</span><br><span class="line">       <span class="string">"pages/wecome/wecome"</span></span><br><span class="line">     ],</span><br><span class="line">    <span class="string">"window"</span>: &#123;</span><br><span class="line">      <span class="string">"navigationBarBackgroundColor"</span>: <span class="string">"#ffffff"</span>,//导航条颜色</span><br><span class="line">      <span class="string">"navigationBarTextStyle"</span>: <span class="string">"black"</span>,//文字颜色</span><br><span class="line">      <span class="string">"navigationBarTitleText"</span>: <span class="string">"小程序"</span>,//导航标题</span><br><span class="line">      <span class="string">"backgroundColor"</span>: <span class="string">"#eeeeee"</span>,//下拉的背景板颜色</span><br><span class="line">      <span class="string">"backgroundTextStyle"</span>: <span class="string">"light"</span>,//三个小点的颜色</span><br><span class="line">      <span class="string">"enablePullDownRefresh"</span>: <span class="literal">false</span>// 是否可见下拉刷新</span><br><span class="line">    &#125;,</span><br><span class="line">    //设置底部 tab 的表现</span><br><span class="line">    <span class="string">"tabBar"</span>: &#123;</span><br><span class="line">      <span class="string">"list"</span>: [&#123;</span><br><span class="line">        <span class="string">"pagePath"</span>: <span class="string">"pages/home/home"</span>,</span><br><span class="line">        <span class="string">"text"</span>: <span class="string">"首页"</span>,</span><br><span class="line">        <span class="string">"iconPath"</span>: <span class="string">"/images/home.png"</span>,</span><br><span class="line">        <span class="string">"selectedIconPath"</span>: <span class="string">"/images/home1.png"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"pagePath"</span>: <span class="string">"pages/home/home"</span>,//跳转路径 相对路径否则会报错上线</span><br><span class="line">        <span class="string">"text"</span>: <span class="string">"text"</span>,</span><br><span class="line">        <span class="string">"iconPath"</span>: <span class="string">"/images/home.png"</span>,//相对路径图标</span><br><span class="line">        <span class="string">"selectedIconPath"</span>: <span class="string">"/images/home.png"</span>//选中后的图标样式</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">  //设置网络超时时间</span><br><span class="line">  <span class="string">"networkTimeout"</span>: &#123;</span><br><span class="line">    <span class="string">"request"</span>: 10000,</span><br><span class="line">    <span class="string">"downloadFile"</span>: 10000</span><br><span class="line">  &#125;,</span><br><span class="line">  //设置是否开启 debug 模式</span><br><span class="line">  <span class="string">"debug"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-2、页面配置"><a href="#1-2、页面配置" class="headerlink" title="1.2、页面配置"></a>1.2、页面配置</h3><ul>
+<li>页面中json主要是覆盖app.json全局配置中的window<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"navigationBarBackgroundColor"</span>: <span class="string">"#DD5044"</span>,</span><br><span class="line">  <span class="string">"navigationBarTextStyle"</span>: <span class="string">"black"</span>,</span><br><span class="line">  <span class="string">"navigationBarTitleText"</span>: <span class="string">"记事本"</span>,</span><br><span class="line">  <span class="string">"backgroundColor"</span>: <span class="string">"#eeeeee"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h5><h5 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h5><h3 id="wx-chooseImage-obj-从本地相册选择图片或使用相机拍照。"><a href="#wx-chooseImage-obj-从本地相册选择图片或使用相机拍照。" class="headerlink" title="wx.chooseImage(obj)从本地相册选择图片或使用相机拍照。"></a>wx.chooseImage(obj)从本地相册选择图片或使用相机拍照。</h3><ul>
+<li><p>只是临时的图片需要上传或者本地存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    imgSrc:null</span><br><span class="line">&#125;</span><br><span class="line">wx.chooseImage(&#123;</span><br><span class="line">  count: 1, // 默认9</span><br><span class="line">  sizeType: [<span class="string">'original'</span>, <span class="string">'compressed'</span>],// 可以指定是原图还是压缩图，默认二者都有</span><br><span class="line">  sourceType: [<span class="string">'album'</span>, <span class="string">'camera'</span>], //可以指定来源是相册还是相机，默认二者都有</span><br><span class="line">  success:  (res)=&gt; &#123;</span><br><span class="line">    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片</span><br><span class="line">    var tempFilePaths = res.tempFilePaths</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      imgSrc: tempFilePaths</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注：文件的临时路径，在小程序本次启动期间可以正常使用，如需持久保存，需在主动调用 wx.saveFile，在小程序下次启动时才能访问得到。</p>
+<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3></li>
+<li>wx.connectSocket(OBJECT) 创建一个 WebSocket 连接</li>
+<li>wx.onSocketOpen(CALLBACK) 监听WebSocket连接打开事件</li>
+<li>wx.sendSocketMessage(OBJECT)通过 WebSocket连接向后台发送数据</li>
+<li>wx.onSocketMessage(CALLBACK)监听WebSocket接受到服务器的消息事件</li>
+<li>wx.closeSocket(OBJECT)关闭 WebSocket 连接<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    messages:[]</span><br><span class="line">&#125;,</span><br><span class="line">//页面初始化</span><br><span class="line">onLoad:<span class="keyword">function</span>(options)&#123;</span><br><span class="line">    var that = this</span><br><span class="line">    wx.onSocketMessage(<span class="keyword">function</span>(res) &#123;</span><br><span class="line">      console.log(<span class="string">'收到服务器内容：'</span> + res.data)</span><br><span class="line">      var msg = that.data.messages;</span><br><span class="line">      msg.push(res.data)</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        messages:msg</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;text animation=<span class="string">"&#123;&#123;animationData&#125;&#125;"</span> bindtap=<span class="string">'click_'</span>&gt;全部精品&lt;/text&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">   animationData:&#123;&#125;,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">click_</span></span>()&#123;</span><br><span class="line">  var animation = wx.createAnimation(&#123;</span><br><span class="line">    duration: 3000,</span><br><span class="line">    timingFunction: <span class="string">'ease'</span>,</span><br><span class="line">    delay:0,</span><br><span class="line">    transformOrigin:<span class="string">'50% 50% 0'</span></span><br><span class="line">  &#125;)</span><br><span class="line">  animation.scale(2, 2).rotate(45).step()</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    animationData: animation.export()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li>animation.scale(2, 2).rotate(45).step()是这两个动画同时进行旋转放大如果想要放大完再旋转可以这样<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">animation.scale(2, 2).step()</span><br><span class="line">animation.rotate(45).step()</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -223,7 +333,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">插件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
         		</li>
       		
 		</ul>
@@ -279,7 +389,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/04/19/VuePlugin/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/07/01/SmallProgram/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +403,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/19/VueLazyLoad/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/01/TypeScript_class/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue图片懒加载vue-lazyload插件
+          TypeScript中的类和类的继承
         
       </div>
     </a>
   
   
-    <a href="/2018/04/15/VueName/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue模板下name的作用和递归组件</div>
+    <a href="/2018/07/01/JavaScriptBasics/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript基础总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -434,6 +544,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
@@ -442,7 +556,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,7 +568,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,19 +588,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,19 +628,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">

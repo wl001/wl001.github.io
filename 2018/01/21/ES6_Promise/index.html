@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="Promise是一个让开发者更合理、更规范地用于处理异步操作的对象，它有三种状态：初始化、操作成功、操作异常。使用实例方法：then( ) 和  catch( ) 来绑定处理程序；还提供了类方法：Promise.all( ) 和 Promise.race( )">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T07:43:48.633Z">
+<meta property="og:updated_time" content="2018-08-30T02:36:35.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6的Promise对象">
 <meta name="twitter:description" content="Promise是一个让开发者更合理、更规范地用于处理异步操作的对象，它有三种状态：初始化、操作成功、操作异常。使用实例方法：then( ) 和  catch( ) 来绑定处理程序；还提供了类方法：Promise.all( ) 和 Promise.race( )">
@@ -223,7 +223,11 @@
 <li>它的参数要求跟Promise.all( )方法一样，不同的是，它参数中的promise实例，只要有一个状态发生变化（不管是成功fulfilled还是异常rejected），它就会有返回，其他实例中再发生变化，它也不管了。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//创建实例pro1</span><br><span class="line">   <span class="built_in">let</span> pro1 = new Promise(<span class="keyword">function</span>(resolve)&#123;</span><br><span class="line">       setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">           resolve(<span class="string">'实例1操作成功'</span>);</span><br><span class="line">       &#125;,5000);</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   //创建实例pro2</span><br><span class="line">   <span class="built_in">let</span> pro2 = new Promise(<span class="keyword">function</span>(resolve)&#123;</span><br><span class="line">       setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">           resolve(<span class="string">'实例2操作成功'</span>);</span><br><span class="line">       &#125;,1000);</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   Promise.race([pro1,pro2]).<span class="keyword">then</span>(<span class="keyword">function</span>(result)&#123;</span><br><span class="line">       console.log(result);</span><br><span class="line">   &#125;);</span><br><span class="line">   //打印结果：实例2操作成功</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="Promise-race-方法-只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了"><a href="#Promise-race-方法-只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了" class="headerlink" title="Promise.race( )方法,只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了"></a>Promise.race( )方法,只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了</h4>
+<h4 id="Promise-race-方法-只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了"><a href="#Promise-race-方法-只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了" class="headerlink" title="Promise.race( )方法,只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了"></a>Promise.race( )方法,只要有一个状态发生变化（不管是成功还是异常），它就会有返回，其他实例中再发生变化，它也不管了</h4><h3 id="Promise链式操作"><a href="#Promise链式操作" class="headerlink" title="Promise链式操作"></a>Promise链式操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var promiseFn1 = new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:url,,</span><br><span class="line">        <span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">        success(res)&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;,</span><br><span class="line">        error(err)&#123;</span><br><span class="line">            reject(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">var promiseFn2 = new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:url,,</span><br><span class="line">        <span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">        success(res)&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;,</span><br><span class="line">        error(err)&#123;</span><br><span class="line">            reject(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>promiseFn1.then拿到promiseFn1请求成功的res<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">promiseFn1.then((data)=&gt;&#123;</span><br><span class="line">    console.log(<span class="string">'promiseFn1 success'</span>)</span><br><span class="line">    <span class="built_in">return</span> promiseFn2;</span><br><span class="line">&#125;).<span class="keyword">then</span>((data)=&gt;&#123;</span><br><span class="line">    //<span class="keyword">then</span>是<span class="built_in">return</span> promiseFn2;拿到的success的数据</span><br><span class="line">    console.log(<span class="string">'promiseFn2 success'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -478,6 +482,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
@@ -486,7 +494,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +506,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,19 +526,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
+                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,19 +566,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
