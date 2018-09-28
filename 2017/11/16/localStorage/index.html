@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>LocalStorage本地存储和sessionStorage会话存储 | 我的技术博客</title>
+  <title>本地存储LocalStorage | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本地存储是一个window的属性，包括localStorage和sessionStorage，从名字应该可以很清楚的辨认二者的区别，前者是一直存在本地的，后者只是伴随着session，窗口一旦关闭就没了。二者用法完全相同，下面是最基础的用法">
 <meta name="keywords" content="Html5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LocalStorage本地存储和sessionStorage会话存储">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/11/15/LocalStorage/index.html">
+<meta property="og:title" content="本地存储LocalStorage">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2017/11/16/localStorage/index.html">
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="本地存储是一个window的属性，包括localStorage和sessionStorage，从名字应该可以很清楚的辨认二者的区别，前者是一直存在本地的，后者只是伴随着session，窗口一旦关闭就没了。二者用法完全相同，下面是最基础的用法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-28T01:53:31.198Z">
+<meta property="og:updated_time" content="2018-09-28T02:16:22.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LocalStorage本地存储和sessionStorage会话存储">
+<meta name="twitter:title" content="本地存储LocalStorage">
 <meta name="twitter:description" content="本地存储是一个window的属性，包括localStorage和sessionStorage，从名字应该可以很清楚的辨认二者的区别，前者是一直存在本地的，后者只是伴随着session，窗口一旦关闭就没了。二者用法完全相同，下面是最基础的用法">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
@@ -147,20 +147,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LocalStorage" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-localStorage" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LocalStorage本地存储和sessionStorage会话存储
+      本地存储LocalStorage
     </h1>
   
 
         
-        <a href="/2017/11/15/LocalStorage/" class="archive-article-date">
-  	<time datetime="2017-11-15T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-15</time>
+        <a href="/2017/11/16/localStorage/" class="archive-article-date">
+  	<time datetime="2017-11-16T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
@@ -168,7 +168,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本地存储是一个window的属性，包括localStorage和sessionStorage，从名字应该可以很清楚的辨认二者的区别，前者是一直存在本地的，后者只是伴随着session，窗口一旦关闭就没了。二者用法完全相同，下面是最基础的用法<br><a id="more"></a></p>
-<h5 id="html代码"><a href="#html代码" class="headerlink" title="html代码"></a>html代码</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">   &lt;head&gt;</span><br><span class="line">      &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">      &lt;title&gt;&lt;/title&gt;</span><br><span class="line">      &lt;script src=<span class="string">"../jQuery/jquery-3.0.0.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">   &lt;/head&gt;</span><br><span class="line">   &lt;body&gt;</span><br><span class="line">      用户名&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"ursename"</span>&gt; &lt;/br&gt;</span><br><span class="line">      密码  &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"password"</span>&gt; &lt;/br&gt;</span><br><span class="line">      &lt;input id=<span class="string">"chk"</span> <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt;</span><br><span class="line">      &lt;lable <span class="keyword">for</span>=<span class="string">"chk"</span>&gt;自动登录&lt;/lable&gt;</span><br><span class="line">   &lt;/body&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">      //localStorage.getItem(<span class="string">''</span>)获取要存储的值</span><br><span class="line"></span><br><span class="line">     $(<span class="string">'#chk'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        <span class="keyword">if</span>(this.checked)&#123;</span><br><span class="line">           //将值存储在本地</span><br><span class="line">          localStorage.setItem(<span class="string">'names'</span>, $(<span class="string">"#ursename"</span>).val());</span><br><span class="line">           localStorage.setItem((<span class="string">'pass'</span>),$(<span class="string">'#password'</span>).val());</span><br><span class="line">//          alert(localStorage.getItem(<span class="string">'names'</span>));</span><br><span class="line">//          alert(localStorage.getItem(<span class="string">'pass'</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           //在本地删除存储</span><br><span class="line">           localStorage.removeItem(<span class="string">'names'</span>);</span><br><span class="line">           localStorage.removeItem(<span class="string">'pass'</span>);</span><br><span class="line">          // console.log(localStorage.getItem(<span class="string">'names'</span>))</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">      <span class="keyword">if</span>(localStorage.getItem(<span class="string">'names'</span>)&amp;&amp;localStorage.getItem(<span class="string">'pass'</span>))&#123;</span><br><span class="line">         $(<span class="string">'#ursename'</span>).val(localStorage.getItem(<span class="string">'names'</span>));</span><br><span class="line">         $(<span class="string">'#password'</span>).val(localStorage.getItem(<span class="string">'pass'</span>));</span><br><span class="line">         $(<span class="string">'#chk'</span>).prop(<span class="string">"checked"</span>,<span class="literal">true</span>);</span><br><span class="line">      &#125;</span><br><span class="line">// localStorage与session用法相同</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">   标题 &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"title"</span> &gt;&lt;/br&gt;&lt;/br&gt;</span><br><span class="line">   内容 &lt;textarea id=<span class="string">"content"</span> cols=<span class="string">'100'</span> rows=<span class="string">"12"</span>&gt;&lt;/textarea&gt;</span><br><span class="line">        &lt;/br&gt;&lt;/br&gt;</span><br><span class="line">      &lt;a href=<span class="string">"www.baidu.com"</span> id=<span class="string">"login"</span>&gt;跳转页面&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">        $(<span class="string">'#login'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            sessionStorage.setItem(<span class="string">'title'</span>,$(<span class="string">'#title'</span>).val());</span><br><span class="line">            sessionStorage.setItem(<span class="string">'content'</span>,$(<span class="string">'#content'</span>).val())</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(sessionStorage.getItem(<span class="string">'title'</span>)&amp;&amp;sessionStorage.getItem(<span class="string">'content'</span>))&#123;</span><br><span class="line">        $(<span class="string">'#title'</span>).val(sessionStorage.getItem(<span class="string">'title'</span>));</span><br><span class="line">        $(<span class="string">'#content'</span>).val(sessionStorage.getItem(<span class="string">'content'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">用户名&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"ursename"</span>&gt; &lt;/br&gt;</span><br><span class="line">密码  &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"password"</span>&gt; &lt;/br&gt;</span><br><span class="line">&lt;input id=<span class="string">"chk"</span> <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt;</span><br><span class="line">&lt;lable <span class="keyword">for</span>=<span class="string">"chk"</span>&gt;自动登录&lt;/lable&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //localStorage.getItem(<span class="string">''</span>)获取要存储的值</span><br><span class="line">    $(<span class="string">'#chk'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        <span class="keyword">if</span>(this.checked)&#123;</span><br><span class="line">            //将值存储在本地</span><br><span class="line">            localStorage.setItem(<span class="string">'names'</span>, $(<span class="string">"#ursename"</span>).val());</span><br><span class="line">            localStorage.setItem((<span class="string">'pass'</span>),$(<span class="string">'#password'</span>).val());</span><br><span class="line">//          alert(localStorage.getItem(<span class="string">'names'</span>));</span><br><span class="line">//          alert(localStorage.getItem(<span class="string">'pass'</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            //在本地删除存储</span><br><span class="line">            localStorage.removeItem(<span class="string">'names'</span>);</span><br><span class="line">            localStorage.removeItem(<span class="string">'pass'</span>);</span><br><span class="line">            // console.log(localStorage.getItem(<span class="string">'names'</span>))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span>(localStorage.getItem(<span class="string">'names'</span>)&amp;&amp;localStorage.getItem(<span class="string">'pass'</span>))&#123;</span><br><span class="line">        $(<span class="string">'#ursename'</span>).val(localStorage.getItem(<span class="string">'names'</span>));</span><br><span class="line">        $(<span class="string">'#password'</span>).val(localStorage.getItem(<span class="string">'pass'</span>));</span><br><span class="line">        $(<span class="string">'#chk'</span>).prop(<span class="string">"checked"</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="sessionStorage和localStorage用法相同"><a href="#sessionStorage和localStorage用法相同" class="headerlink" title="sessionStorage和localStorage用法相同"></a>sessionStorage和localStorage用法相同</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;script src=<span class="string">"../jQuery/jquery-3.0.0.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">标题 &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"title"</span> &gt;&lt;/br&gt;&lt;/br&gt;</span><br><span class="line">内容 &lt;textarea id=<span class="string">"content"</span> cols=<span class="string">'100'</span> rows=<span class="string">"12"</span>&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;/br&gt;&lt;/br&gt;</span><br><span class="line">&lt;a href=<span class="string">"www.baidu.com"</span> id=<span class="string">"login"</span>&gt;跳转页面&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="string">'#login'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        sessionStorage.setItem(<span class="string">'title'</span>,$(<span class="string">'#title'</span>).val());</span><br><span class="line">        sessionStorage.setItem(<span class="string">'content'</span>,$(<span class="string">'#content'</span>).val())</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">if</span>(sessionStorage.getItem(<span class="string">'title'</span>)&amp;&amp;sessionStorage.getItem(<span class="string">'content'</span>))&#123;</span><br><span class="line">        $(<span class="string">'#title'</span>).val(sessionStorage.getItem(<span class="string">'title'</span>));</span><br><span class="line">        $(<span class="string">'#content'</span>).val(sessionStorage.getItem(<span class="string">'content'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="注意-html5本地存储localStorage-存储json对象存储格式问题"><a href="#注意-html5本地存储localStorage-存储json对象存储格式问题" class="headerlink" title="注意 html5本地存储localStorage 存储json对象存储格式问题"></a>注意 html5本地存储localStorage 存储json对象存储格式问题</h3><ul>
 <li><p>localStorage.setItem(arr)会自动将arr存储成字符串形式，如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr=[1,2,3];localStorage.setItem(<span class="string">"temp"</span>,arr);</span><br><span class="line">//会返回StringlocalStorage.getItem(<span class="string">"temp"</span>);会返回1,2,3</span><br><span class="line">typeof localStorage.getItem(<span class="string">"temp"</span>);</span><br></pre></td></tr></table></figure>
@@ -180,7 +181,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;<span class="string">"a"</span>:1,<span class="string">"b"</span>:2&#125;;</span><br><span class="line">obj=JSON.stringify(obj);</span><br><span class="line">localStorage.setItem(<span class="string">"temp2"</span>,obj);</span><br><span class="line">typeof localStorage.getItem(<span class="string">"temp2"</span>)返回字符串格式：&#123;<span class="string">"a"</span>:1,<span class="string">"b"</span>:2&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>后续要操作该json对象，先将之前存储的json字符串先转成json对象再进行操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj=JSON.parse(localStorage.getItem(<span class="string">"temp2"</span>));</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj=JSON.parse(localStorage.getItem(<span class="string">"temp2"</span>));</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -282,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/11/15/LocalStorage/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2017/11/16/localStorage/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +298,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/15/css_StickyFooters/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/18/FullPage/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          CSS  Sticky footers布局
+          全屏滚动插件FullPage
         
       </div>
     </a>
   
   
-    <a href="/2017/11/14/MockJs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于vue-cli搭建的项目中使用mockjs</div>
+    <a href="/2017/11/16/flex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">flex的基本属性</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -457,11 +459,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,19 +475,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Vue2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +495,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +515,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +523,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
