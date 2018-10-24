@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T07:21:55.910Z">
+<meta property="og:updated_time" content="2018-10-09T02:55:29.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动配置webpack 版本3.8.1">
 <meta name="twitter:description" content="Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源">
@@ -168,7 +168,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源<br><a id="more"></a></p>
-<h3 id="概念-什么是webpack和grunt和glup有什么不同"><a href="#概念-什么是webpack和grunt和glup有什么不同" class="headerlink" title="概念 什么是webpack和grunt和glup有什么不同"></a>概念 什么是webpack和grunt和glup有什么不同</h3><ul>
+<ul>
+<li>中文文档 <a href="https://webpack.docschina.org/" target="_blank" rel="noopener">https://webpack.docschina.org/</a><h3 id="概念-什么是webpack和grunt和glup有什么不同"><a href="#概念-什么是webpack和grunt和glup有什么不同" class="headerlink" title="概念 什么是webpack和grunt和glup有什么不同"></a>概念 什么是webpack和grunt和glup有什么不同</h3></li>
 <li>webpack是一个模块打包器，可以递归打包项目中所有模块，最终生成几个打包后的模块，他和其他工具最大的不同是在于它支持code-splitting、模块化（AMD、CMD、ESM、Commonjs、）,全局分析<h3 id="概念-什么是bundle-什么是chunk-什么是module"><a href="#概念-什么是bundle-什么是chunk-什么是module" class="headerlink" title="概念 什么是bundle 什么是chunk 什么是module"></a>概念 什么是bundle 什么是chunk 什么是module</h3></li>
 <li>bundle是webpack的打包文件 chunk指webpack在进行模块依赖分析的时候代码分割出来的代码块 module指开发中单个模块<h3 id="概念-什么是Loader-什么是plugin"><a href="#概念-什么是Loader-什么是plugin" class="headerlink" title="概念 什么是Loader 什么是plugin"></a>概念 什么是Loader 什么是plugin</h3></li>
 <li>Loader是告诉webpack如何处理转化某一类型文件并且引入到打包出的文件中</li>
@@ -269,6 +270,7 @@
 </ul>
 <h5 id="router路由"><a href="#router路由" class="headerlink" title="router路由"></a>router路由</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">'vue'</span></span><br><span class="line">import Home from <span class="string">'../components/Home.vue'</span></span><br><span class="line">import List from <span class="string">'../components/List.vue'</span></span><br><span class="line"></span><br><span class="line">import VueRouter from <span class="string">'vue-router'</span>;</span><br><span class="line">Vue.use(VueRouter);//和以前不一样的地方引入vue必须使用use</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default  new VueRouter(&#123;</span><br><span class="line">    routes:[</span><br><span class="line">        &#123;path:<span class="string">'/Home'</span>,component:Home&#125;,</span><br><span class="line">        &#123;path:<span class="string">'/List'</span>,component:List&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">├── dist                            // 打包后的文件</span><br><span class="line">├── node_modules                    // npm下载的文件</span><br><span class="line">├── src                             // 项目文件</span><br><span class="line">│   ├── components                 // 组件</span><br><span class="line">│   │   ├── home</span><br><span class="line">│   │   ├── list</span><br><span class="line">│   ├── router                     // 路由配置</span><br><span class="line">│   │   ├── index.js</span><br><span class="line">├── App.vue                         // render函数渲染dom入口</span><br><span class="line">├── index.html                      // 页面模板</span><br><span class="line">├── main.js                         // 程序入口文件，加载各种公共组件</span><br></pre></td></tr></table></figure>
+<h3 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html-webpack-plugin //html单独打包成文件</span><br><span class="line">extract-text-webpack-plugin //样式打包成单独文件</span><br><span class="line">CommonsChunkOlugin//提出通用模块</span><br><span class="line">webpack-dev-server//为web项目提供服务 更改代码自动更新，路径转发</span><br></pre></td></tr></table></figure>
       
 
       
@@ -527,11 +529,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,15 +541,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +573,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,6 +609,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
@@ -615,11 +625,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +637,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

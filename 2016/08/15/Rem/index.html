@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="移动端因为需要适配多种机型，所以布局以及字体需要动态变化，可以百分百布局但是高度不好掌握，在这里记录一下rem布局的实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-25T09:30:36.219Z">
+<meta property="og:updated_time" content="2018-10-23T05:47:44.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端rem布局">
 <meta name="twitter:description" content="移动端因为需要适配多种机型，所以布局以及字体需要动态变化，可以百分百布局但是高度不好掌握，在这里记录一下rem布局的实现">
@@ -191,7 +191,10 @@
 <li>视口设置等于1.0</li>
 <li>这种在640屏幕下的font-size是50px;</li>
 <li>假如元素高200px; 需要100px/50 因为设置图纸是实际像素的2倍</li>
-<li>320宽的手机物理像素是640 所以需要/2</li>
+<li>320宽的手机物理像素是640 所以需要/2<h5 id="ydui-flexible-js-是处理移动端-rem-自适应（可伸缩布局方案）的类库"><a href="#ydui-flexible-js-是处理移动端-rem-自适应（可伸缩布局方案）的类库" class="headerlink" title="ydui.flexible.js 是处理移动端 rem 自适应（可伸缩布局方案）的类库"></a>ydui.flexible.js 是处理移动端 rem 自适应（可伸缩布局方案）的类库</h5></li>
+<li>网址 <a href="http://vue.ydui.org/docs/#/flexible" target="_blank" rel="noopener">http://vue.ydui.org/docs/#/flexible</a></li>
+<li>ydui.flexible.js 是处理移动端 rem 自适应（可伸缩布局方案）的类库，无须第三方工具（如Sass/Less方法、Gulp、Sublime插件），轻松口算设计稿对应rem值；</li>
+<li>ydui.flexible.js 源码：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * YDUI 可伸缩布局方案</span><br><span class="line"> * rem计算方式：设计图尺寸px / 100 = 实际rem  【例: 100px = 1rem，32px = .32rem】</span><br><span class="line"> */</span><br><span class="line">!<span class="keyword">function</span> (window) &#123;</span><br><span class="line"></span><br><span class="line">    /* 设计图文档宽度 */</span><br><span class="line">    var docWidth = 750;</span><br><span class="line"></span><br><span class="line">    var doc = window.document,</span><br><span class="line">        docEl = doc.documentElement,</span><br><span class="line">        resizeEvt = <span class="string">'orientationchange'</span> <span class="keyword">in</span> window ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>;</span><br><span class="line"></span><br><span class="line">    var recalc = (<span class="keyword">function</span> <span class="function"><span class="title">refreshRem</span></span> () &#123;</span><br><span class="line">        var clientWidth = docEl.getBoundingClientRect().width;</span><br><span class="line"></span><br><span class="line">        /* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */</span><br><span class="line">        docEl.style.fontSize = Math.max(Math.min(20 * (clientWidth / docWidth), 11.2), 8.55) * 5 + <span class="string">'px'</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> refreshRem;</span><br><span class="line">    &#125;)();</span><br><span class="line"></span><br><span class="line">    /* 添加倍屏标识，安卓为1 */</span><br><span class="line">    docEl.setAttribute(<span class="string">'data-dpr'</span>, window.navigator.appVersion.match(/iphone/gi) ?</span><br><span class="line">     window.devicePixelRatio : 1);</span><br><span class="line">    <span class="keyword">if</span> (/iP(hone|od|ad)/.<span class="built_in">test</span>(window.navigator.userAgent)) &#123;</span><br><span class="line">        /* 添加IOS标识 */</span><br><span class="line">        doc.documentElement.classList.add(<span class="string">'ios'</span>);</span><br><span class="line">        /* IOS8以上给html添加hairline样式，以便特殊处理 */</span><br><span class="line">        <span class="keyword">if</span> (parseInt(window.navigator.appVersion.match</span><br><span class="line">        (/OS (\d+)_(\d+)_?(\d+)?/)[1], 10) &gt;= 8)</span><br><span class="line">            doc.documentElement.classList.add(<span class="string">'hairline'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!doc.addEventListener) <span class="built_in">return</span>;</span><br><span class="line">    window.addEventListener(resizeEvt, recalc, <span class="literal">false</span>);</span><br><span class="line">    doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">&#125;(window);</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -307,11 +310,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/11/05/bootstrap/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/11/05/baiduMap/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          bootstrap一些注意事项
+          百度地图
         
       </div>
     </a>
@@ -448,11 +451,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,15 +463,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +495,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,6 +531,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
@@ -536,11 +547,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +559,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>
