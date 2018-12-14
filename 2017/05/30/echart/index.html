@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://github.com/images/e4.png">
 <meta property="og:image" content="https://github.com/images/e1.png">
 <meta property="og:image" content="https://github.com/images/e2.png">
-<meta property="og:updated_time" content="2018-04-03T07:58:14.925Z">
+<meta property="og:updated_time" content="2018-11-20T09:04:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="echart记录">
 <meta name="twitter:image" content="https://github.com/images/e3.png">
@@ -173,6 +173,7 @@
         <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br><a id="more"></a></p>
 <h5 id="echarts响应式变化"><a href="#echarts响应式变化" class="headerlink" title="echarts响应式变化"></a>echarts响应式变化</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(<span class="string">'resize'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">   myChart.resize();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h5 id="echarts-API-clear-清理数据缓存"><a href="#echarts-API-clear-清理数据缓存" class="headerlink" title="echarts API clear()清理数据缓存"></a>echarts API clear()清理数据缓存</h5><ul>
+<li>echarts封装需要用clear在每次加载前清空数据否则会造成数据缓存</li>
 <li>关于echarts数据缓存问题的处理 clear()</li>
 <li>清空当前实例，会移除实例中所有的组件和图表。清空后调用 getOption 方法返回一个{}空对象。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var backbone_line = echarts.init(document.getElementById(<span class="string">'backbone_line'</span>));</span><br><span class="line">   backbone_line.clear();// 图表清空避免ajax的数据缓存</span><br><span class="line">   backbone_line.setOption(&#123;</span><br><span class="line">      // echarts代码</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
 </li>
@@ -312,11 +313,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/07/08/vue_watch/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/31/echartDashboard/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue中的$watch监控数据
+          echart仪表盘demo
         
       </div>
     </a>
@@ -449,6 +450,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ApiCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
@@ -473,11 +478,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +502,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,15 +534,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +554,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +566,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
             
             <div class="clearfix"></div>
@@ -615,6 +620,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
     	<section class="tools-section tools-section-friends" q-show="friends">
   		
         <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/www.17sucai.com/pins/tag/4670.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
+            </li>
           
             <li class="search-li">
               <a href="http://huziketang.mangojuice.top/books/react/lesson1" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>React手册</a>
