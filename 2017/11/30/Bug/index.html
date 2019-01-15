@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="记录工作中遇见的bug以及解决方式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-23T07:01:00.931Z">
+<meta property="og:updated_time" content="2019-01-15T12:53:29.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bug总结">
 <meta name="twitter:description" content="记录工作中遇见的bug以及解决方式">
@@ -170,9 +170,10 @@
         <p>记录工作中遇见的bug以及解决方式<br><a id="more"></a></p>
 <h3 id="如何修改chrome记住密码后自动填充表单的黄色背景"><a href="#如何修改chrome记住密码后自动填充表单的黄色背景" class="headerlink" title="如何修改chrome记住密码后自动填充表单的黄色背景"></a>如何修改chrome记住密码后自动填充表单的黄色背景</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill &#123;</span><br><span class="line">    background-color: rgb(250, 255, 189); / <span class="comment">#FAFFBD; /</span></span><br><span class="line">    background-image: none;</span><br><span class="line">    color: rgb(0, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="position-fixed-在android下无效怎么处理"><a href="#position-fixed-在android下无效怎么处理" class="headerlink" title="position:fixed;在android下无效怎么处理"></a>position:fixed;在android下无效怎么处理</h3><ul>
-<li>fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是在移动这个所谓的viewport，原来的网页还好好的在那，fixed的内容也没有变过位置所以说并不是iOS不支持fixed，只是fixed的元素不是相对手机屏幕固定的。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0,</span></span><br><span class="line"><span class="string"> maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"</span>/&gt;</span><br></pre></td></tr></table></figure></li>
+<li>fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是在移动这个所谓的viewport，原来的网页还好好的在那，fixed的内容也没有变过位置所以说并不是iOS不支持fixed，只是fixed的元素不是相对手机屏幕固定的。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0,</span></span><br><span class="line"><span class="string"> maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h3 id="安卓手机-软键盘挡住了输入框解决方法"><a href="#安卓手机-软键盘挡住了输入框解决方法" class="headerlink" title="安卓手机 软键盘挡住了输入框解决方法"></a>安卓手机 软键盘挡住了输入框解决方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"input"</span>).focus(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    var num = $(this).offset().top-header_h;</span><br><span class="line">    $(<span class="string">"html,body"</span>).animate(&#123;scrollTop:num&#125;,800);</span><br><span class="line">&#125;); //关键代码</span><br><span class="line"></span><br><span class="line">var win_h = $(window).height(); //关键代码</span><br><span class="line">$(<span class="string">"body"</span>).height(win_h); //关键代码</span><br></pre></td></tr></table></figure>
       
 
       
@@ -286,18 +287,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/30/JavaScript Dom操作insertAdjacentHTML/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/12/05/JsPublicFun/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript的 insertAdjacentHTML  API
+          JavaScript 个人公共库组建
         
       </div>
     </a>
   
   
-    <a href="/2017/11/30/classList/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript的 classList API</div>
+    <a href="/2017/11/30/JavaScript Dom操作insertAdjacentHTML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript的 insertAdjacentHTML  API</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -340,7 +341,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 王磊
+    		&copy; 2019 王磊
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -427,11 +428,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,11 +440,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +508,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">

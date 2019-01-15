@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="JavaScript的Array知识汇总:包括数组基本操作，以及一些数组去重、冒泡排序、快速排序的一些实现思路">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-01T02:33:22.016Z">
+<meta property="og:updated_time" content="2019-01-14T11:10:25.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的Array知识汇总">
 <meta name="twitter:description" content="JavaScript的Array知识汇总:包括数组基本操作，以及一些数组去重、冒泡排序、快速排序的一些实现思路">
@@ -306,6 +306,11 @@
 </ul>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var ary1 = [12,23,34,36,24,25,35,14,25]</span><br><span class="line">var max2 = ary[0];</span><br><span class="line">var min2 = ary[0]</span><br><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; ary1.length; i++) &#123;</span><br><span class="line">    var cur = ary[i];</span><br><span class="line">    cur&gt;max2?max2=cur:null;</span><br><span class="line">    cur&lt;min2?min2=cur:null;</span><br><span class="line">&#125;</span><br><span class="line">console.log(min2,max2);</span><br></pre></td></tr></table></figure>
+<h3 id="数组并列排序"><a href="#数组并列排序" class="headerlink" title="数组并列排序"></a>数组并列排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var datalist =  [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"lon"</span>: <span class="string">"112.534758"</span>,</span><br><span class="line">            <span class="string">"count"</span>: 3,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"坝塘镇"</span>,</span><br><span class="line">            <span class="string">"code"</span>: <span class="string">"-1"</span>,</span><br><span class="line">            <span class="string">"lat"</span>: <span class="string">"28.263983"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"lon"</span>: <span class="string">"112.556306"</span>,</span><br><span class="line">            <span class="string">"count"</span>: 1,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"巷子口镇"</span>,</span><br><span class="line">            <span class="string">"code"</span>: <span class="string">"-1"</span>,</span><br><span class="line">            <span class="string">"lat"</span>: <span class="string">"28.291214"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"lon"</span>: <span class="string">"112.542942"</span>,</span><br><span class="line">            <span class="string">"count"</span>: 51,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"老粮仓镇"</span>,</span><br><span class="line">            <span class="string">"code"</span>: <span class="string">"-1"</span>,</span><br><span class="line">            <span class="string">"lat"</span>: <span class="string">"28.229213"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"lon"</span>: <span class="string">"112.556306"</span>,</span><br><span class="line">            <span class="string">"count"</span>: 2,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"巷子口镇"</span>,</span><br><span class="line">            <span class="string">"code"</span>: <span class="string">"-1"</span>,</span><br><span class="line">            <span class="string">"lat"</span>: <span class="string">"28.291214"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"lon"</span>: <span class="string">"112.556306"</span>,</span><br><span class="line">            <span class="string">"count"</span>: 2,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"巷子口镇"</span>,</span><br><span class="line">            <span class="string">"code"</span>: <span class="string">"-1"</span>,</span><br><span class="line">            <span class="string">"lat"</span>: <span class="string">"28.291214"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">    <span class="keyword">function</span> pass(a,b)&#123;</span><br><span class="line">        <span class="built_in">return</span> b.count-a.count</span><br><span class="line">    &#125;</span><br><span class="line">    datalist.sort(pass);</span><br><span class="line">    var id = 0;</span><br><span class="line">    <span class="keyword">for</span> (var i = 0; i &lt; datalist.length-1;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(datalist[i].count === datalist[i+1].count)&#123;</span><br><span class="line">            datalist[i].id = id</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            datalist[i].id = id</span><br><span class="line">            id++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(datalist[datalist.length-1].count === datalist[datalist.length-2].count)&#123;</span><br><span class="line">        datalist[datalist.length-1].id = id</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        datalist[datalist.length-1].id = id</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(datalist);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码优化<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> pass(a,b)&#123;</span><br><span class="line">       <span class="built_in">return</span> b.count-a.count</span><br><span class="line">   &#125;</span><br><span class="line">   datalist.sort(pass);</span><br><span class="line">   var id = 0;</span><br><span class="line">   <span class="keyword">for</span> (var i = 0; i &lt; datalist.length-1;i++)&#123;</span><br><span class="line">       datalist[i].count === datalist[i+1].count?datalist[i].id</span><br><span class="line">       = id:(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">           datalist[i].id = id;id++</span><br><span class="line">       &#125;());</span><br><span class="line">       i + 2===datalist.length?datalist[i + 1].id = id:<span class="string">''</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -473,7 +478,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 王磊
+    		&copy; 2019 王磊
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -560,11 +565,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +577,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,15 +645,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
