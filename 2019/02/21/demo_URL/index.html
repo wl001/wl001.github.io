@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Tag: Mobile | 我的技术博客</title>
+  <title>url拼接的方式传参中文乱码现象 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/tags/Mobile/index.html">
+  <meta name="description" content="通过url 进行地址传参(中文乱码处理)">
+<meta name="keywords" content="常用效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="url拼接的方式传参中文乱码现象">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2019/02/21/demo_URL/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="my blog desc">
+<meta property="og:description" content="通过url 进行地址传参(中文乱码处理)">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-29T11:01:26.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的技术博客">
-<meta name="twitter:description" content="my blog desc">
+<meta name="twitter:title" content="url拼接的方式传参中文乱码现象">
+<meta name="twitter:description" content="通过url 进行地址传参(中文乱码处理)">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -145,60 +147,194 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-demo_URL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/15/Rem/" class="archive-article-date">
-  	<time datetime="2016-08-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/15/Rem/">移动端rem布局</a>
+    <h1 class="article-title" itemprop="name">
+      url拼接的方式传参中文乱码现象
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/21/demo_URL/" class="archive-article-date">
+  	<time datetime="2019-02-21T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过url 进行地址传参(中文乱码处理)<br><a id="more"></a></p>
+<ul>
+<li>参考网址 <a href="https://blog.csdn.net/weixin_42025989/article/details/80062824" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42025989/article/details/80062824</a><h3 id="传递参数页面-html"><a href="#传递参数页面-html" class="headerlink" title="传递参数页面.html"></a>传递参数页面.html</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var cla= <span class="string">'电脑'</span>;  //中文</span><br><span class="line">var _t = encodeURI(encodeURI(cla));</span><br><span class="line">window.location.href = <span class="string">"../aa.html?name="</span>+<span class="string">'2222"&amp;cla=_t";</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="接收参数页面-html"><a href="#接收参数页面-html" class="headerlink" title="接收参数页面.html"></a>接收参数页面.html</h3><ul>
+<li>../aa.html?name=abc&amp;num=2222&amp;cla=%25E7%2594%25B5%25E8%2584%2591<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var name = window.location.href;</span><br><span class="line"><span class="keyword">function</span> getQueryString(name) &#123;  </span><br><span class="line">     //正则表达式，获取地址中的参数</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);  </span><br><span class="line">     var r = window.location.search.substr(1).match(reg);  </span><br><span class="line">     <span class="keyword">if</span> (r != null) <span class="built_in">return</span> unescape(r[2]); <span class="built_in">return</span> null; </span><br><span class="line"> &#125;</span><br><span class="line">var _name = getQueryString(<span class="string">"name"</span>);//2222</span><br><span class="line"> var _t = getQueryString(<span class="string">"cla"</span>); //此为中文参数，需转码</span><br><span class="line">var title = decodeURI(_t); //只需要转一次码</span><br><span class="line">console.log(title);//此处打印出来是中文。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zfb.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Mobile</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">常用效果</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2019/02/21/demo_URL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/02/21/demo_newDate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript中new Date（）只取日期
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/02/20/VueCli3-rem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue-cli3将px转换成rem单位配置(flexible,px2rem)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-    
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +357,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

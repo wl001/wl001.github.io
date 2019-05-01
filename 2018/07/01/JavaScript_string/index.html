@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="JavaScript的String知识汇总:包括基本操作，以及获取url参数的案例">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T03:17:06.786Z">
+<meta property="og:updated_time" content="2019-03-29T02:30:40.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的String知识汇总">
 <meta name="twitter:description" content="JavaScript的String知识汇总:包括基本操作，以及获取url参数的案例">
@@ -227,7 +227,10 @@
 <li>trimLeft()  //去除字符串开始空格</li>
 <li>trimRight() //去除字符串末尾空格<h5 id="案例：queryURLParameter"><a href="#案例：queryURLParameter" class="headerlink" title="案例：queryURLParameter"></a>案例：queryURLParameter</h5></li>
 <li><p>获取地址栏中URL地址问号传递的参数值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'https://www.baidu.com/s?wd=node&amp;rsv_spt=1&amp;rsv_iqid=0'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> queryURLParameter(url)&#123;</span><br><span class="line">       var obj = &#123;&#125;</span><br><span class="line">       var questionIndex = url.indexOf(<span class="string">'?'</span>)</span><br><span class="line">       <span class="keyword">if</span>(questionIndex === -1)&#123;//url没有问号传参</span><br><span class="line">           <span class="built_in">return</span> obj;</span><br><span class="line">       &#125;</span><br><span class="line">       //重问号后边开始截取</span><br><span class="line">       url = url.substring(questionIndex + 1)</span><br><span class="line">       var ary = url.split(<span class="string">'&amp;'</span>)</span><br><span class="line">       <span class="keyword">for</span> (var i = 0; i &lt; ary.length; i++) &#123;</span><br><span class="line">           var cur = ary[i];</span><br><span class="line">           var curAry = cur.split(<span class="string">'='</span>)</span><br><span class="line">           var key = curAry[0]</span><br><span class="line">           var value = curAry[1]</span><br><span class="line">           obj[key] = value</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> obj;</span><br><span class="line">   &#125;</span><br><span class="line">   queryURLParameter(url)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">'https://www.baidu.com/s?wd=node&amp;rsv_spt=1&amp;rsv_iqid=0'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> queryURLParameter(url)&#123;</span><br><span class="line">       var obj = &#123;&#125;</span><br><span class="line">       var questionIndex = url.indexOf(<span class="string">'?'</span>)</span><br><span class="line">       <span class="keyword">if</span>(questionIndex === -1)&#123;//url没有问号传参</span><br><span class="line">           <span class="built_in">return</span> obj;</span><br><span class="line">       &#125;</span><br><span class="line">       //重问号后边开始截取</span><br><span class="line">       url = url.substring(questionIndex + 1)</span><br><span class="line">       var ary = url.split(<span class="string">'&amp;'</span>)</span><br><span class="line">       <span class="keyword">for</span> (var i = 0; i &lt; ary.length; i++) &#123;</span><br><span class="line">           var cur = ary[i];</span><br><span class="line">           var curAry = cur.split(<span class="string">'='</span>)</span><br><span class="line">           var key = curAry[0]</span><br><span class="line">           var value = curAry[1]</span><br><span class="line">           obj[key] = value</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> obj;</span><br><span class="line">   &#125;</span><br><span class="line">   var parame = queryURLParameter(url);</span><br><span class="line">   var rsv_spt = parame.rsv_spt;//参数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接输入想要获取url拼接的字段名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var name = window.location.href;</span><br><span class="line">	// 截取地址栏中url的参数值</span><br><span class="line">	<span class="keyword">function</span> getQueryString(name) &#123;</span><br><span class="line">		var reg = new RegExp(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);</span><br><span class="line">		var r = window.location.search.substr(1).match(reg);</span><br><span class="line">		<span class="keyword">if</span> (r != null)</span><br><span class="line">			<span class="built_in">return</span> unescape(r[2]);</span><br><span class="line">		<span class="built_in">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">	var gongdidm = getQueryString(<span class="string">"gongdidm"</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>封装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.URLParameter = <span class="keyword">function</span> <span class="function"><span class="title">URLParameter</span></span>()&#123;</span><br><span class="line">    var obj = &#123;&#125;;</span><br><span class="line">    var reg = /([^=?&amp;]+)=([^=?&amp;]+)/g;</span><br><span class="line">    this.replace(reg,<span class="function"><span class="title">function</span></span> ( )&#123;</span><br><span class="line">        var arg = arguments;</span><br><span class="line">        console.log(arg);</span><br><span class="line">        obj[arg[1]] = arg[2]</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line">url.URLParameter()</span><br></pre></td></tr></table></figure>
@@ -360,8 +363,8 @@
     </a>
   
   
-    <a href="/2018/06/13/react_demo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">react项目总结</div>
+    <a href="/2018/06/13/react_redux/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redux使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -491,11 +494,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,23 +506,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +518,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +550,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,7 +582,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,15 +590,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,15 +598,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>
@@ -663,7 +666,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="/www.17sucai.com/pins/tag/4670.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
+              <a href="/www.17sucai.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
             </li>
           
             <li class="search-li">
@@ -676,10 +679,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           
             <li class="search-li">
               <a href="https://www.qdfuns.com/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>前端网</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.36zhen.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>共享收藏夹</a>
             </li>
           
             <li class="search-li">
@@ -728,6 +727,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           
             <li class="search-li">
               <a href="http://www.52studyit.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>视频资料</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://developer.mozilla.org/zh-CN/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>手册</a>
             </li>
           
         </ul>

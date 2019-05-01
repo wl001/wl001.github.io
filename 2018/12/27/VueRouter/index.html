@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="Vue路由问题总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T01:48:21.694Z">
+<meta property="og:updated_time" content="2019-03-19T07:45:01.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue路由切换问题">
 <meta name="twitter:description" content="Vue路由问题总结">
@@ -168,7 +168,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Vue路由问题总结<br><a id="more"></a></p>
-<h5 id="Vue路由切换导致销毁钩子函数不生效的原因"><a href="#Vue路由切换导致销毁钩子函数不生效的原因" class="headerlink" title="Vue路由切换导致销毁钩子函数不生效的原因"></a>Vue路由切换导致销毁钩子函数不生效的原因</h5><ul>
+<h3 id="直接获取路由实例数据"><a href="#直接获取路由实例数据" class="headerlink" title="直接获取路由实例数据"></a>直接获取路由实例数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.<span class="variable">$router</span>.options.routes</span><br></pre></td></tr></table></figure>
+<h3 id="Vue路由切换导致销毁钩子函数不生效的原因"><a href="#Vue路由切换导致销毁钩子函数不生效的原因" class="headerlink" title="Vue路由切换导致销毁钩子函数不生效的原因"></a>Vue路由切换导致销毁钩子函数不生效的原因</h3><ul>
 <li>提醒一下，当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用</li>
 <li><p>复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch (监测变化) $route 对象：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    <span class="string">'$route'</span> (to, from) &#123;</span><br><span class="line">      // 对路由变化作出响应...</span><br><span class="line">      next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -304,8 +305,8 @@
     </a>
   
   
-    <a href="/2018/12/05/element-ui-tree/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Elemeng-ui tree记录总结</div>
+    <a href="/2018/12/05/element-ui-table/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">element-ui table和分页记录总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -435,11 +436,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,23 +448,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,11 +460,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,11 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度地图</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,7 +524,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,15 +532,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,15 +540,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>
@@ -607,7 +608,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="/www.17sucai.com/pins/tag/4670.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
+              <a href="/www.17sucai.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
             </li>
           
             <li class="search-li">
@@ -620,10 +621,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           
             <li class="search-li">
               <a href="https://www.qdfuns.com/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>前端网</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.36zhen.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>共享收藏夹</a>
             </li>
           
             <li class="search-li">
@@ -672,6 +669,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           
             <li class="search-li">
               <a href="http://www.52studyit.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>视频资料</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://developer.mozilla.org/zh-CN/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>手册</a>
             </li>
           
         </ul>
