@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
   <title>Vue动态绑定class | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vue动态绑定class总结">
+  <meta name="description" content="Vue动态绑定class以及标签属性中插入变量参数总结">
 <meta name="keywords" content="Vue2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue动态绑定class">
 <meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2019/01/27/vue_class/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="Vue动态绑定class总结">
+<meta property="og:description" content="Vue动态绑定class以及标签属性中插入变量参数总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-14T07:37:56.237Z">
+<meta property="og:updated_time" content="2019-05-30T11:41:09.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue动态绑定class">
-<meta name="twitter:description" content="Vue动态绑定class总结">
+<meta name="twitter:description" content="Vue动态绑定class以及标签属性中插入变量参数总结">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Vue动态绑定class总结<br><a id="more"></a></p>
+        <p>Vue动态绑定class以及标签属性中插入变量参数总结<br><a id="more"></a></p>
 <h3 id="点击动态添加class"><a href="#点击动态添加class" class="headerlink" title="点击动态添加class"></a>点击动态添加class</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"&#123;'active':item.show===true&#125;&gt;&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="动态地切换-class："><a href="#动态地切换-class：" class="headerlink" title="动态地切换 class："></a>动态地切换 class：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"&#123; active: isActive &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;div :class=<span class="string">"&#123; active: isActive, 'text-danger': hasError &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      isActive: <span class="literal">true</span>,</span><br><span class="line">      hasError: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="绑定一个返回对象的计算属性动态更改class"><a href="#绑定一个返回对象的计算属性动态更改class" class="headerlink" title="绑定一个返回对象的计算属性动态更改class"></a>绑定一个返回对象的计算属性动态更改class</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">   data: &#123;</span><br><span class="line">     fullscreen:<span class="literal">false</span>;</span><br><span class="line">   &#125;,</span><br><span class="line">   computed: &#123;</span><br><span class="line">     classObject: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">       <span class="built_in">return</span> &#123;</span><br><span class="line">           <span class="string">'fullscreen'</span>: this.isFullscreen == <span class="literal">false</span>,</span><br><span class="line">           <span class="string">'noFullscreen'</span>:this.isFullscreen == <span class="literal">true</span>,</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
@@ -176,9 +176,10 @@
 <li><p>渲染为 <div class="active text-danger"></div></p>
 <h3 id="三元表达式-根据条件切换列表中的-class，"><a href="#三元表达式-根据条件切换列表中的-class，" class="headerlink" title="三元表达式 根据条件切换列表中的 class，"></a>三元表达式 根据条件切换列表中的 class，</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"[isActive ? activeClass : '']"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>isActive为true的时候添加 activeClass 否则 ‘’<code>`</code></p>
+<li><p>isActive为true的时候添加 activeClass 否则 ‘’</p>
 </li>
 </ul>
+<h3 id="vue如何在标签属性中插入变量参数"><a href="#vue如何在标签属性中插入变量参数" class="headerlink" title="vue如何在标签属性中插入变量参数"></a>vue如何在标签属性中插入变量参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;component :is=<span class="string">"item.bar"</span> :style=<span class="string">"&#123;'height': item.height + 'px'&#125;"</span>&gt;&lt;/component&gt;</span><br><span class="line">&lt;component :is=<span class="string">"item.bar"</span> :style=<span class="string">"'height:'+item.height+'px'"</span>&gt;&lt;/component&gt;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -470,11 +471,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,11 +483,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,11 +499,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,15 +523,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,10 +548,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
