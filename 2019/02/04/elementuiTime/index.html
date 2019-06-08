@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>element-ui table和分页记录总结 | 我的技术博客</title>
+  <title>Element-ui的DatePicker时间选择器使用 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
+  <meta name="description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta name="keywords" content="Element-ui">
 <meta property="og:type" content="article">
-<meta property="og:title" content="element-ui table和分页记录总结">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/12/05/element-ui-table/index.html">
+<meta property="og:title" content="Element-ui的DatePicker时间选择器使用">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2019/02/04/elementuiTime/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
+<meta property="og:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T15:24:48.860Z">
+<meta property="og:updated_time" content="2019-06-04T08:10:37.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="element-ui table和分页记录总结">
-<meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
+<meta name="twitter:title" content="Element-ui的DatePicker时间选择器使用">
+<meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -147,34 +147,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-element-ui-table" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-elementuiTime" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      element-ui table和分页记录总结
+      Element-ui的DatePicker时间选择器使用
     </h1>
   
 
         
-        <a href="/2018/12/05/element-ui-table/" class="archive-article-date">
-  	<time datetime="2018-12-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-05</time>
+        <a href="/2019/02/04/elementuiTime/" class="archive-article-date">
+  	<time datetime="2019-02-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>闲暇时间记录一下项目中用到的框架及实现思路，留作笔记<br><a id="more"></a></p>
-<h3 id="vue的element-ui框架table的使用"><a href="#vue的element-ui框架table的使用" class="headerlink" title="vue的element-ui框架table的使用"></a>vue的element-ui框架table的使用</h3><h3 id="elementui中table宽度自适应的问题"><a href="#elementui中table宽度自适应的问题" class="headerlink" title="elementui中table宽度自适应的问题"></a>elementui中table宽度自适应的问题</h3><ul>
-<li>文章地址<a href="https://blog.csdn.net/qq_19694913/article/details/81144314" target="_blank" rel="noopener">https://blog.csdn.net/qq_19694913/article/details/81144314</a></li>
-<li>BUG：在flex容器下面的一个flex:1的子容器里面写了个el-table用来展示列表数据，在做宽度自适应测试的时候发现该组件的宽度只会增加不会缩小。</li>
-<li>Debug：通过控制台发现组件生成的table的宽度是动态计算的，翻查源码，发现以下代码段</li>
-<li>解决方案：可以将设置了flex属性的容器设置position:relative，然后在子元素加多一层div包裹内容，设置position:absolute; width:100%;继承父级宽度，那么内容也会继承该div的宽度了。<h3 id="table增删改查"><a href="#table增删改查" class="headerlink" title="table增删改查"></a>table增删改查</h3></li>
-<li>align=”center”居中</li>
-<li>width=”50”单元格宽度<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table class=<span class="string">"table"</span>  height=<span class="string">"80%"</span> :data=<span class="string">"tableData"</span></span><br><span class="line">    highlight-current-row v-loading=<span class="string">"listLoading"</span> size=<span class="string">"mini"</span> &gt;</span><br><span class="line">  &lt;el-table-column fixed label=<span class="string">"序号"</span> width=<span class="string">"50"</span> <span class="built_in">type</span>=<span class="string">"index"</span> align=<span class="string">"center"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"manufacturer"</span> label=<span class="string">"设备厂商"</span> :formatter=<span class="string">"formatName"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"ipAddress"</span> label=<span class="string">"IP地址"</span> align=<span class="string">"center"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"portNum"</span> label=<span class="string">"端口"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"deviceId"</span> label=<span class="string">"设备id"</span> width=<span class="string">"80"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"username"</span> label=<span class="string">"用户名"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"password"</span> label=<span class="string">"密码"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column prop=<span class="string">"deptName"</span> label=<span class="string">"所属部门"</span>&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column label=<span class="string">"操作"</span> width=<span class="string">"150"</span>&gt;</span><br><span class="line">    &lt;template slot-scope=<span class="string">"scope"</span>&gt;</span><br><span class="line">      &lt;el-button <span class="built_in">type</span>=<span class="string">"text"</span> @click=<span class="string">"modifyClick(scope.row)"</span>&gt;编辑&lt;/el-button&gt;</span><br><span class="line">      &lt;el-button <span class="built_in">type</span>=<span class="string">"text"</span> @click=<span class="string">"deleteRow(scope.row)"</span>&gt;删除&lt;/el-button&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/el-table-column&gt;</span><br><span class="line">&lt;/el-table&gt;</span><br><span class="line">&lt;!--分页--&gt;</span><br><span class="line">&lt;el-col :span=<span class="string">"24"</span> class=<span class="string">"toolbar"</span>&gt;</span><br><span class="line">  &lt;el-button <span class="built_in">type</span>=<span class="string">"danger"</span> @click=<span class="string">"add()"</span>  size=<span class="string">"mini"</span>&gt;新增&lt;/el-button&gt;</span><br><span class="line">  &lt;el-pagination</span><br><span class="line">    style=<span class="string">"float: right"</span></span><br><span class="line">    @size-change=<span class="string">"sizeChange"</span></span><br><span class="line">    @current-change=<span class="string">"pageChange"</span></span><br><span class="line">    :current-page=<span class="string">"pageData.current"</span></span><br><span class="line">    :page-sizes=<span class="string">"[10, 20, 30, 50]"</span></span><br><span class="line">    :page-size=<span class="string">"pageData.pageSize"</span></span><br><span class="line">    layout=<span class="string">"total, sizes, prev, pager, next, jumper"</span></span><br><span class="line">    size=<span class="string">"small"</span></span><br><span class="line">    :total=<span class="string">"pageData.total"</span>&gt;</span><br><span class="line">  &lt;/el-pagination&gt;</span><br><span class="line">&lt;/el-col&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">     <span class="function"><span class="title">data</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>&#123;</span><br><span class="line">            listLoading:<span class="literal">false</span>,</span><br><span class="line">            tableData:[],</span><br><span class="line">            row:<span class="string">''</span>,//当前选中的行数据</span><br><span class="line">            pageData:&#123;</span><br><span class="line">              current:1,//当前页</span><br><span class="line">              total: 0,//总条数</span><br><span class="line">              pageSize: 10,//每页条数</span><br><span class="line">              deptCode:<span class="string">''</span></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     methods:&#123;</span><br><span class="line">         //表格数据</span><br><span class="line">         <span class="function"><span class="title">initVideoList</span></span>()&#123;</span><br><span class="line">           this.listLoading = <span class="literal">true</span>;</span><br><span class="line">           <span class="built_in">let</span> params = Object.assign(&#123;&#125;,this.pageData);</span><br><span class="line">           this.<span class="variable">$post</span>(<span class="string">'vision'</span>, <span class="string">'videoInfo'</span>,params).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">              <span class="keyword">if</span>(res.code == 200)&#123;</span><br><span class="line">                this.listLoading = <span class="literal">false</span>;</span><br><span class="line">                this.tableData = res.data.records;</span><br><span class="line">                this.pageData.total = Number(res.data.total);</span><br><span class="line">              &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125;,</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+        <p>闲暇时间记录一下项目中用到的框架以及遇到的问题<br><a id="more"></a></p>
+<h3 id="Elemeng-ui的DatePicker时间选择器使用"><a href="#Elemeng-ui的DatePicker时间选择器使用" class="headerlink" title="Elemeng-ui的DatePicker时间选择器使用"></a>Elemeng-ui的DatePicker时间选择器使用</h3><ul>
+<li>只能选择今天以及之后的日期</li>
+<li>value-format是时间处理格式<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-date-picker</span><br><span class="line">     style=<span class="string">"width:178px"</span></span><br><span class="line">     size=<span class="string">"mini"</span></span><br><span class="line">     v-model=<span class="string">"form.blacklistBDate"</span></span><br><span class="line">     <span class="built_in">type</span>=<span class="string">"date"</span></span><br><span class="line">     value-format=<span class="string">"yyyy-MM-dd"</span></span><br><span class="line">     :picker-options=<span class="string">"pickerOptions0"</span></span><br><span class="line">     placeholder=<span class="string">"选择日期"</span>&gt;</span><br><span class="line">&lt;/el-date-picker&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">   <span class="built_in">return</span> &#123;</span><br><span class="line">       //选择今天以及之后的日期</span><br><span class="line">       pickerOptions0: &#123;</span><br><span class="line">           disabledDate(time) &#123;</span><br><span class="line">               <span class="built_in">return</span> time.getTime() &lt; Date.now() - 8.64e7;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">      //如果没有后面的-8.64e7就是选择除了今天之后的日期</span><br><span class="line">       pickerOptions1: &#123;</span><br><span class="line">       disabledDate(time) &#123;</span><br><span class="line">           <span class="built_in">return</span> time.getTime() &lt; Date.now();</span><br><span class="line">       &#125;,</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -276,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2018/12/05/element-ui-table/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2019/02/04/elementuiTime/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +287,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/05/element-ui-tree/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/02/20/VueCli3-rem/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Elemen-ui tree记录总结
+          Vue-cli3将px转换成rem单位配置(flexible,px2rem)
         
       </div>
     </a>
   
   
-    <a href="/2018/12/05/element-ui-loading/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Element-ui 局部刷新loading</div>
+    <a href="/2019/01/27/vue_class/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue动态绑定class</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,11 +428,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,11 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,11 +512,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +524,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,11 +536,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Html5</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
