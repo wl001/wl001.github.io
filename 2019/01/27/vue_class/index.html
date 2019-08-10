@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="Vue动态绑定class以及标签属性中插入变量参数总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-30T11:41:09.974Z">
+<meta property="og:updated_time" content="2019-07-30T00:40:58.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue动态绑定class">
 <meta name="twitter:description" content="Vue动态绑定class以及标签属性中插入变量参数总结">
@@ -174,12 +174,14 @@
 <h3 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"[activeClass, errorClass]"</span>&gt;&lt;/div&gt;</span><br><span class="line"> <span class="built_in">export</span> default &#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      activeClass: <span class="string">'active'</span>,</span><br><span class="line">      errorClass: <span class="string">'text-danger'</span></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>渲染为 <div class="active text-danger"></div></p>
-<h3 id="三元表达式-根据条件切换列表中的-class，"><a href="#三元表达式-根据条件切换列表中的-class，" class="headerlink" title="三元表达式 根据条件切换列表中的 class，"></a>三元表达式 根据条件切换列表中的 class，</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"[isActive ? activeClass : '']"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三元表达式-根据条件切换列表中的-class，"><a href="#三元表达式-根据条件切换列表中的-class，" class="headerlink" title="三元表达式 根据条件切换列表中的 class，"></a>三元表达式 根据条件切换列表中的 class，</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div :class=<span class="string">"[isActive ? 'activeClass' : '']"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>isActive为true的时候添加 activeClass 否则 ‘’</p>
 </li>
+<li>也可以直接加多个class<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">&lt;div :class=<span class="string">"[item.icon,isActive ? 'activeClass' : '']"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="vue如何在标签属性中插入变量参数"><a href="#vue如何在标签属性中插入变量参数" class="headerlink" title="vue如何在标签属性中插入变量参数"></a>vue如何在标签属性中插入变量参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;component :is=<span class="string">"item.bar"</span> :style=<span class="string">"&#123;'height': item.height + 'px'&#125;"</span>&gt;&lt;/component&gt;</span><br><span class="line">&lt;component :is=<span class="string">"item.bar"</span> :style=<span class="string">"'height:'+item.height+'px'"</span>&gt;&lt;/component&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### vue如何在标签属性中插入变量参数</span><br><span class="line">```bash</span><br><span class="line">&lt;component :is=&quot;item.bar&quot; :style=&quot;&#123;&apos;height&apos;: item.height + &apos;px&apos;&#125;&quot;&gt;&lt;/component&gt;</span><br><span class="line">&lt;component :is=&quot;item.bar&quot; :style=&quot;&apos;height:&apos;+item.height+&apos;px&apos;&quot;&gt;&lt;/component&gt;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -455,6 +457,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
@@ -463,7 +469,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,19 +481,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Vue2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,11 +501,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +529,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,7 +553,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,6 +562,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
             
             <div class="clearfix"></div>
