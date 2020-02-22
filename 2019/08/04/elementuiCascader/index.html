@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>微信小程序表单提交 | 我的技术博客</title>
+  <title>el-cascader动态加载下一级 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="微信小程序表单提交">
-<meta name="keywords" content="微信小程序">
+  <meta name="description" content="el-cascader级联下拉框">
+<meta name="keywords" content="Element-ui">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序表单提交">
-<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2020/02/20/smallform/index.html">
+<meta property="og:title" content="el-cascader动态加载下一级">
+<meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2019/08/04/elementuiCascader/index.html">
 <meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="微信小程序表单提交">
+<meta property="og:description" content="el-cascader级联下拉框">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-20T13:16:22.235Z">
+<meta property="og:updated_time" content="2019-11-08T09:10:37.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序表单提交">
-<meta name="twitter:description" content="微信小程序表单提交">
+<meta name="twitter:title" content="el-cascader动态加载下一级">
+<meta name="twitter:description" content="el-cascader级联下拉框">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
   
@@ -147,35 +147,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-smallform" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-elementuiCascader" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      微信小程序表单提交
+      el-cascader动态加载下一级
     </h1>
   
 
         
-        <a href="/2020/02/20/smallform/" class="archive-article-date">
-  	<time datetime="2020-02-20T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
+        <a href="/2019/08/04/elementuiCascader/" class="archive-article-date">
+  	<time datetime="2019-08-04T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>微信小程序表单提交<br><a id="more"></a></p>
+        <p>el-cascader级联下拉框<br><a id="more"></a></p>
+<h3 id="el-cascader级联下拉框动态加载下一级数据、"><a href="#el-cascader级联下拉框动态加载下一级数据、" class="headerlink" title="el-cascader级联下拉框动态加载下一级数据、"></a>el-cascader级联下拉框动态加载下一级数据、</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-cascader</span><br><span class="line">    v-if=<span class="string">"scope.<span class="variable">$index</span>==index&amp;&amp;isSet"</span></span><br><span class="line">    v-model=<span class="string">"otherParames.parentIds"</span></span><br><span class="line">    placeholder=<span class="string">"请选择所属区域"</span></span><br><span class="line">    :options=<span class="string">"cascaderData"</span></span><br><span class="line">    :filterable=<span class="string">"false"</span></span><br><span class="line">    size=<span class="string">"mini"</span></span><br><span class="line">    ref=<span class="string">"casca"</span></span><br><span class="line">    :change-on-select=<span class="string">"true"</span></span><br><span class="line">    :show-all-levels=<span class="string">"false"</span></span><br><span class="line">    @change=<span class="string">"getCode"</span></span><br><span class="line">    :props=<span class="string">"&#123;</span></span><br><span class="line"><span class="string">       value: 'id',</span></span><br><span class="line"><span class="string">       label: 'name',</span></span><br><span class="line"><span class="string">       children: 'project'</span></span><br><span class="line"><span class="string">    &#125;"</span></span><br><span class="line">&gt;&lt;/el-cascader&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>name是表单提交的时候获取参数  value是方便提交后清空输入框</li>
-<li>radio提交后恢复为选择状态定义 checke</li>
-<li>picker下拉框 bindchange value 改变时触发 change 事件， bindcolumnchange列改变时触发（滑动触发）</li>
-<li>button在最外层父级定位的时候ios会出现没有文字 去掉定位即可（尽量避免定位暂时不知道其他解决办法）<h3 id="wxml"><a href="#wxml" class="headerlink" title="wxml"></a>wxml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;form bindsubmit=<span class="string">"formSubmit"</span> bindreset=<span class="string">"formReset"</span> &gt;</span><br><span class="line">      &lt;view class=<span class="string">"inp"</span>&gt;</span><br><span class="line">          &lt;input placeholder-class=<span class="string">'holder-input'</span> value=<span class="string">'&#123;&#123;username&#125;&#125;'</span>  name=<span class="string">'realName'</span> placeholder=<span class="string">"请输入姓名"</span>/&gt;</span><br><span class="line">      &lt;/view&gt;</span><br><span class="line">      &lt;view class=<span class="string">"inp"</span>&gt;</span><br><span class="line">           &lt;radio-group name=<span class="string">"sex"</span>&gt;</span><br><span class="line">             &lt;label&gt;&lt;radio  checked=<span class="string">"&#123;&#123;checked&#125;&#125;"</span> value=<span class="string">"1"</span>/&gt;男&lt;/label&gt;</span><br><span class="line">             &lt;label&gt;&lt;radio  checked=<span class="string">"&#123;&#123;checked&#125;&#125;"</span> style=<span class="string">'margin-left:20rpx;'</span> value=<span class="string">"0"</span>/&gt;女&lt;/label&gt;</span><br><span class="line">           &lt;/radio-group&gt;</span><br><span class="line">      &lt;/view&gt;</span><br><span class="line">       &lt;view class=<span class="string">"inp"</span>&gt;</span><br><span class="line">          &lt;picker range-key=<span class="string">"&#123;&#123;'name'&#125;&#125;"</span> name=<span class="string">'fanjingFlag'</span> bindchange=<span class="string">"otherPlacesPicker"</span></span><br><span class="line">          value=<span class="string">"&#123;&#123;otherPlaces[otherPlacesIndex].id&#125;&#125;"</span> range=<span class="string">"&#123;&#123;otherPlaces&#125;&#125;"</span> &gt;</span><br><span class="line">            &lt;view class=<span class="string">"holder-input"</span> wx:<span class="keyword">if</span>=<span class="string">"&#123;&#123;otherPlacesIndex==''&#125;&#125;"</span>&gt;请选择是否外地返程&lt;/view&gt;</span><br><span class="line">            &lt;view class=<span class="string">"weui-input"</span> wx:<span class="keyword">else</span>&gt;&#123;&#123;otherPlaces[otherPlacesIndex].name&#125;&#125;&lt;/view&gt;</span><br><span class="line">          &lt;/picker&gt;</span><br><span class="line">      &lt;/view&gt;</span><br><span class="line">      &lt;button style=<span class="string">'width:100%'</span> class=<span class="string">'submitBtn'</span> formType=<span class="string">"submit"</span>&gt;提交&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<li>props是更改默认展示的字段  默认是value label children<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>&#123;</span><br><span class="line">        otherParames:&#123;</span><br><span class="line">            projectTypeCode:<span class="string">''</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        oneLevelData:[],//一级级联数据</span><br><span class="line">        twoLevelData:[],</span><br><span class="line">        threeLevelData:[],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">mounted</span></span>()&#123;</span><br><span class="line">//初始化加载级联选择器第一级数据</span><br><span class="line">    this.getNodes();</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">     //获取级联选择器的当前点击的数据value</span><br><span class="line">     getCode(val) &#123;</span><br><span class="line">         this.projectTypeId = val[val.length - 1];</span><br><span class="line">         this.getNodes(val);</span><br><span class="line">     &#125;,</span><br><span class="line">     getNodes(val)&#123;</span><br><span class="line">          <span class="built_in">let</span> idArea;</span><br><span class="line">          <span class="built_in">let</span> sizeArea;//当前点击的是第几级的数据</span><br><span class="line">          <span class="keyword">if</span> (val) &#123;</span><br><span class="line">              var len = val.length - 1;</span><br><span class="line">              this.otherParames.projectTypeCode = val[len];//当前级联选中节的id获取下一级数据所需要的传参</span><br><span class="line">              var labels = this.<span class="variable">$refs</span>[<span class="string">"casca"</span>].currentLabels;//当前级联的label文字</span><br><span class="line">              this.progressTableData[0].name = labels[len];</span><br><span class="line">          &#125;</span><br><span class="line">          //页面初始化是没操作的数据 就默认请求第一级的数据  页面加载以操作节点运行</span><br><span class="line">           <span class="keyword">if</span> (!val) &#123;</span><br><span class="line">               idArea = null;</span><br><span class="line">               sizeArea = 0;</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span> (val.length === 1) &#123;</span><br><span class="line">                idArea = val[0]</span><br><span class="line">                sizeArea = val.length //当前操作的是第一级节点</span><br><span class="line">                 //因为存储了一级数据根据当前点击节点的id取出其余的字段值因为级联选择只能获取到value和label的值</span><br><span class="line">                <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; this.oneLevel.length; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(this.oneLevel[i].id == this.otherParames.projectTypeCode)&#123;</span><br><span class="line">                        this.util= this.oneLevel[i].unit;</span><br><span class="line">                        this.progressTableData[0].unit =  this.util;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span> (val.length === 2) &#123;</span><br><span class="line">                idArea = val[1]</span><br><span class="line">                sizeArea = val.length // 3:一级 4:二级 6:三级</span><br><span class="line">                //要取值二级数据的话循环twoLevel</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                //要取值三级数据的话循环threeLevel</span><br><span class="line">           &#125;</span><br><span class="line">            //如果操作的是第一级节点</span><br><span class="line">            <span class="keyword">if</span>(sizeArea == 0)&#123;</span><br><span class="line">               this.<span class="variable">$post</span>(<span class="string">'gantt'</span>,<span class="string">'queryPlanPartList'</span>,&#123;pid:<span class="string">"0"</span>&#125;).<span class="keyword">then</span>(res=&gt;&#123;</span><br><span class="line">                   <span class="keyword">if</span>(res.code == 200)&#123;</span><br><span class="line">                       var Items = JSON.parse(res.data);</span><br><span class="line">                       this.oneLevel = Items;//将第一级数据存起来</span><br><span class="line">                       this.cascaderData = Items.map((value, i) =&gt; &#123;</span><br><span class="line">                           <span class="built_in">return</span> &#123;</span><br><span class="line">                               id: value.id,</span><br><span class="line">                               name: value.name,</span><br><span class="line">                               project: []</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sizeArea == 1)&#123; // 点击一级 加载二级</span><br><span class="line">                  this.<span class="variable">$post</span>(<span class="string">'gantt'</span>,<span class="string">'queryPlanPartList'</span>,&#123;pid:this.otherParames.projectTypeCode&#125;).<span class="keyword">then</span>(res=&gt;&#123;</span><br><span class="line">                      <span class="keyword">if</span>(res.code == 200)&#123;</span><br><span class="line">                          var Items = JSON.parse(res.data);</span><br><span class="line">                          this.cascaderData.map((value, i) =&gt; &#123;</span><br><span class="line">                              this.twoLevel = Items;//将第一级数据存起来</span><br><span class="line">                              <span class="keyword">if</span> (value.id === val[0]) &#123;</span><br><span class="line">                                  <span class="keyword">if</span> (!value.project.length) &#123;</span><br><span class="line">                                      value.project = Items.map((value, i) =&gt; &#123;</span><br><span class="line">                                          <span class="built_in">return</span> &#123;</span><br><span class="line">                                              id: value.id,</span><br><span class="line">                                              name: value.name,</span><br><span class="line">                                              project: []</span><br><span class="line">                                          &#125;</span><br><span class="line">                                      &#125;)</span><br><span class="line">                                  &#125;</span><br><span class="line">                              &#125;</span><br><span class="line">                          &#125;)</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;)</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (sizeArea === 2) &#123; // 点击二级 加载三级</span><br><span class="line">                 this.<span class="variable">$post</span>(<span class="string">'gantt'</span>,<span class="string">'queryPlanPartList'</span>,&#123;pid:this.otherParames.projectTypeCode&#125;).<span class="keyword">then</span>(res=&gt;&#123;</span><br><span class="line">                     <span class="keyword">if</span>(res.code == 200)&#123;</span><br><span class="line">                         var Items = JSON.parse(res.data);</span><br><span class="line">                         this.threeLevel = Items;//将第一级数据存起来</span><br><span class="line">                         this.cascaderData.map((value, i) =&gt; &#123;</span><br><span class="line">                             <span class="keyword">if</span> (value.id === val[0]) &#123;</span><br><span class="line">                                 value.project.map((value, i) =&gt; &#123;</span><br><span class="line">                                     <span class="keyword">if</span> (value.id === val[1]) &#123;</span><br><span class="line">                                         <span class="keyword">if</span> (!value.project.length) &#123;</span><br><span class="line">                                             value.project = Items.map((value, i) =&gt; &#123;</span><br><span class="line">                                                 <span class="built_in">return</span> &#123;</span><br><span class="line">                                                     id: value.id,</span><br><span class="line">                                                     name: value.name</span><br><span class="line">                                                 &#125;</span><br><span class="line">                                             &#125;)</span><br><span class="line">                                         &#125;</span><br><span class="line">                                     &#125;</span><br><span class="line">                                 &#125;)</span><br><span class="line">                             &#125;</span><br><span class="line">                         &#125;)</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;)</span><br><span class="line">             &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">      //是否外地返京</span><br><span class="line">        otherPlaces:[</span><br><span class="line">          &#123; id: 0, name: <span class="string">'否'</span> &#125;,</span><br><span class="line">          &#123; id: 1, name: <span class="string">'是'</span> &#125;,</span><br><span class="line">        ],</span><br><span class="line">        otherPlacesIndex:<span class="string">''</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">//是否外地返京  picker值改变的时候改变显示</span><br><span class="line">otherPlacesPicker: <span class="keyword">function</span> (e) &#123;</span><br><span class="line">  this.setData(&#123;</span><br><span class="line">    otherPlacesIndex: e.detail.value</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">formSubmit: <span class="keyword">function</span> (e) &#123;</span><br><span class="line">//e.detail.value获取的是form表单中所有的name</span><br><span class="line">    var self = this;</span><br><span class="line">    var fromData = e.detail.value;</span><br><span class="line">    var realName = fromData.realName.trim();//姓名</span><br><span class="line">    var sex = fromData.sex;//性别</span><br><span class="line">    var fanjingFlag = fromData.fanjingFlag;//是否外地返京</span><br><span class="line">    <span class="keyword">if</span> (retType == null) &#123;</span><br><span class="line">      wx.showToast(&#123;</span><br><span class="line">        title: <span class="string">'请选择返程方式'</span>,</span><br><span class="line">        icon: <span class="string">'none'</span>,</span><br><span class="line">        duration: 2000</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">          url: urlList.insertUserInfo,</span><br><span class="line">          data: fromData,</span><br><span class="line">          method: <span class="string">'POST'</span>,</span><br><span class="line">          header: &#123;</span><br><span class="line">            <span class="string">'content-type'</span>: <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="keyword">if</span> (res.statusCode == 200) &#123;</span><br><span class="line">            wx.hideLoading();</span><br><span class="line">            wx.showToast(&#123;</span><br><span class="line">              title: <span class="string">'提交成功'</span>,</span><br><span class="line">              icon: <span class="string">'success'</span>,</span><br><span class="line">              duration: 2000</span><br><span class="line">            &#125;);</span><br><span class="line">            //提交后清空表单</span><br><span class="line">            self.setData(&#123;</span><br><span class="line">              username: <span class="string">''</span>,</span><br><span class="line">              checked:<span class="literal">false</span>,</span><br><span class="line">              otherPlacesIndex:<span class="string">''</span></span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            wx.showToast(&#123;</span><br><span class="line">              title: <span class="string">'提交失败'</span>,</span><br><span class="line">              icon: <span class="string">'none'</span>,</span><br><span class="line">              duration: 2000</span><br><span class="line">            &#125;);</span><br><span class="line">            setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">              wx.hideLoading()</span><br><span class="line">            &#125;, 2000);</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -220,7 +217,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Element-ui</a>
         		</li>
       		
 		</ul>
@@ -276,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2020/02/20/smallform/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/wl001/wl001.github.io.git/2019/08/04/elementuiCascader/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,8 +297,8 @@
     </a>
   
   
-    <a href="/2019/02/21/demo_newDate/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript中new Date（）只取日期</div>
+    <a href="/2019/06/04/elementuiBug/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Element-ui使用汇总</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -427,15 +424,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ApiCloud</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,19 +452,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,11 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,39 +512,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Less</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +524,39 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Less</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
             
             <div class="clearfix"></div>
