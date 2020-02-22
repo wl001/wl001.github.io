@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="记录一下APIcloud的基础用法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-28T02:07:46.322Z">
+<meta property="og:updated_time" content="2019-10-12T08:41:05.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="APIcloud的基础总结">
 <meta name="twitter:description" content="记录一下APIcloud的基础用法">
@@ -179,7 +179,15 @@
 </ul>
 <h3 id="打开FrameGroup"><a href="#打开FrameGroup" class="headerlink" title="打开FrameGroup"></a>打开FrameGroup</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav id=<span class="string">"nav"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"menu selected"</span> tapmode=<span class="string">"selected"</span> onclick=<span class="string">"fnSetNavMenuIndex(0);"</span>&gt;水果&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"menu"</span> tapmode=<span class="string">"selected"</span> onclick=<span class="string">"fnSetNavMenuIndex(1);"</span>&gt;食材&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"menu"</span> tapmode=<span class="string">"selected"</span> onclick=<span class="string">"fnSetNavMenuIndex(2);"</span>&gt;零食&lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">apiready = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    nav = <span class="variable">$api</span>.byId(<span class="string">'nav'</span>);</span><br><span class="line">    var menus = <span class="variable">$api</span>.domAll(nav, <span class="string">'div'</span>);</span><br><span class="line">    // 构造FrameGroup中的Frame数组</span><br><span class="line">    var frames = [];</span><br><span class="line">    <span class="keyword">for</span>(var i =0; i &lt; menus.length; i++)&#123;</span><br><span class="line">      frames.push(&#123;</span><br><span class="line">        name: <span class="string">'main_frame_'</span> + i,</span><br><span class="line">        url: <span class="string">'./main_frame'</span>+i+<span class="string">'.html'</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    // 打开FrameGroup</span><br><span class="line">    api.openFrameGroup (&#123;</span><br><span class="line">        name: <span class="string">'mainFrameGroup'</span>,</span><br><span class="line">        rect: &#123;</span><br><span class="line">             x: 0,</span><br><span class="line">             y: headerH + navH ,</span><br><span class="line">             w: <span class="string">'auto'</span>,</span><br><span class="line">             h: <span class="string">'auto'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        index: 0,</span><br><span class="line">        frames:frames</span><br><span class="line">    &#125;, <span class="keyword">function</span>(ret, err)&#123;</span><br><span class="line">        fnSetNavMenuSelected(ret.index)</span><br><span class="line">    &#125;);</span><br><span class="line">    // 更新分类菜单的选中状态</span><br><span class="line">    <span class="keyword">function</span> fnSetNavMenuSelected(_index)&#123;</span><br><span class="line">      <span class="keyword">for</span>(var i =0; i &lt; menus.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(_index == i )&#123;</span><br><span class="line">          <span class="variable">$api</span>.addCls(menus[i], <span class="string">'selected'</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="variable">$api</span>.removeCls(menus[i], <span class="string">'selected'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //点击Group</span><br><span class="line">    <span class="keyword">function</span> fnSetNavMenuIndex(index)&#123;</span><br><span class="line">       api.setFrameGroupIndex(&#123;</span><br><span class="line">           name: <span class="string">'mainFrameGroup'</span>,</span><br><span class="line">           index: index,</span><br><span class="line">           scroll: <span class="literal">false</span></span><br><span class="line">       &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="监听手机返回键"><a href="#监听手机返回键" class="headerlink" title="监听手机返回键"></a>监听手机返回键</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apiready = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //连续返回两次退出当前应用</span><br><span class="line">    api.addEventListener(&#123;</span><br><span class="line">        name: <span class="string">'keyback'</span></span><br><span class="line">    &#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">        var backTime = <span class="variable">$api</span>.getStorage(<span class="string">"keyback_clickTime"</span>);</span><br><span class="line">        var now = new Date().getTime();</span><br><span class="line">        <span class="keyword">if</span> (now - backTime &lt; 1200) &#123;</span><br><span class="line">            api.closeWidget();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$api</span>.setStorage(<span class="string">"keyback_clickTime"</span>, now);</span><br><span class="line">            api.toast(&#123;</span><br><span class="line">                msg: <span class="string">'再点一次返回关闭应用'</span>,</span><br><span class="line">                duration: 1000,</span><br><span class="line">                location: <span class="string">'bottom'</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="api-execScript-跨页面传参以及触发方法"><a href="#api-execScript-跨页面传参以及触发方法" class="headerlink" title="api.execScript 跨页面传参以及触发方法"></a>api.execScript 跨页面传参以及触发方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 跨窗口执行Script, 将用户名传给登录页面</span><br><span class="line">api.execScript(&#123;</span><br><span class="line">    name: <span class="string">'login'</span>,//win窗口</span><br><span class="line">    frameName: <span class="string">'login_frame'</span>,//frame窗口</span><br><span class="line">    script: <span class="string">'fnSetUsername("'</span> + usernameVal + <span class="string">'");'</span></span><br><span class="line">&#125;);</span><br><span class="line">// 被注册页面调用，用于从注册页面传递用户名</span><br><span class="line"><span class="keyword">function</span> fnSetUsername(username_) &#123;</span><br><span class="line">    usernameValue = username_;</span><br><span class="line">    UIInput.value(&#123;</span><br><span class="line">        id: usernameUIInputId,</span><br><span class="line">        msg: username_</span><br><span class="line">    &#125;, <span class="keyword">function</span>(ret, err) &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="api-execScript-跨页面传参以及触发方法"><a href="#api-execScript-跨页面传参以及触发方法" class="headerlink" title="api.execScript 跨页面传参以及触发方法"></a>api.execScript 跨页面传参以及触发方法</h3><ul>
+<li>查询页面带参数触发其他win页面方法及传参</li>
+<li><p>search_frm页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.search'</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var formParams = &#123;</span><br><span class="line">		<span class="string">"workerName"</span>:$(<span class="string">"#workerName"</span>).val(),</span><br><span class="line">		<span class="string">"idCardNumber"</span>:$(<span class="string">"#idCardNumber"</span>).val(),</span><br><span class="line">		<span class="string">"startDate"</span>:$(<span class="string">"#startDate"</span>).val(),</span><br><span class="line">		<span class="string">"endDate"</span>:$(<span class="string">"#endDate"</span>).val(),</span><br><span class="line">	&#125;</span><br><span class="line">	var params = JSON.stringify(formParams);</span><br><span class="line">	api.execScript(&#123;</span><br><span class="line">			name:<span class="string">'attendance_win'</span>,</span><br><span class="line">			frameName: <span class="string">'attendance_frm'</span>,//frame窗口</span><br><span class="line">			script: <span class="string">'getFormParams('</span>+params+<span class="string">');'</span></span><br><span class="line">	&#125;);</span><br><span class="line">	api.closeWin();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传参的win页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var workerName,idCardNumber,startDate;</span><br><span class="line">getFormParams(formParams)&#123;</span><br><span class="line">   workerName = formParams.workerName;</span><br><span class="line">   idCardNumber= formParams.idCardNumber;</span><br><span class="line">   startDate= formParams.startDate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="sendEvent"><a href="#sendEvent" class="headerlink" title="sendEvent"></a>sendEvent</h3><ul>
 <li>将任意一个自定义事件广播出去，该事件可在任意页面通过 addEventListener 监听收到<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">api.sendEvent(&#123;</span><br><span class="line">    name: <span class="string">'myEvent'</span>,</span><br><span class="line">    extra: &#123;</span><br><span class="line">        key1: <span class="string">'value1'</span>,</span><br><span class="line">        key2: <span class="string">'value2'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//html页面a：</span><br><span class="line">api.addEventListener(&#123;</span><br><span class="line">    name: <span class="string">'myEvent'</span></span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">    alert(JSON.stringify(ret.value));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//html页面b：</span><br><span class="line">api.addEventListener(&#123;</span><br><span class="line">    name: <span class="string">'myEvent'</span></span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">    alert(JSON.stringify(ret.value));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
@@ -188,12 +196,13 @@
 <h3 id="urStorage提供类似localStorage的功能"><a href="#urStorage提供类似localStorage的功能" class="headerlink" title="urStorage提供类似localStorage的功能"></a>urStorage提供类似localStorage的功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//存储数据</span><br><span class="line"><span class="variable">$api</span>.setStorage(<span class="string">"usernames"</span>, usernames);</span><br><span class="line">//获取数据</span><br><span class="line"><span class="variable">$api</span>.getStorage(<span class="string">"usernames"</span>);</span><br><span class="line">//移除保存的数据</span><br><span class="line"><span class="variable">$api</span>.rmStorage(<span class="string">"usernames"</span>);</span><br><span class="line">//清空本地存储</span><br><span class="line"><span class="variable">$api</span>.clear(<span class="string">"usernames"</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="图片缓存-api-imageCache"><a href="#图片缓存-api-imageCache" class="headerlink" title="图片缓存 #api.imageCache"></a>图片缓存 #api.imageCache</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">api.imageCache(&#123;</span><br><span class="line">    //要缓存的图片地址</span><br><span class="line">    url: <span class="string">'img.url'</span></span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">    //判断是否缓存成功 如果成功更新图片路径</span><br><span class="line">    <span class="keyword">if</span>(ret&amp;&amp;ret.status==<span class="literal">true</span>)&#123;</span><br><span class="line">       img.src = ret.url;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="下拉刷新"><a href="#下拉刷新" class="headerlink" title="下拉刷新"></a>下拉刷新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">api.setRefreshHeaderInfo(&#123;</span><br><span class="line">    visible: <span class="literal">true</span>,</span><br><span class="line">    loadingImg: <span class="string">'widget://image/refresh.png'</span>,</span><br><span class="line">    bgColor: <span class="string">'#ccc'</span>,</span><br><span class="line">    textColor: <span class="string">'#fff'</span>,</span><br><span class="line">    textDown: <span class="string">'下拉刷新...'</span>,</span><br><span class="line">    textUp: <span class="string">'松开刷新...'</span>,</span><br><span class="line">    showTime: <span class="literal">true</span></span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err)&#123;</span><br><span class="line">    这里调用api.ajax加载数据</span><br><span class="line">    //恢复刷新状态</span><br><span class="line">    api.refreshHeaderLoadDone();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="上拉加载"><a href="#上拉加载" class="headerlink" title="上拉加载"></a>上拉加载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">var data=[];</span><br><span class="line">api.addEventListener(&#123;</span><br><span class="line">	name : <span class="string">'scrolltobottom'</span>,</span><br><span class="line">	extra : &#123;</span><br><span class="line">	    //设置距离底部多少距离时触发，默认值为0，数字类型</span><br><span class="line">		threshold : 0</span><br><span class="line">	&#125;</span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">	api.showProgress(&#123;</span><br><span class="line">    	title : <span class="string">'加载中...'</span>,</span><br><span class="line">    	modal : <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">    api.ajax(&#123;</span><br><span class="line">        url: <span class="string">'http://192.168.1.101:3101/upLoad'</span>,</span><br><span class="line">        method: <span class="string">'post'</span>,</span><br><span class="line">        data: data</span><br><span class="line">    &#125;,<span class="keyword">function</span>(ret, err)&#123;</span><br><span class="line">        <span class="keyword">if</span> (ret.status == <span class="string">'1'</span> &amp;&amp; ret.resp_data.length &gt; 0) &#123;</span><br><span class="line">          var nedata = ret.resp_data;</span><br><span class="line">          <span class="keyword">for</span> (var i = 0; i &lt; nedata.length; i++) &#123;</span><br><span class="line">      	    	data.push(nedata[i]);</span><br><span class="line">      	    &#125;</span><br><span class="line">          api.hideProgress();</span><br><span class="line">          addlilist(data);//处理数据</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          api.hideProgress();</span><br><span class="line">      		api.toast(&#123;</span><br><span class="line">      			msg : <span class="string">'没有更多数据了'</span></span><br><span class="line">      		&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//数据处理</span><br><span class="line"><span class="keyword">function</span> addlilist(data)&#123;</span><br><span class="line">    $(data).each(<span class="keyword">function</span>(index, element) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="上拉加载分页"><a href="#上拉加载分页" class="headerlink" title="上拉加载分页"></a>上拉加载分页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">var pageIndex,pageSize = 10;</span><br><span class="line">api.addEventListener(&#123;</span><br><span class="line">	name : <span class="string">'scrolltobottom'</span>,</span><br><span class="line">	extra : &#123;</span><br><span class="line">	    //设置距离底部多少距离时触发，默认值为0，数字类型</span><br><span class="line">		threshold : 0</span><br><span class="line">	&#125;</span><br><span class="line">&#125;, <span class="keyword">function</span>(ret, err) &#123;</span><br><span class="line">	api.showProgress(&#123;</span><br><span class="line">    	title : <span class="string">'加载中...'</span>,</span><br><span class="line">    	modal : <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">    api.ajax(&#123;</span><br><span class="line">        url: <span class="string">'http://192.168.1.101:3101/upLoad'</span>,</span><br><span class="line">        method: <span class="string">'post'</span>,</span><br><span class="line">        data: &#123;</span><br><span class="line">         	body : &#123;</span><br><span class="line">         		<span class="string">"pageIndex"</span>: pageIndex,</span><br><span class="line">                <span class="string">"pageSize"</span>: pageSize,</span><br><span class="line">         	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="keyword">function</span>(ret, err)&#123;</span><br><span class="line">        <span class="keyword">if</span> (ret.code == <span class="string">'200'</span> &amp;&amp; JSON.parse(ret.data).records.length &gt; 0)&#123;</span><br><span class="line">          var data1 = JSON.parse(ret.data);</span><br><span class="line">          var attendamceList = data1.records;</span><br><span class="line">          count = attendamceList.total;</span><br><span class="line">          //算出下拉后新增数据的长度加上之前数据的长度arrayLength 计算分页</span><br><span class="line">          arrayLength = arrayLength + attendamceList.length;</span><br><span class="line">          pageIndex = Math.ceil(arrayLength / pageSize + 1);</span><br><span class="line">          api.hideProgress();</span><br><span class="line">          moreData(attendamceList);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          api.hideProgress();</span><br><span class="line">          api.toast(&#123;</span><br><span class="line">            msg: <span class="string">'没有更多数据了'</span></span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">//数据处理</span><br><span class="line">  <span class="keyword">function</span> moreData(data) &#123;</span><br><span class="line">      var list = [];</span><br><span class="line">      $(data).each(<span class="keyword">function</span>(index, val) &#123;</span><br><span class="line">          var projectName = val.projectName || <span class="string">' '</span>;</span><br><span class="line">          var workAreaName = val.workAreaName || <span class="string">' '</span>;</span><br><span class="line">          list.push(<span class="string">"&lt;li style='overflow:hidden'&gt;"</span>);</span><br><span class="line">          list.push(<span class="string">"&lt;div class='listInfo'&gt;"</span>);</span><br><span class="line">          list.push(<span class="string">"&lt;div class='textWrap'&gt;&lt;span class='t'&gt;项目名称&lt;/span&gt;&lt;span class='t'&gt;"</span> + projectName + <span class="string">"&lt;/span&gt;&lt;/div&gt;"</span>);</span><br><span class="line">          list.push(<span class="string">"&lt;div class='textWrap'&gt;&lt;span class='t'&gt;工区名称&lt;/span&gt;&lt;span class='t'&gt;"</span> + workAreaName + <span class="string">"&lt;/span&gt;&lt;/div&gt;"</span>);</span><br><span class="line">          list.push(<span class="string">"&lt;/div&gt;&lt;/li&gt;"</span>);</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">      $(<span class="string">'.ulList'</span>).append(list.join(<span class="string">''</span>));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="loading效果"><a href="#loading效果" class="headerlink" title="loading效果"></a>loading效果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//显示</span><br><span class="line">api.showProgress(&#123;</span><br><span class="line">	style : <span class="string">'default'</span>,</span><br><span class="line">	animationType : <span class="string">'fade'</span>,</span><br><span class="line">	title : <span class="string">'努力加载中...'</span>,</span><br><span class="line">	text : <span class="string">'先喝杯茶...'</span>,</span><br><span class="line">	modal : <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">//隐藏</span><br><span class="line">api.hideProgress();</span><br></pre></td></tr></table></figure>
 <h5 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h5><ul>
 <li>UIInput模块打开新页面会立刻弹出键盘比如登录页…</li>
 <li>UIActionSelector是一个支持弹出动画的多级选择器。col控住关联等级</li>
 <li>UIScrollPicture轮播图模块</li>
+<li>LCalendar时间模块 需要下载js和css文件单独引入 每绑定一个都需要初始化new一下</li>
 </ul>
 
       
@@ -309,18 +318,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/06/demo_arr/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/05/demo_prink/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript数组获取相同元素个数
+          JavaScript实现区域打印二维码效果
         
       </div>
     </a>
   
   
-    <a href="/2018/11/05/urlSearchParams/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">urlSearchParams处理参数格式</div>
+    <a href="/2018/11/05/ApiCloudOpenFrameGroup/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">APIcloud之openFrameGroup</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -450,11 +459,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,19 +487,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,7 +519,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,7 +527,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +539,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,7 +547,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,15 +555,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,11 +567,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +579,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

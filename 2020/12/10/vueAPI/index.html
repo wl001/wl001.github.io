@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T11:03:20.969Z">
+<meta property="og:updated_time" content="2020-02-22T11:17:46.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2总结一些小功能">
 <meta name="twitter:description" content="本篇文章收集一些vue2的API和功能，留着参考。">
@@ -168,6 +168,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本篇文章收集一些vue2的API和功能，留着参考。<br><a id="more"></a></p>
+<h3 id="根据cookie直接跳第三方系统免登录"><a href="#根据cookie直接跳第三方系统免登录" class="headerlink" title="根据cookie直接跳第三方系统免登录"></a>根据cookie直接跳第三方系统免登录</h3><ul>
+<li>需要线上根据域名才能成功跳转 本地没有实际效果<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">this.<span class="variable">$post</span>(<span class="string">'WMA'</span>,<span class="string">'getTokenOther'</span>,&#123;</span><br><span class="line">    projectCode:this.projectCode</span><br><span class="line">&#125;).<span class="keyword">then</span>(res=&gt;&#123;</span><br><span class="line">    document.cookie = <span class="string">'Access-Token='</span>+ res.access_token +<span class="string">'; path=/'</span></span><br><span class="line">    window.open(<span class="string">'http://11.111.11.111:8039'</span>,<span class="string">'_blank'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h5 id="一-、keep-alive"><a href="#一-、keep-alive" class="headerlink" title="一 、keep-alive"></a>一 、keep-alive</h5><p>实现router切换状态保留 如果加载的数据ok 就不用重复加载了。代码示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=<span class="string">"tab"</span>&gt;</span><br><span class="line">      &lt;router-link class=<span class="string">"tab-item"</span> to=<span class="string">"/goods"</span> tag=<span class="string">"li"</span> active-class=<span class="string">"active"</span>&gt;</span><br><span class="line">        &lt;a  href=<span class="string">"javascript:;"</span>&gt;商品&lt;/a&gt;</span><br><span class="line">      &lt;/router-link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">     &lt;!--实现router切换状态保留 果加载的数据ok 就不用重复加载了--&gt;</span><br><span class="line">      &lt;keep-alive&gt;</span><br><span class="line">        &lt;!--:seller=<span class="string">"seller"</span> 向子组件传递数据--&gt;</span><br><span class="line">        &lt;router-view :seller=<span class="string">"seller"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">      &lt;/keep-alive&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
 <h5 id="二-、ref-引用指向-DOM节点"><a href="#二-、ref-引用指向-DOM节点" class="headerlink" title="二 、ref 引用指向 DOM节点"></a>二 、ref 引用指向 DOM节点</h5><p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"parent"</span>&gt;</span><br><span class="line">  &lt;user-profile ref=<span class="string">"profile"</span>&gt;&lt;/user-profile&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">// 访组件实例</span><br><span class="line">this.<span class="variable">$refs</span>.profile</span><br></pre></td></tr></table></figure></p>
 <p>获取屏幕高度和更改样式示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">  @import <span class="string">"./main.css"</span>;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=<span class="string">"main"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"header_"</span> ref=<span class="string">"header_"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"leftAside"</span> ref=<span class="string">"leftAside"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"content_"</span> ref=<span class="string">"content_"</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">export</span> default &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">      <span class="built_in">return</span> &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">mounted</span></span>() &#123;</span><br><span class="line">      // //浏览器高度</span><br><span class="line">      <span class="built_in">let</span> w = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;</span><br><span class="line">      <span class="built_in">let</span> wH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;</span><br><span class="line">      <span class="built_in">let</span> topH = this.<span class="variable">$refs</span>.header_.offsetHeight;</span><br><span class="line">      this.<span class="variable">$refs</span>.leftAside.style.height = (w - topH) +<span class="string">'px'</span></span><br><span class="line">      <span class="built_in">let</span> centreW = this.<span class="variable">$refs</span>.leftAside.offsetWidth;</span><br><span class="line">      this.<span class="variable">$refs</span>.content_.style.width = (wH - centreW) +<span class="string">'px'</span></span><br><span class="line">      this.<span class="variable">$refs</span>.content_.style.height = (w - topH) +<span class="string">'px'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
@@ -443,11 +447,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,19 +475,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +507,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,7 +515,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,7 +527,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,7 +535,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,15 +543,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +555,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +567,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

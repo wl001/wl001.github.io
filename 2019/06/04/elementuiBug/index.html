@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-04T08:10:28.396Z">
+<meta property="og:updated_time" content="2019-11-29T07:08:23.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Element-ui使用汇总">
 <meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
@@ -172,16 +172,23 @@
 <li>在做表格增删改查中时常要在弹窗上用到form表单验证，第一次点击报错undefined</li>
 <li>问题出现在刷新界面后第一次新增，此时表单内的dom还没有加载完成就执行了clearValidate导致报错</li>
 <li>解决办法this.$nextTick 但是this.$nextTick会造成新增或者编辑的时候做的参数处理出现问题、新增不会清空表单，编辑的值一直是第一次选中行的数据</li>
-<li>放到this.$nextTick内部问题解决<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">addDialog</span></span>()&#123;</span><br><span class="line">    this.fromType = <span class="string">'add'</span>;</span><br><span class="line">    this.dialogTit = <span class="string">'新增'</span>;</span><br><span class="line">    this.<span class="variable">$nextTick</span>(()=&gt;&#123;</span><br><span class="line">        //清空表单</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">let</span> x <span class="keyword">in</span> this.form) &#123;</span><br><span class="line">             <span class="keyword">if</span>(x ==<span class="string">'parentIds'</span>)&#123;</span><br><span class="line">                 this.form[x] = []</span><br><span class="line">             &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                 this.form[x] = <span class="string">''</span></span><br><span class="line">             &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        //清除验证规则</span><br><span class="line">        this.<span class="variable">$refs</span>.form.clearValidate();</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    //显示弹框</span><br><span class="line">    this.dialogFormVisible = <span class="literal">true</span>;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<li>放到this.$nextTick内部问题解决<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">addDialog</span></span>()&#123;</span><br><span class="line">    this.fromType = <span class="string">'add'</span>;</span><br><span class="line">    this.dialogTit = <span class="string">'新增'</span>;</span><br><span class="line">     //清空表单</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> x <span class="keyword">in</span> this.form) &#123;</span><br><span class="line">         <span class="keyword">if</span>(x ==<span class="string">'parentIds'</span>)&#123;</span><br><span class="line">             this.form[x] = []</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             this.form[x] = <span class="string">''</span></span><br><span class="line">         &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    this.<span class="variable">$nextTick</span>(()=&gt;&#123;</span><br><span class="line">        //清除验证规则</span><br><span class="line">        this.<span class="variable">$refs</span>.form.clearValidate();</span><br><span class="line">    &#125;)</span><br><span class="line">    //显示弹框</span><br><span class="line">    this.dialogFormVisible = <span class="literal">true</span>;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="elementui中flex布局下table宽度自适应的问题（flex布局的问题基本上都是这么解决）"><a href="#elementui中flex布局下table宽度自适应的问题（flex布局的问题基本上都是这么解决）" class="headerlink" title="elementui中flex布局下table宽度自适应的问题（flex布局的问题基本上都是这么解决）"></a>elementui中flex布局下table宽度自适应的问题（flex布局的问题基本上都是这么解决）</h3><ul>
 <li>文章地址<a href="https://blog.csdn.net/qq_19694913/article/details/81144314" target="_blank" rel="noopener">https://blog.csdn.net/qq_19694913/article/details/81144314</a></li>
 <li>BUG：在flex容器下面的一个flex:1的子容器里面写了个el-table用来展示列表数据，在做宽度自适应测试的时候发现该组件的宽度只会增加不会缩小。</li>
 <li>Debug：通过控制台发现组件生成的table的宽度是动态计算的，翻查源码，发现以下代码段</li>
-<li>解决方案：可以将设置了flex属性的容器设置position:relative，然后在子元素加多一层div包裹内容，设置position:absolute; width:100%;继承父级宽度，那么内容也会继承该div的宽度了。</li>
+<li>解决方案：可以将设置了flex属性的容器设置position:relative，然后在子元素加多一层div包裹内容，设置position:absolute; width:100%;继承父级宽度，那么内容也会继承该div的宽度了。<h3 id="elementui中验证规则"><a href="#elementui中验证规则" class="headerlink" title="elementui中验证规则"></a>elementui中验证规则</h3></li>
+<li>elementui中验证规则prop中声明的字段要和v-model绑定的地段相同（prop=’projectName’,v-model=’addForm.projectName’）;</li>
+<li>prop=’projectName’中的projectName字段必须在data数据中有<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">data</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>&#123;</span><br><span class="line">        addForm:&#123;</span><br><span class="line">            projectName:<span class="string">''</span>//验证必须要有验证的字段</span><br><span class="line">        &#125;,</span><br><span class="line">        rules:&#123;</span><br><span class="line">            projectName:[</span><br><span class="line">                &#123;//验证规则&#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h3 id="element-ui-table底行合计"><a href="#element-ui-table底行合计" class="headerlink" title="element-ui  table底行合计"></a>element-ui  table底行合计</h3><ul>
+<li>如果是在template中自定义的话 需要有prop属性<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column width=<span class="string">"80"</span> prop=<span class="string">"yearQuantities"</span> label=<span class="string">"工程量"</span> align=<span class="string">"center"</span>&gt;</span><br><span class="line">    &lt;template scope=<span class="string">"scope"</span>&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123;scope.row.yearQuantities&#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">getSummaries(param) &#123;</span><br><span class="line">       const &#123; columns, data &#125; = param;</span><br><span class="line">       const sums = [];</span><br><span class="line">       columns.forEach((column, index) =&gt; &#123;</span><br><span class="line">         <span class="keyword">if</span> (index === 0) &#123;</span><br><span class="line">           sums[index] = <span class="string">'总价'</span>;</span><br><span class="line">           <span class="built_in">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         //property这个就是prop的字段 否则undefined</span><br><span class="line">         const values = data.map(item =&gt; Number(item[column.property]));</span><br><span class="line">         <span class="keyword">if</span> (!values.every(value =&gt; isNaN(value))) &#123;</span><br><span class="line">           sums[index] = values.reduce((prev, curr) =&gt; &#123;</span><br><span class="line">             const value = Number(curr);</span><br><span class="line">             <span class="keyword">if</span> (!isNaN(value)) &#123;</span><br><span class="line">               <span class="built_in">return</span> prev + curr;</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="built_in">return</span> prev;</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;, 0);</span><br><span class="line">           sums[index] += <span class="string">' 元'</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           sums[index] = <span class="string">'N/A'</span>;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="built_in">return</span> sums;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -295,18 +302,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/20/smallform/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/04/elementuiCascader/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          微信小程序表单提交
+          el-cascader动态加载下一级
         
       </div>
     </a>
   
   
-    <a href="/2019/03/20/gannt/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue中使用甘特图dhtmlx-gantt</div>
+    <a href="/2019/05/20/vue-quill-editor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue中简单使用vue-quill-editor编辑器</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -436,11 +443,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,19 +471,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Mobile</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +503,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +511,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,7 +523,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +531,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +539,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +551,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mxgraph</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +563,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>
