@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-29T07:08:23.502Z">
+<meta property="og:updated_time" content="2019-12-12T07:46:09.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Element-ui使用汇总">
 <meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
@@ -188,7 +188,7 @@
 <li>如果是在template中自定义的话 需要有prop属性<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column width=<span class="string">"80"</span> prop=<span class="string">"yearQuantities"</span> label=<span class="string">"工程量"</span> align=<span class="string">"center"</span>&gt;</span><br><span class="line">    &lt;template scope=<span class="string">"scope"</span>&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123;scope.row.yearQuantities&#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">getSummaries(param) &#123;</span><br><span class="line">       const &#123; columns, data &#125; = param;</span><br><span class="line">       const sums = [];</span><br><span class="line">       columns.forEach((column, index) =&gt; &#123;</span><br><span class="line">         <span class="keyword">if</span> (index === 0) &#123;</span><br><span class="line">           sums[index] = <span class="string">'总价'</span>;</span><br><span class="line">           <span class="built_in">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         //property这个就是prop的字段 否则undefined</span><br><span class="line">         const values = data.map(item =&gt; Number(item[column.property]));</span><br><span class="line">         <span class="keyword">if</span> (!values.every(value =&gt; isNaN(value))) &#123;</span><br><span class="line">           sums[index] = values.reduce((prev, curr) =&gt; &#123;</span><br><span class="line">             const value = Number(curr);</span><br><span class="line">             <span class="keyword">if</span> (!isNaN(value)) &#123;</span><br><span class="line">               <span class="built_in">return</span> prev + curr;</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="built_in">return</span> prev;</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;, 0);</span><br><span class="line">           sums[index] += <span class="string">' 元'</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           sums[index] = <span class="string">'N/A'</span>;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="built_in">return</span> sums;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">getSummaries(param) &#123;</span><br><span class="line">       const &#123; columns, data &#125; = param;</span><br><span class="line">       const sums = [];</span><br><span class="line">       columns.forEach((column, index) =&gt; &#123;</span><br><span class="line">         //property这个就是prop的字段 否则undefined</span><br><span class="line">         const values = data.map(item =&gt; Number(item[column.property]));</span><br><span class="line">         <span class="keyword">if</span> (!values.every(value =&gt; isNaN(value))) &#123;</span><br><span class="line">           sums[index] = values.reduce((prev, curr) =&gt; &#123;</span><br><span class="line">             const value = Number(curr);</span><br><span class="line">             <span class="keyword">if</span> (!isNaN(value)) &#123;</span><br><span class="line">               <span class="built_in">return</span> prev + curr;</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="built_in">return</span> prev;</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;, 0);</span><br><span class="line">           sums[index] += <span class="string">' 元'</span>;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           sums[index] = <span class="string">'N/A'</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (index === 0) &#123;</span><br><span class="line">           sums[index] = <span class="string">'总价'</span>;</span><br><span class="line">           <span class="built_in">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         //自定义算出第6列的值</span><br><span class="line">         <span class="keyword">if</span> (index === 6) &#123;</span><br><span class="line">             sums[6] = (sums[5]/sums[2]*100).toFixed(2);</span><br><span class="line">             <span class="built_in">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="built_in">return</span> sums;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -479,10 +479,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
@@ -507,11 +503,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,6 +555,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
@@ -567,11 +567,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

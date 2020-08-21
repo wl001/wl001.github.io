@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="reacy初体验，总结记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-27T09:10:52.882Z">
+<meta property="og:updated_time" content="2020-03-17T02:21:20.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react项目总结">
 <meta name="twitter:description" content="reacy初体验，总结记录">
@@ -175,7 +175,8 @@
 <li>yarn add less-loader<h5 id="暴露webpack配置"><a href="#暴露webpack配置" class="headerlink" title="暴露webpack配置"></a>暴露webpack配置</h5></li>
 <li>react脚手架的webpack是隐藏的需要eject命令来暴露</li>
 <li>yarn eject 然后package.json会多出一堆配置，我们只关注script的运行和打包命令和自己安装的插件存在就好</li>
-<li><p>暴漏过后会多出script文件(不用管)和config文件(webpack的配置)</p>
+<li>暴漏过后会多出script文件(不用管)和config文件(webpack的配置)</li>
+<li><p>遇到的问题：关于文件按被修改了 无法运行yarn eject命令（是git导致的要不就把隐藏的.git文件夹删掉）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webpack.config.dev.js 开发配置</span><br><span class="line">webpack.config.prod.js 生产配置</span><br><span class="line">webpackDevServer.config.js 本地Server开发</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在dev中的配置也要移入prod中，否则上线会出现问题</p>
@@ -199,6 +200,8 @@
 <li><p>插件会帮你转换成 antd/lib/xxx 的写法。另外此插件配合 style 属性可以做到模块样式的按需自动加载。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Process JS with Babel.</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="built_in">test</span>: /\.(js|jsx|mjs)$/,</span><br><span class="line">   include: paths.appSrc,</span><br><span class="line">   loader: require.resolve(<span class="string">'babel-loader'</span>),</span><br><span class="line">   options: &#123;</span><br><span class="line">     <span class="string">"plugins"</span>: [</span><br><span class="line">       [<span class="string">"import"</span>, [&#123;//按需加载</span><br><span class="line">         libraryName: <span class="string">"antd"</span>,//暴露的库</span><br><span class="line">         //指定css的话更改主题没法更改css，<span class="literal">true</span>可以动态进行编译</span><br><span class="line">         style: <span class="literal">true</span></span><br><span class="line">       &#125;]]</span><br><span class="line">     ],</span><br><span class="line">     compact: <span class="literal">true</span>,</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>更新后是修改package.json的babel处 看antd的教程文档即可</p>
+</li>
 <li><p>但是配置完less会报错是因为less版本导致的 需要安装less 2.7.3和3.0之间的版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add less@^2.7.3</span><br></pre></td></tr></table></figure>
 </li>
@@ -217,9 +220,10 @@
 <li>资料博客 <a href="https://blog.csdn.net/younghaiqing/article/details/54799303" target="_blank" rel="noopener">https://blog.csdn.net/younghaiqing/article/details/54799303</a><h5 id="Jsonp"><a href="#Jsonp" class="headerlink" title="Jsonp"></a>Jsonp</h5></li>
 <li>跨域的条件是同源策略 协议相同、域名相同、端口相同必须三者符合才不跨域</li>
 <li>axios只支持get、post等不支持跨域，需要下载第三方插件jsonp</li>
-<li>yarn add jsonp</li>
+<li>yarn add jsonp<h3 id="react跨域文档"><a href="#react跨域文档" class="headerlink" title="react跨域文档"></a>react跨域文档</h3></li>
+<li><a href="https://github.com/facebook/create-react-app/blob/master/docusaurus/docs/proxying-api-requests-in-development.md">https://github.com/facebook/create-react-app/blob/master/docusaurus/docs/proxying-api-requests-in-development.md</a> <h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">├── config                                       // 暴露的webpack配置</span><br><span class="line">├── public                                       // 打包目录和放入的静态文件</span><br><span class="line">├── script                                       // 暴露的webpack命令配置</span><br><span class="line">├── src                                          // 项目代码</span><br><span class="line">│   ├── axios                                   // axios封装以及jsonp</span><br><span class="line">│   ├── components                              // 组件</span><br><span class="line">│   │   ├── BaseFrom                           // from封装组件</span><br><span class="line">│   │   ├── ETable                             // table封装组件</span><br><span class="line">│   │   ├── Footer                             // 底部组件</span><br><span class="line">│   │   ├── Header                             // 头部组件</span><br><span class="line">│   │   ├── NavLeft                            // 左侧菜单组件</span><br><span class="line">│   ├── config</span><br><span class="line">│   │   ├──menuConfig.js                       // 导航菜单数据</span><br><span class="line">│   ├── pages                                   // 页面</span><br><span class="line">│   │   ├── city                                //城市开通(查询)</span><br><span class="line">│   │   ├── echarts                             //图表</span><br><span class="line">│   │   ├── from                                //表单</span><br><span class="line">│   │   ├── home                                //首页</span><br><span class="line">│   │   ├── login                                //登陆注册</span><br><span class="line">│   │   ├── map                                  //车辆地图</span><br><span class="line">│   │   ├── order                                //订单管理/订单详情</span><br><span class="line">│   │   ├── permission                           //权限分配</span><br><span class="line">│   │   ├── rich                                 //富文本</span><br><span class="line">│   │   ├── table                                //表格permission</span><br><span class="line">│   │   ├── ui                                   //ui组件</span><br><span class="line">│   │   ├── user                                 //员工管理</span><br><span class="line">│   ├── redux                                    // redux</span><br><span class="line">│   │   ├── action                               //action事件触发（dispath）</span><br><span class="line">│   │   ├── reducer                              //reducer数据管理</span><br><span class="line">│   │   ├── store                                //store数据源</span><br><span class="line">│   ├── style</span><br><span class="line">│   ├── util                                    // 公共方法</span><br><span class="line">│   ├── admin.js                                // 主页面结构layout布局页面</span><br><span class="line">│   ├── App.js                                  // 项目入口（容器组件存放子组件)</span><br><span class="line">│   ├── common.js                               // 第三方通用 页面加载布局</span><br><span class="line">│   ├── index.js                                // 程序入口文件，加载各种公共组件</span><br><span class="line">│   ├── router.js                               // 路由配置</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h5 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">├── config                                       // 暴露的webpack配置</span><br><span class="line">├── public                                       // 打包目录和放入的静态文件</span><br><span class="line">├── script                                       // 暴露的webpack命令配置</span><br><span class="line">├── src                                          // 项目代码</span><br><span class="line">│   ├── axios                                   // axios封装以及jsonp</span><br><span class="line">│   ├── components                              // 组件</span><br><span class="line">│   │   ├── BaseFrom                           // from封装组件</span><br><span class="line">│   │   ├── ETable                             // table封装组件</span><br><span class="line">│   │   ├── Footer                             // 底部组件</span><br><span class="line">│   │   ├── Header                             // 头部组件</span><br><span class="line">│   │   ├── NavLeft                            // 左侧菜单组件</span><br><span class="line">│   ├── config</span><br><span class="line">│   │   ├──menuConfig.js                       // 导航菜单数据</span><br><span class="line">│   ├── pages                                   // 页面</span><br><span class="line">│   │   ├── city                                //城市开通(查询)</span><br><span class="line">│   │   ├── echarts                             //图表</span><br><span class="line">│   │   ├── from                                //表单</span><br><span class="line">│   │   ├── home                                //首页</span><br><span class="line">│   │   ├── login                                //登陆注册</span><br><span class="line">│   │   ├── map                                  //车辆地图</span><br><span class="line">│   │   ├── order                                //订单管理/订单详情</span><br><span class="line">│   │   ├── permission                           //权限分配</span><br><span class="line">│   │   ├── rich                                 //富文本</span><br><span class="line">│   │   ├── table                                //表格permission</span><br><span class="line">│   │   ├── ui                                   //ui组件</span><br><span class="line">│   │   ├── user                                 //员工管理</span><br><span class="line">│   ├── redux                                    // redux</span><br><span class="line">│   │   ├── action                               //action事件触发（dispath）</span><br><span class="line">│   │   ├── reducer                              //reducer数据管理</span><br><span class="line">│   │   ├── store                                //store数据源</span><br><span class="line">│   ├── style</span><br><span class="line">│   ├── util                                    // 公共方法</span><br><span class="line">│   ├── admin.js                                // 主页面结构layout布局页面</span><br><span class="line">│   ├── App.js                                  // 项目入口（容器组件存放子组件)</span><br><span class="line">│   ├── common.js                               // 第三方通用 页面加载布局</span><br><span class="line">│   ├── index.js                                // 程序入口文件，加载各种公共组件</span><br><span class="line">│   ├── router.js                               // 路由配置</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -333,11 +337,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/13/react_redux/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/13/reactRouter/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          redux使用
+          react路由的基本实现方式
         
       </div>
     </a>
@@ -510,10 +514,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
@@ -538,11 +538,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,6 +590,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
@@ -598,11 +602,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

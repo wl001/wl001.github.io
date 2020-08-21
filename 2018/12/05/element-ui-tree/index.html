@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Elemen-ui tree记录总结 | 我的技术博客</title>
+  <title>Element-ui tree记录总结 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
 <meta name="keywords" content="Element-ui">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elemen-ui tree记录总结">
+<meta property="og:title" content="Element-ui tree记录总结">
 <meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2018/12/05/element-ui-tree/index.html">
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-01T15:55:41.828Z">
+<meta property="og:updated_time" content="2020-08-21T15:05:16.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elemen-ui tree记录总结">
+<meta name="twitter:title" content="Element-ui tree记录总结">
 <meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架及实现思路，留作笔记">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
@@ -154,7 +154,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Elemen-ui tree记录总结
+      Element-ui tree记录总结
     </h1>
   
 
@@ -176,6 +176,9 @@
 </ul>
 <h3 id="setCurrentKey根据tree的key值选中节点并且高亮"><a href="#setCurrentKey根据tree的key值选中节点并且高亮" class="headerlink" title="setCurrentKey根据tree的key值选中节点并且高亮"></a>setCurrentKey根据tree的key值选中节点并且高亮</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.<span class="variable">$refs</span>.tree_org.setCurrentKey(curNode.key);</span><br></pre></td></tr></table></figure>
 <h3 id="打开关闭全部tree节点"><a href="#打开关闭全部tree节点" class="headerlink" title="打开关闭全部tree节点"></a>打开关闭全部tree节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> //打开全部tree节点</span><br><span class="line"><span class="function"><span class="title">openAllTreeNode</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(var i=0;i&lt;this.<span class="variable">$refs</span>.tree_org.store._getAllNodes().length;i++)&#123;</span><br><span class="line">        this.<span class="variable">$refs</span>.tree_org.store._getAllNodes()[i].expanded=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">closeTreeNode</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span>(var i=0;i&lt;this.<span class="variable">$refs</span>.tree_org.store._getAllNodes().length;i++)&#123;</span><br><span class="line">        this.<span class="variable">$refs</span>.tree_org.store._getAllNodes()[i].expanded=<span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="树查询的时候保留查询节点的子节点数据"><a href="#树查询的时候保留查询节点的子节点数据" class="headerlink" title="树查询的时候保留查询节点的子节点数据"></a>树查询的时候保留查询节点的子节点数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//优化之后的代码 不管有几级都可以适用</span><br><span class="line">filterNode(value,data,node) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!value)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">let</span> level = node.level;</span><br><span class="line">    <span class="built_in">let</span> _array = [];//这里使用数组存储 只是为了存储值。</span><br><span class="line">    this.getReturnNode(node,_array,value);</span><br><span class="line">    <span class="built_in">let</span> result = <span class="literal">false</span>;</span><br><span class="line">    _array.forEach((item)=&gt;&#123;</span><br><span class="line">        result = result || item;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> result;</span><br><span class="line">&#125;,</span><br><span class="line">getReturnNode(node,_array,value)&#123;</span><br><span class="line">    <span class="built_in">let</span> isPass = node.data &amp;&amp;  node.data.projectName &amp;&amp; node.data.projectName.indexOf(value) !== -1;</span><br><span class="line">    isPass?_array.push(isPass):<span class="string">''</span>;</span><br><span class="line">    this.index++;</span><br><span class="line">    <span class="keyword">if</span>(!isPass &amp;&amp; node.level!=1 &amp;&amp; node.parent)&#123;</span><br><span class="line">        this.getReturnNode(node.parent,_array,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="render自定义节点加点击事件"><a href="#render自定义节点加点击事件" class="headerlink" title="render自定义节点加点击事件"></a>render自定义节点加点击事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">//自定义tree节点</span><br><span class="line">renderContent(h, options) &#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    //console.log(options)</span><br><span class="line">    if (options.data.status == &apos;在线&apos;) &#123;</span><br><span class="line">        return h(&apos;span&apos;, [</span><br><span class="line">                h(&apos;i&apos;, &#123;</span><br><span class="line">                    attrs: &#123;</span><br><span class="line">                        class: &apos;online&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;&#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;</span><br><span class="line">                    domProps: &#123;</span><br><span class="line">                        innerHTML: options.data.projectName</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            ]</span><br><span class="line">        );</span><br><span class="line">    &#125; else if (options.data.status == &apos;离线&apos;) &#123;</span><br><span class="line">        return h(&apos;span&apos;, [</span><br><span class="line">                h(&apos;i&apos;, &#123;</span><br><span class="line">                    attrs: &#123;</span><br><span class="line">                        class: &apos;offline&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;&#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;</span><br><span class="line">                    domProps: &#123;</span><br><span class="line">                        innerHTML: options.data.projectName</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            ]</span><br><span class="line">        );</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return h(&apos;span&apos;, [</span><br><span class="line">                h(&apos;i&apos;, &#123;</span><br><span class="line">                    attrs: &#123;</span><br><span class="line">                        class: &apos;bumenGroup&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;&#125;, &apos;&apos;),</span><br><span class="line">                h(&apos;span&apos;, &#123;</span><br><span class="line">                    domProps: &#123;</span><br><span class="line">                        innerHTML: options.data.projectName</span><br><span class="line">                    &#125;,</span><br><span class="line">                    on: &#123;</span><br><span class="line">                        dblclick: function () &#123;</span><br><span class="line">                            var result = options.data;</span><br><span class="line">                            if (result.projectCode &amp;&amp; result.children) &#123;</span><br><span class="line">                                that.stopPlay();</span><br><span class="line">                                var child = result.children;</span><br><span class="line">                                var len = result.children.length;</span><br><span class="line">                                if (len &gt; 1 &amp;&amp; len &lt;= 4) &#123;</span><br><span class="line">                                    that.creatDiv(4);</span><br><span class="line">                                    for (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">                                        that.change(child[i]);</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            ]</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="tree过滤后展示搜索的下级节点"><a href="#tree过滤后展示搜索的下级节点" class="headerlink" title="tree过滤后展示搜索的下级节点"></a>tree过滤后展示搜索的下级节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//优化之后的代码 不管有几级都可以适用</span><br><span class="line">            filterNode(value,data,node) &#123;</span><br><span class="line">                <span class="keyword">if</span>(!value)&#123;</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">let</span> level = node.level;</span><br><span class="line">                <span class="built_in">let</span> _array = [];//这里使用数组存储 只是为了存储值。</span><br><span class="line">                this.getReturnNode(node,_array,value);</span><br><span class="line">                <span class="built_in">let</span> result = <span class="literal">false</span>;</span><br><span class="line">                _array.forEach((item)=&gt;&#123;</span><br><span class="line">                    result = result || item;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="built_in">return</span> result;</span><br><span class="line">            &#125;,</span><br><span class="line">            getReturnNode(node,_array,value)&#123;</span><br><span class="line">                <span class="built_in">let</span> isPass = node.data &amp;&amp;  node.data.projectName &amp;&amp; node.data.projectName.indexOf(value) !== -1;</span><br><span class="line">                isPass?_array.push(isPass):<span class="string">''</span>;</span><br><span class="line">                this.index++;</span><br><span class="line">                <span class="keyword">if</span>(!isPass &amp;&amp; node.level!=1 &amp;&amp; node.parent)&#123;</span><br><span class="line">                    this.getReturnNode(node.parent,_array,value);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
       
 
       
@@ -299,8 +302,8 @@
     </a>
   
   
-    <a href="/2018/12/05/element-ui-dialog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Elemeng-ui dialog弹出框嵌套遮罩问题</div>
+    <a href="/2018/12/05/element-ui-table/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">elemeng-ui table和分页记录总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -466,10 +469,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
@@ -494,11 +493,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,6 +545,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
@@ -554,11 +557,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

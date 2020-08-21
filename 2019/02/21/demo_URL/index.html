@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="通过url 进行地址传参(中文乱码处理)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-29T11:01:26.602Z">
+<meta property="og:updated_time" content="2020-08-21T14:24:37.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="url拼接的方式传参中文乱码现象">
 <meta name="twitter:description" content="通过url 进行地址传参(中文乱码处理)">
@@ -173,9 +173,10 @@
 </li>
 </ul>
 <h3 id="接收参数页面-html"><a href="#接收参数页面-html" class="headerlink" title="接收参数页面.html"></a>接收参数页面.html</h3><ul>
-<li>../aa.html?name=abc&amp;num=2222&amp;cla=%25E7%2594%25B5%25E8%2584%2591<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var name = window.location.href;</span><br><span class="line"><span class="keyword">function</span> getQueryString(name) &#123;  </span><br><span class="line">     //正则表达式，获取地址中的参数</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);  </span><br><span class="line">     var r = window.location.search.substr(1).match(reg);  </span><br><span class="line">     <span class="keyword">if</span> (r != null) <span class="built_in">return</span> unescape(r[2]); <span class="built_in">return</span> null; </span><br><span class="line"> &#125;</span><br><span class="line">var _name = getQueryString(<span class="string">"name"</span>);//2222</span><br><span class="line"> var _t = getQueryString(<span class="string">"cla"</span>); //此为中文参数，需转码</span><br><span class="line">var title = decodeURI(_t); //只需要转一次码</span><br><span class="line">console.log(title);//此处打印出来是中文。</span><br></pre></td></tr></table></figure>
+<li>../aa.html?name=abc&amp;num=2222&amp;cla=%25E7%2594%25B5%25E8%2584%2591<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var name = window.location.href;demo_URL.md</span><br><span class="line"><span class="keyword">function</span> getQueryString(name) &#123;  </span><br><span class="line">     //正则表达式，获取地址中的参数</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);  </span><br><span class="line">     var r = window.location.search.substr(1).match(reg);  </span><br><span class="line">     <span class="keyword">if</span> (r != null) <span class="built_in">return</span> unescape(r[2]); <span class="built_in">return</span> null; </span><br><span class="line"> &#125;</span><br><span class="line">var _name = getQueryString(<span class="string">"name"</span>);//2222</span><br><span class="line"> var _t = getQueryString(<span class="string">"cla"</span>); //此为中文参数，需转码</span><br><span class="line">var title = decodeURI(_t); //只需要转一次码</span><br><span class="line">console.log(title);//此处打印出来是中文。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h3 id="vue给url中文参数添加编码解码"><a href="#vue给url中文参数添加编码解码" class="headerlink" title="vue给url中文参数添加编码解码"></a>vue给url中文参数添加编码解码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 解码用</span><br><span class="line">decodeURIComponent(str)</span><br><span class="line">// 编码用</span><br><span class="line">encodeURIComponent(str)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -467,10 +468,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
@@ -495,11 +492,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,6 +544,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
@@ -555,11 +556,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>

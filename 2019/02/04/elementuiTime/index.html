@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/wl001/wl001.github.io.git">
-  <title>Element-ui的DatePicker时间选择器使用 | 我的技术博客</title>
+  <title>element-ui的DatePicker时间选择器使用 | 我的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta name="keywords" content="Element-ui">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Element-ui的DatePicker时间选择器使用">
+<meta property="og:title" content="element-ui的DatePicker时间选择器使用">
 <meta property="og:url" content="https://github.com/wl001/wl001.github.io.git/2019/02/04/elementuiTime/index.html">
 <meta property="og:site_name" content="我的技术博客">
 <meta property="og:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-04T08:10:37.351Z">
+<meta property="og:updated_time" content="2020-06-08T02:17:59.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Element-ui的DatePicker时间选择器使用">
+<meta name="twitter:title" content="element-ui的DatePicker时间选择器使用">
 <meta name="twitter:description" content="闲暇时间记录一下项目中用到的框架以及遇到的问题">
   
     <link rel="alternative" href="/atom.xml" title="我的技术博客" type="application/atom+xml">
@@ -154,7 +154,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Element-ui的DatePicker时间选择器使用
+      element-ui的DatePicker时间选择器使用
     </h1>
   
 
@@ -168,12 +168,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>闲暇时间记录一下项目中用到的框架以及遇到的问题<br><a id="more"></a></p>
-<h3 id="Elemeng-ui的DatePicker时间选择器使用"><a href="#Elemeng-ui的DatePicker时间选择器使用" class="headerlink" title="Elemeng-ui的DatePicker时间选择器使用"></a>Elemeng-ui的DatePicker时间选择器使用</h3><ul>
-<li>只能选择今天以及之后的日期</li>
-<li>value-format是时间处理格式<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-date-picker</span><br><span class="line">     style=<span class="string">"width:178px"</span></span><br><span class="line">     size=<span class="string">"mini"</span></span><br><span class="line">     v-model=<span class="string">"form.blacklistBDate"</span></span><br><span class="line">     <span class="built_in">type</span>=<span class="string">"date"</span></span><br><span class="line">     value-format=<span class="string">"yyyy-MM-dd"</span></span><br><span class="line">     :picker-options=<span class="string">"pickerOptions0"</span></span><br><span class="line">     placeholder=<span class="string">"选择日期"</span>&gt;</span><br><span class="line">&lt;/el-date-picker&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">   <span class="built_in">return</span> &#123;</span><br><span class="line">       //选择今天以及之后的日期</span><br><span class="line">       pickerOptions0: &#123;</span><br><span class="line">           disabledDate(time) &#123;</span><br><span class="line">               <span class="built_in">return</span> time.getTime() &lt; Date.now() - 8.64e7;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">      //如果没有后面的-8.64e7就是选择除了今天之后的日期</span><br><span class="line">       pickerOptions1: &#123;</span><br><span class="line">       disabledDate(time) &#123;</span><br><span class="line">           <span class="built_in">return</span> time.getTime() &lt; Date.now();</span><br><span class="line">       &#125;,</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="element-ui的DatePicker时间选择器使用-年月日"><a href="#element-ui的DatePicker时间选择器使用-年月日" class="headerlink" title="element-ui的DatePicker时间选择器使用(年月日)"></a>element-ui的DatePicker时间选择器使用(年月日)</h3><ul>
+<li><p>value-format是时间处理格式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">value-format=<span class="string">"yyyy-MM-dd"</span> //2018-12-27</span><br><span class="line">value-format=<span class="string">"yyyy-MM-dd HH:mm:ss"</span> //2018-12-27 00:00:00</span><br><span class="line">value-format=<span class="string">"timestamp"</span> // 1483326245000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只能选择今天以及之后的日期</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-date-picker</span><br><span class="line">     style=<span class="string">"width:178px"</span></span><br><span class="line">     size=<span class="string">"mini"</span></span><br><span class="line">     v-model=<span class="string">"form.blacklistBDate"</span></span><br><span class="line">     <span class="built_in">type</span>=<span class="string">"date"</span></span><br><span class="line">     value-format=<span class="string">"yyyy-MM-dd"</span></span><br><span class="line">     :picker-options=<span class="string">"pickerOptions0"</span></span><br><span class="line">     placeholder=<span class="string">"选择日期"</span>&gt;</span><br><span class="line">&lt;/el-date-picker&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="function"><span class="title">data</span></span>() &#123;</span><br><span class="line">   <span class="built_in">return</span> &#123;</span><br><span class="line">       //选择今天以及之后的日期</span><br><span class="line">       pickerOptions0: &#123;</span><br><span class="line">           disabledDate(time) &#123;</span><br><span class="line">               <span class="built_in">return</span> time.getTime() &lt; Date.now() - 8.64e7;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">      //如果没有后面的-8.64e7就是选择除了今天之后的日期</span><br><span class="line">       pickerOptions1: &#123;</span><br><span class="line">       disabledDate(time) &#123;</span><br><span class="line">           <span class="built_in">return</span> time.getTime() &lt; Date.now();</span><br><span class="line">       &#125;,</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-
+<h3 id="年月日带时分秒-type-”datetime”"><a href="#年月日带时分秒-type-”datetime”" class="headerlink" title="年月日带时分秒 type=”datetime”"></a>年月日带时分秒 type=”datetime”</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form-item label=<span class="string">"日期"</span>&gt;</span><br><span class="line">&lt;el-date-picker</span><br><span class="line">        size=<span class="string">"mini"</span></span><br><span class="line">        v-model=<span class="string">"queryItem.dateTime"</span></span><br><span class="line">        <span class="built_in">type</span>=<span class="string">"datetime"</span></span><br><span class="line">        value-format=<span class="string">"yyyy-MM-dd HH:mm:ss"</span></span><br><span class="line">        placeholder=<span class="string">"选择日期时间"</span>&gt;</span><br><span class="line">&lt;/el-date-picker&gt;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -464,10 +467,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
@@ -492,11 +491,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +543,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
@@ -552,11 +555,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">zTree</a>
+                <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
               </li>
             
             <div class="clearfix"></div>
