@@ -451,6 +451,85 @@
 
 
   
+    <article id="post-axios_encapsulation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/11/axios_encapsulation/">axios二次封装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/11/axios_encapsulation/" class="archive-article-date">
+  	<time datetime="2018-04-11T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h5 id="axios二次封装-封装公共请求"><a href="#axios二次封装-封装公共请求" class="headerlink" title="axios二次封装 封装公共请求"></a>axios二次封装 封装公共请求</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import axios from <span class="string">'axios'</span>;</span><br><span class="line">import &#123;Message&#125; from <span class="string">'element-ui'</span>;</span><br><span class="line">import &#123;path&#125; from <span class="string">'./path'</span>; //所有的请求接口</span><br><span class="line">import &#123;getToken&#125; from <span class="string">'../util/auth'</span>;</span><br><span class="line">import store from <span class="string">"../store"</span>;</span><br><span class="line">/**</span><br><span class="line"> * @param url 请求url  封装公共请求</span><br><span class="line"> * @param method get,post,put,delete</span><br><span class="line"> * @param params 参数</span><br><span class="line"> */</span><br><span class="line">const getConfig = (url, method, params,<span class="built_in">type</span> = <span class="string">"json"</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> config_ = &#123;</span><br><span class="line">        url,</span><br><span class="line">        method,</span><br><span class="line">        //data:params, //axios get传参是params post传参是data</span><br><span class="line">        responseType: <span class="built_in">type</span>,</span><br><span class="line">        headers: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    //  URLSearchParams处理会将参数 json格式改成字符串格式 很具需求来 需要就注释 data: params,</span><br><span class="line">    // 设置参数</span><br><span class="line">    <span class="keyword">if</span> (method === <span class="string">'get'</span>) &#123;</span><br><span class="line">        config_.params = params;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">'post'</span>) &#123;</span><br><span class="line">        config_.data = param;</span><br><span class="line">        config_.tmp = params;</span><br><span class="line">    &#125;</span><br><span class="line">    // 让每个请求携带token--[<span class="string">'Authorization'</span>]为自定义key 请根据实际情况自行修改</span><br><span class="line">    <span class="keyword">if</span> (store.getters.token) &#123;</span><br><span class="line">        config_.headers.Authorization = getToken();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> config_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="封装get方法"><a href="#封装get方法" class="headerlink" title="封装get方法"></a>封装get方法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> get(group, method, params = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(path[group][method], <span class="string">'get'</span>, params,  <span class="string">'text'</span>)).<span class="keyword">then</span>(response =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = response.data;</span><br><span class="line">            resolve(ret);</span><br><span class="line">        &#125;).catch(err =&gt; &#123;</span><br><span class="line">            reject(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="封装post请求"><a href="#封装post请求" class="headerlink" title="封装post请求"></a>封装post请求</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> post(group, method, data = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(path[group][method], <span class="string">'post'</span>, data, <span class="string">'text'</span>)).<span class="keyword">then</span>(response =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = response.data;</span><br><span class="line">            <span class="keyword">if</span> (ret) &#123;</span><br><span class="line">                response.data = ret;</span><br><span class="line">                resolve(ret);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;, err =&gt; &#123;</span><br><span class="line">            reject(<span class="string">'1'</span>,err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="封装下载请求"><a href="#封装下载请求" class="headerlink" title="封装下载请求"></a>封装下载请求</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 封装downloadFile 导出xls文件以及下载文件 文件流返回的形式</span><br><span class="line"> * @param title</span><br><span class="line"> * @param url</span><br><span class="line"> * @returns &#123;params&#125;</span><br><span class="line"> *</span><br><span class="line"> * this.<span class="variable">$downloadFile</span>(<span class="string">'实名制人员信息.xls'</span>,<span class="string">'/api/admin/exportWorker'</span>,&#123;ids&#125;);</span><br><span class="line"> */</span><br><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> downloadFile(title, url, params = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(url, <span class="string">'get'</span>, params, <span class="string">'blob'</span>)).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = res.data;</span><br><span class="line">            <span class="keyword">if</span>(ret)&#123;</span><br><span class="line">                //这里res.data是返回的blob对象</span><br><span class="line">                <span class="built_in">let</span> blob = new Blob([res.data]); //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet这里表示xlsx类型</span><br><span class="line">                <span class="built_in">let</span> downloadElement = document.createElement(<span class="string">'a'</span>);</span><br><span class="line">                <span class="built_in">let</span> href = window.URL.createObjectURL(blob); //创建下载的链接</span><br><span class="line"></span><br><span class="line">                downloadElement.href = href;</span><br><span class="line">                downloadElement.download = title; //下载后文件名</span><br><span class="line">                document.body.appendChild(downloadElement);</span><br><span class="line"></span><br><span class="line">                downloadElement.click(); //点击下载</span><br><span class="line">                document.body.removeChild(downloadElement); //下载完成移除元素</span><br><span class="line">                window.URL.revokeObjectURL(href); //释放掉blob对象</span><br><span class="line">                resolve(ret);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, err =&gt; &#123;</span><br><span class="line">            reject(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="封装上传"><a href="#封装上传" class="headerlink" title="封装上传"></a>封装上传</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 封装uploadFileRequest请求  图片上传</span><br><span class="line">* @param url</span><br><span class="line">* @param params 参数</span><br><span class="line">* @param fileItems 上传的file数据  <span class="built_in">let</span> fileItems = [];  fileItems.push(file);</span><br><span class="line">* @methods post</span><br><span class="line">* @returns &#123;params&#125;</span><br><span class="line">*</span><br><span class="line">*  this.<span class="variable">$uploadFileRequest</span>(<span class="string">'security'</span>,<span class="string">'uploadImg'</span>,&#123;masterType:<span class="string">"bizCheck"</span>&#125;,fileItems,<span class="function"><span class="title">function</span></span>()&#123;&#125;);</span><br><span class="line">*/</span><br><span class="line"><span class="built_in">export</span> const uploadFileRequest = (group,method, params, fileItems, callback) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> config_ = getConfig(path[group][method], <span class="string">'post'</span>, params,  <span class="string">'text'</span>);</span><br><span class="line">    <span class="built_in">let</span> param = config_.tmp;</span><br><span class="line">    config_.headers[<span class="string">'Content-Type'</span>] = <span class="string">'multipart/form-data'</span>;</span><br><span class="line">    var formData = new FormData();</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i <span class="keyword">in</span> param) &#123;</span><br><span class="line">        formData.append(i, param[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i <span class="keyword">in</span> fileItems) &#123;</span><br><span class="line">        formData.append(<span class="string">'file'</span>, fileItems[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    config_.data = formData;</span><br><span class="line">    getFileMD5s(fileItems, config_, ajax, callback);</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##### 使用方式 main.js引入</span><br><span class="line">```bash</span><br><span class="line">import &#123;post, get, downloadFile, uploadFileRequest&#125; from &apos;./utils/axios&apos;;</span><br><span class="line"></span><br><span class="line">Vue.prototype.$post = post;</span><br><span class="line">Vue.prototype.$get = get;</span><br><span class="line">Vue.prototype.$downloadFile = downloadFile;</span><br><span class="line">Vue.prototype.$uploadFileRequest = uploadFileRequest;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">axios</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/11/axios_encapsulation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-axios" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -503,85 +582,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/11/axios/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-axios_encapsulation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/axios_encapsulation/">axios二次封装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/axios_encapsulation/" class="archive-article-date">
-  	<time datetime="2018-04-11T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<h5 id="axios二次封装-封装公共请求"><a href="#axios二次封装-封装公共请求" class="headerlink" title="axios二次封装 封装公共请求"></a>axios二次封装 封装公共请求</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import axios from <span class="string">'axios'</span>;</span><br><span class="line">import &#123;Message&#125; from <span class="string">'element-ui'</span>;</span><br><span class="line">import &#123;path&#125; from <span class="string">'./path'</span>; //所有的请求接口</span><br><span class="line">import &#123;getToken&#125; from <span class="string">'../util/auth'</span>;</span><br><span class="line">import store from <span class="string">"../store"</span>;</span><br><span class="line">/**</span><br><span class="line"> * @param url 请求url  封装公共请求</span><br><span class="line"> * @param method get,post,put,delete</span><br><span class="line"> * @param params 参数</span><br><span class="line"> */</span><br><span class="line">const getConfig = (url, method, params,<span class="built_in">type</span> = <span class="string">"json"</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">let</span> config_ = &#123;</span><br><span class="line">        url,</span><br><span class="line">        method,</span><br><span class="line">        //data:params, //axios get传参是params post传参是data</span><br><span class="line">        responseType: <span class="built_in">type</span>,</span><br><span class="line">        headers: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    //  URLSearchParams处理会将参数 json格式改成字符串格式 很具需求来 需要就注释 data: params,</span><br><span class="line">    // 设置参数</span><br><span class="line">    <span class="keyword">if</span> (method === <span class="string">'get'</span>) &#123;</span><br><span class="line">        config_.params = params;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">'post'</span>) &#123;</span><br><span class="line">        config_.data = param;</span><br><span class="line">        config_.tmp = params;</span><br><span class="line">    &#125;</span><br><span class="line">    // 让每个请求携带token--[<span class="string">'Authorization'</span>]为自定义key 请根据实际情况自行修改</span><br><span class="line">    <span class="keyword">if</span> (store.getters.token) &#123;</span><br><span class="line">        config_.headers.Authorization = getToken();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> config_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="封装get方法"><a href="#封装get方法" class="headerlink" title="封装get方法"></a>封装get方法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> get(group, method, params = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(path[group][method], <span class="string">'get'</span>, params,  <span class="string">'text'</span>)).<span class="keyword">then</span>(response =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = response.data;</span><br><span class="line">            resolve(ret);</span><br><span class="line">        &#125;).catch(err =&gt; &#123;</span><br><span class="line">            reject(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="封装post请求"><a href="#封装post请求" class="headerlink" title="封装post请求"></a>封装post请求</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> post(group, method, data = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(path[group][method], <span class="string">'post'</span>, data, <span class="string">'text'</span>)).<span class="keyword">then</span>(response =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = response.data;</span><br><span class="line">            <span class="keyword">if</span> (ret) &#123;</span><br><span class="line">                response.data = ret;</span><br><span class="line">                resolve(ret);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;, err =&gt; &#123;</span><br><span class="line">            reject(<span class="string">'1'</span>,err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="封装下载请求"><a href="#封装下载请求" class="headerlink" title="封装下载请求"></a>封装下载请求</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 封装downloadFile 导出xls文件以及下载文件 文件流返回的形式</span><br><span class="line"> * @param title</span><br><span class="line"> * @param url</span><br><span class="line"> * @returns &#123;params&#125;</span><br><span class="line"> *</span><br><span class="line"> * this.<span class="variable">$downloadFile</span>(<span class="string">'实名制人员信息.xls'</span>,<span class="string">'/api/admin/exportWorker'</span>,&#123;ids&#125;);</span><br><span class="line"> */</span><br><span class="line"><span class="built_in">export</span> <span class="keyword">function</span> downloadFile(title, url, params = &#123;&#125;) &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        axios(getConfig(url, <span class="string">'get'</span>, params, <span class="string">'blob'</span>)).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">            <span class="built_in">let</span> ret = res.data;</span><br><span class="line">            <span class="keyword">if</span>(ret)&#123;</span><br><span class="line">                //这里res.data是返回的blob对象</span><br><span class="line">                <span class="built_in">let</span> blob = new Blob([res.data]); //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet这里表示xlsx类型</span><br><span class="line">                <span class="built_in">let</span> downloadElement = document.createElement(<span class="string">'a'</span>);</span><br><span class="line">                <span class="built_in">let</span> href = window.URL.createObjectURL(blob); //创建下载的链接</span><br><span class="line"></span><br><span class="line">                downloadElement.href = href;</span><br><span class="line">                downloadElement.download = title; //下载后文件名</span><br><span class="line">                document.body.appendChild(downloadElement);</span><br><span class="line"></span><br><span class="line">                downloadElement.click(); //点击下载</span><br><span class="line">                document.body.removeChild(downloadElement); //下载完成移除元素</span><br><span class="line">                window.URL.revokeObjectURL(href); //释放掉blob对象</span><br><span class="line">                resolve(ret);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, err =&gt; &#123;</span><br><span class="line">            reject(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="封装上传"><a href="#封装上传" class="headerlink" title="封装上传"></a>封装上传</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 封装uploadFileRequest请求  图片上传</span><br><span class="line">* @param url</span><br><span class="line">* @param params 参数</span><br><span class="line">* @param fileItems 上传的file数据  <span class="built_in">let</span> fileItems = [];  fileItems.push(file);</span><br><span class="line">* @methods post</span><br><span class="line">* @returns &#123;params&#125;</span><br><span class="line">*</span><br><span class="line">*  this.<span class="variable">$uploadFileRequest</span>(<span class="string">'security'</span>,<span class="string">'uploadImg'</span>,&#123;masterType:<span class="string">"bizCheck"</span>&#125;,fileItems,<span class="function"><span class="title">function</span></span>()&#123;&#125;);</span><br><span class="line">*/</span><br><span class="line"><span class="built_in">export</span> const uploadFileRequest = (group,method, params, fileItems, callback) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> config_ = getConfig(path[group][method], <span class="string">'post'</span>, params,  <span class="string">'text'</span>);</span><br><span class="line">    <span class="built_in">let</span> param = config_.tmp;</span><br><span class="line">    config_.headers[<span class="string">'Content-Type'</span>] = <span class="string">'multipart/form-data'</span>;</span><br><span class="line">    var formData = new FormData();</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i <span class="keyword">in</span> param) &#123;</span><br><span class="line">        formData.append(i, param[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">let</span> i <span class="keyword">in</span> fileItems) &#123;</span><br><span class="line">        formData.append(<span class="string">'file'</span>, fileItems[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    config_.data = formData;</span><br><span class="line">    getFileMD5s(fileItems, config_, ajax, callback);</span><br><span class="line">    <span class="built_in">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##### 使用方式 main.js引入</span><br><span class="line">```bash</span><br><span class="line">import &#123;post, get, downloadFile, uploadFileRequest&#125; from &apos;./utils/axios&apos;;</span><br><span class="line"></span><br><span class="line">Vue.prototype.$post = post;</span><br><span class="line">Vue.prototype.$get = get;</span><br><span class="line">Vue.prototype.$downloadFile = downloadFile;</span><br><span class="line">Vue.prototype.$uploadFileRequest = uploadFileRequest;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">axios</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/axios_encapsulation/">展开全文 >></a>
         </p>
       
 
@@ -1132,11 +1132,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,7 +1204,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="/www.17sucai.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IT素材</a>
+              <a href="https://www.3d66.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3D溜溜网-模型</a>
             </li>
           
             <li class="search-li">
@@ -1212,11 +1212,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
             </li>
           
             <li class="search-li">
-              <a href="https://gitee.com/zhanchiaoxiang/events" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码云</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://www.qdfuns.com/u" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>前端网</a>
+              <a href="https://learn.freecodecamp.one/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>freeCodeCamp前端基础教程</a>
             </li>
           
             <li class="search-li">
@@ -1256,15 +1252,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
             </li>
           
             <li class="search-li">
-              <a href="https://my.csdn.net/zhaohaixin0418#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>博客地址</a>
-            </li>
-          
-            <li class="search-li">
               <a href="https://leetcode-cn.com/problemset/algorithms/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>算法习题</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.52studyit.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>视频资料</a>
+              <a href="https://www.bilibili.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>B站</a>
             </li>
           
             <li class="search-li">
