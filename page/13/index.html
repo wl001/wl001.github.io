@@ -147,29 +147,29 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-superMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue.nextTick()" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/superMap/">superMap中forLeaflet的使用</a>
+      <a class="article-title" href="/2017/07/27/Vue.nextTick()/">Vue.nextTick() 获取更新后的DOM;</a>
     </h1>
   
 
         
-        <a href="/2017/05/11/superMap/" class="archive-article-date">
-  	<time datetime="2017-05-11T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+        <a href="/2017/07/27/Vue.nextTick()/" class="archive-article-date">
+  	<time datetime="2017-07-27T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目开发中用到了superMap 再次做一下知识点记录以及工作中遇到的问题，此次在项目中用到的是for Leaflet<br>
+        <p>$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM<br>
         
-          <a class="article-more-a" href="/2017/05/11/superMap/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/27/Vue.nextTick()/#more">more >></a>
         
       
 
@@ -183,7 +183,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">superMap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
         		</li>
       		
 		</ul>
@@ -193,7 +193,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/superMap/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/27/Vue.nextTick()/">展开全文 >></a>
         </p>
       
 
@@ -223,30 +223,46 @@
 
 
   
-    <article id="post-packageTool" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-VueCliProty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/packageTool/">包管理工具npm、yarn</a>
+      <a class="article-title" href="/2017/07/16/VueCliProty/">Vue-cli proxyTable 解决开发环境的跨域问题</a>
     </h1>
   
 
         
-        <a href="/2017/05/05/packageTool/" class="archive-article-date">
-  	<time datetime="2017-05-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+        <a href="/2017/07/16/VueCliProty/" class="archive-article-date">
+  	<time datetime="2017-07-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>yarn语法以及npm语法的对比<br>
-        
-          <a class="article-more-a" href="/2017/05/05/packageTool/#more">more >></a>
-        
+        <a id="more"></a>
+<ul>
+<li>参数可以看 http-proxy-middleware是一致的共通的</li>
+<li>文章来源 <a href="https://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">https://www.jianshu.com/p/95b2caf7e0da</a></li>
+<li>在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。</li>
+<li><a href="https://vuejs-templates.github.io/webpack/proxy.html" target="_blank" rel="noopener">https://vuejs-templates.github.io/webpack/proxy.html</a></li>
+<li><p>这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要请求的地址是api.xxxxxxxx.com/list/1，可以按照如下设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/list'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxxxxxxx.com'</span>,//接口域名</span><br><span class="line">    logLevel:<span class="string">'debug'</span>,//在控制台看更多的信息和域名指向</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/list'</span>: <span class="string">'/list'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样我们在写url的时候，只用写成/list/1就可以代表api.xxxxxxxx.com/list/1.</p>
+</li>
+<li><p>那么又是如何解决跨域问题的呢？其实在上面的’list’的参数里有一个changeOrigin参数，接收一个布尔值，如果设置为true,那么本地会虚拟一个服务端接收你的请求并代你发送该请求，这样就不会有跨域问题了，当然这只适用于开发环境。增加的代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/list'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxxxxxxx.com'</span>,//接口域名</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,//是否跨域</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/list'</span>: <span class="string">'/list'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vue-cli的这个设置来自于其使用的插件http-proxy-middleware</p>
+</li>
+<li>github：<a href="https://github.com/chimurai/http-proxy-middleware">https://github.com/chimurai/http-proxy-middleware</a></li>
+<li>深入了解的话可以看该插件配置说明，似乎还支持websocket，很强大的插件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">    <span class="string">'/api'</span>:&#123;</span><br><span class="line">      //服务器接口</span><br><span class="line">      target:<span class="string">'http://localhost:8080'</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,//是否跨域</span><br><span class="line">      //接下来希望做一个路径替换</span><br><span class="line">      pathRewrite:&#123;</span><br><span class="line">      //一旦请求的地址是以API开头的那么就替换请求到/static/mock的文件夹下</span><br><span class="line">      //当访问api的时候axios.get(<span class="string">'/api/index.json'</span>)会自动帮你替换成axios.get(<span class="string">'/static/mock/index.json'</span>)</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">'/static/mock'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      //如果接口验证的话可以设置请求头</span><br><span class="line">      header:&#123;</span><br><span class="line">        <span class="string">'Cookie'</span>:<span class="string">'...'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -259,7 +275,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
         		</li>
       		
 		</ul>
@@ -269,7 +285,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/packageTool/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/16/VueCliProty/">展开全文 >></a>
         </p>
       
 
@@ -299,29 +315,29 @@
 
 
   
-    <article id="post-angularEchart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/11/angularEchart/">angularJs和echarts结合实例</a>
+      <a class="article-title" href="/2017/07/15/webpack/">手动配置webpack 版本3.8.1</a>
     </h1>
   
 
         
-        <a href="/2017/04/11/angularEchart/" class="archive-article-date">
-  	<time datetime="2017-04-11T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
+        <a href="/2017/07/15/webpack/" class="archive-article-date">
+  	<time datetime="2017-07-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近项目在做中行的项目，需要angularjs和echarts相结合，做一下记录。顺便除了 AngularJS 内置的指令外，我们还可以创建自定义指令。可以使用 .directive 函数来添加自定义的指令。要调用自定义指令，HTML 元素上需要添加自定义指令名。使用驼峰法来命名一个指令; echartLineView, 但在使用它时需要以 - 分割, echart-line-view<br>
+        <p>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源<br>
         
-          <a class="article-more-a" href="/2017/04/11/angularEchart/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/15/webpack/#more">more >></a>
         
       
 
@@ -335,7 +351,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Webpack</a>
         		</li>
       		
 		</ul>
@@ -345,7 +365,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/11/angularEchart/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/15/webpack/">展开全文 >></a>
         </p>
       
 
@@ -375,29 +395,29 @@
 
 
   
-    <article id="post-angularModule" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-VueBuild" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/20/angularModule/">angularjs基础用法</a>
+      <a class="article-title" href="/2017/07/14/VueBuild/">webpack配置和vue run build打包处理</a>
     </h1>
   
 
         
-        <a href="/2017/03/20/angularModule/" class="archive-article-date">
-  	<time datetime="2017-03-20T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-20</time>
+        <a href="/2017/07/14/VueBuild/" class="archive-article-date">
+  	<time datetime="2017-07-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>学会用Angular构建应用，然后把这些代码和能力复用在多种多种不同平台的应用上<br>参考资料 <a href="http://www.runoob.com/angularjs/angularjs-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/angularjs/angularjs-tutorial.html</a><br>Angular directive 实例详解 <a href="https://segmentfault.com/a/1190000005851663" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005851663</a><br>
+        <p>本篇记录一下 vue2打包后生成的dist文件夹运行的一些问题和webpack的配置信息<br>
         
-          <a class="article-more-a" href="/2017/03/20/angularModule/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/14/VueBuild/#more">more >></a>
         
       
 
@@ -411,7 +431,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
         		</li>
       		
 		</ul>
@@ -421,7 +441,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/20/angularModule/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/14/VueBuild/">展开全文 >></a>
         </p>
       
 
@@ -451,29 +471,29 @@
 
 
   
-    <article id="post-easyui_DataGridFZ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echartDashboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/easyui_DataGridFZ/">Easyui Datagrid封装</a>
+      <a class="article-title" href="/2017/05/31/echartDashboard/">echart仪表盘demo</a>
     </h1>
   
 
         
-        <a href="/2017/03/17/easyui_DataGridFZ/" class="archive-article-date">
-  	<time datetime="2017-03-17T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+        <a href="/2017/05/31/echartDashboard/" class="archive-article-date">
+  	<time datetime="2017-05-31T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用easyui datagrid部分，因为每次用到都会写一堆公共代码，显得代码比较冗长，封装可以稍微精简点，直接调用封装好的方法即可<br>
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br>
         
-          <a class="article-more-a" href="/2017/03/17/easyui_DataGridFZ/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/31/echartDashboard/#more">more >></a>
         
       
 
@@ -487,7 +507,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EasyUi</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -497,7 +517,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/easyui_DataGridFZ/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/31/echartDashboard/">展开全文 >></a>
         </p>
       
 
@@ -527,29 +547,29 @@
 
 
   
-    <article id="post-easyui_Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/easyui_Tree/">Easyui Tree对节点进行，添加，修改，删除操作</a>
+      <a class="article-title" href="/2017/05/30/echart/">echart记录</a>
     </h1>
   
 
         
-        <a href="/2017/03/15/easyui_Tree/" class="archive-article-date">
-  	<time datetime="2017-03-15T05:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+        <a href="/2017/05/30/echart/" class="archive-article-date">
+  	<time datetime="2017-05-30T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>EasyUI 树形菜单添加节点展示如何对节点进行一系列的操作<br>
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br>
         
-          <a class="article-more-a" href="/2017/03/15/easyui_Tree/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/30/echart/#more">more >></a>
         
       
 
@@ -563,7 +583,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EasyUi</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -573,7 +593,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/easyui_Tree/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/30/echart/">展开全文 >></a>
         </p>
       
 
@@ -603,29 +623,29 @@
 
 
   
-    <article id="post-easyui_DataGrid" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echartTooltip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/easyui_DataGrid/">Easyui Datagrid的增删改查</a>
+      <a class="article-title" href="/2017/05/30/echartTooltip/">echarts 自定义tooltip</a>
     </h1>
   
 
         
-        <a href="/2017/03/15/easyui_DataGrid/" class="archive-article-date">
-  	<time datetime="2017-03-15T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+        <a href="/2017/05/30/echartTooltip/" class="archive-article-date">
+  	<time datetime="2017-05-30T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本实例使用EasyUI创建表格，元素，窗口，以及各种请求。增加，修改，查询及其他知识基本涵盖完全。有用到js创建和html创建.<br>
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br>
         
-          <a class="article-more-a" href="/2017/03/15/easyui_DataGrid/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/30/echartTooltip/#more">more >></a>
         
       
 
@@ -639,7 +659,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EasyUi</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -649,7 +669,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/easyui_DataGrid/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/30/echartTooltip/">展开全文 >></a>
         </p>
       
 
@@ -679,29 +699,29 @@
 
 
   
-    <article id="post-eclipse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echarts_demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/eclipse/">eclipse方便快捷解决端口被占用的问题</a>
+      <a class="article-title" href="/2017/05/30/echarts_demo/">echart 案例收集</a>
     </h1>
   
 
         
-        <a href="/2017/03/05/eclipse/" class="archive-article-date">
-  	<time datetime="2017-03-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+        <a href="/2017/05/30/echarts_demo/" class="archive-article-date">
+  	<time datetime="2017-05-30T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>很多时候运行tomcat 的时候总是会提示tomcat 的端口被占用 因此很多人就重新配置tomcat  或者去修改tomcat的端口号 ，这里告诉你一个非常简单的方法<br>
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br>
         
-          <a class="article-more-a" href="/2017/03/05/eclipse/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_demo/#more">more >></a>
         
       
 
@@ -715,7 +735,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">编辑器</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -725,7 +745,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/05/eclipse/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_demo/">展开全文 >></a>
         </p>
       
 
@@ -755,29 +775,29 @@
 
 
   
-    <article id="post-pickerDateRange" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echarts_bar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/19/pickerDateRange/">jQuery时间范围选择插件</a>
+      <a class="article-title" href="/2017/05/30/echarts_bar/">柱状图每个柱子都是单一的颜色</a>
     </h1>
   
 
         
-        <a href="/2016/11/19/pickerDateRange/" class="archive-article-date">
-  	<time datetime="2016-11-19T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-19</time>
+        <a href="/2017/05/30/echarts_bar/" class="archive-article-date">
+  	<time datetime="2017-05-30T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>jQuery时间范围选择插件pickerDateRange<br>
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"><br>
         
-          <a class="article-more-a" href="/2016/11/19/pickerDateRange/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_bar/#more">more >></a>
         
       
 
@@ -791,7 +811,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -801,7 +821,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/19/pickerDateRange/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_bar/">展开全文 >></a>
         </p>
       
 
@@ -831,29 +851,29 @@
 
 
   
-    <article id="post-baiduMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-echarts_bar_legend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/05/baiduMap/">百度地图</a>
+      <a class="article-title" href="/2017/05/30/echarts_bar_legend/">柱状图排名+图例</a>
     </h1>
   
 
         
-        <a href="/2016/11/05/baiduMap/" class="archive-article-date">
-  	<time datetime="2016-11-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-05</time>
+        <a href="/2017/05/30/echarts_bar_legend/" class="archive-article-date">
+  	<time datetime="2017-05-30T01:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/images/baiduMap.png" alt="cmd-markdown-logo"><br>
+        <p>功能需要给设备进行数据排名，每个柱对应一个图例，官方柱状图案例的数据格式都不符合需求，更改一下数据格式，做一下记录，方便以后查询<br>
         
-          <a class="article-more-a" href="/2016/11/05/baiduMap/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_bar_legend/#more">more >></a>
         
       
 
@@ -867,7 +887,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">百度地图</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
         		</li>
       		
 		</ul>
@@ -877,7 +897,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/05/baiduMap/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/30/echarts_bar_legend/">展开全文 >></a>
         </p>
       
 
@@ -909,7 +929,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
     </nav>
   
 
@@ -921,7 +941,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 王磊
+    		&copy; 2021 王磊
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1008,11 +1028,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1032,10 +1052,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
@@ -1052,11 +1068,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">地图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">axios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,11 +1092,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color5">常用效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1085,10 +1109,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,6 +1136,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
@@ -1132,11 +1156,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Vue3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">zTree</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>
