@@ -193,7 +193,7 @@
 <li>回到gitbash中，配置github账户信息（YourName和YourEail都替换成你自己的）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;YourName&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;YourEmail&quot;</span></span><br></pre></td></tr></table></figure></li>
 <li>创建SSH 在gitbash中输入：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail@example.com</span></span><br></pre></td></tr></table></figure></li>
 <li>将上面获取的ssh(id_rsa.pub)放到github中 Settings -&gt; SSH and GPG keys</li>
-<li>在gitbash中验证是否添加成功：ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#109;</a></li>
+<li>在gitbash中验证是否添加成功：ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;</a></li>
 </ul>
 <h5 id="第五步：一步之遥"><a href="#第五步：一步之遥" class="headerlink" title="第五步：一步之遥"></a>第五步：一步之遥</h5><ul>
 <li>现在我们需要对 _config.yml 文件建立关联翻到最下面，改成<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  //有时候会报错的时候将repository改成SSH格式</span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/leopardpan/leopardpan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
@@ -477,15 +477,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ApiCloud</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +501,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据分离</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +513,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+                <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +529,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color1">Angular4.x</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,6 +545,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">EasyUi</a>
               </li>
              
@@ -553,7 +557,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Css</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,19 +565,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +597,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
+                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">superMap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Axios</a>
               </li>
              
               <li class="article-tag-list-item">
