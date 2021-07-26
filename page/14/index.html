@@ -146,92 +146,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-VueCliProty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/16/VueCliProty/">Vue-cli proxyTable 解决开发环境的跨域问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/16/VueCliProty/" class="archive-article-date">
-  	<time datetime="2017-07-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-<ul>
-<li>参数可以看 http-proxy-middleware是一致的共通的</li>
-<li>文章来源 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95b2caf7e0da">https://www.jianshu.com/p/95b2caf7e0da</a></li>
-<li>在vuejs-templates，也就是vue-cli的使用的模板插件里，有关于API proxy的说明，使用的就是这个参数。</li>
-<li><a target="_blank" rel="noopener" href="https://vuejs-templates.github.io/webpack/proxy.html">https://vuejs-templates.github.io/webpack/proxy.html</a></li>
-<li>这个参数主要是一个地址映射表，你可以通过设置将复杂的url简化，例如我们要请求的地址是api.xxxxxxxx.com/list/1，可以按照如下设置：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">&#x27;/list&#x27;</span>: &#123;</span><br><span class="line">    target: <span class="string">&#x27;http://api.xxxxxxxx.com&#x27;</span>,//接口域名</span><br><span class="line">    logLevel:<span class="string">&#x27;debug&#x27;</span>,//在控制台看更多的信息和域名指向</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">&#x27;^/list&#x27;</span>: <span class="string">&#x27;/list&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>这样我们在写url的时候，只用写成/list/1就可以代表api.xxxxxxxx.com/list/1.</li>
-<li>那么又是如何解决跨域问题的呢？其实在上面的’list’的参数里有一个changeOrigin参数，接收一个布尔值，如果设置为true,那么本地会虚拟一个服务端接收你的请求并代你发送该请求，这样就不会有跨域问题了，当然这只适用于开发环境。增加的代码如下所示：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">&#x27;/list&#x27;</span>: &#123;</span><br><span class="line">    target: <span class="string">&#x27;http://api.xxxxxxxx.com&#x27;</span>,//接口域名</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,//是否跨域</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">&#x27;^/list&#x27;</span>: <span class="string">&#x27;/list&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>vue-cli的这个设置来自于其使用的插件http-proxy-middleware</li>
-<li>github：<a target="_blank" rel="noopener" href="https://github.com/chimurai/http-proxy-middleware">https://github.com/chimurai/http-proxy-middleware</a></li>
-<li>深入了解的话可以看该插件配置说明，似乎还支持websocket，很强大的插件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">    <span class="string">&#x27;/api&#x27;</span>:&#123;</span><br><span class="line">      //服务器接口</span><br><span class="line">      target:<span class="string">&#x27;http://localhost:8080&#x27;</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,//是否跨域</span><br><span class="line">      //接下来希望做一个路径替换</span><br><span class="line">      pathRewrite:&#123;</span><br><span class="line">      //一旦请求的地址是以API开头的那么就替换请求到/static/mock的文件夹下</span><br><span class="line">      //当访问api的时候axios.get(<span class="string">&#x27;/api/index.json&#x27;</span>)会自动帮你替换成axios.get(<span class="string">&#x27;/static/mock/index.json&#x27;</span>)</span><br><span class="line">        <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&#x27;/static/mock&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      //如果接口验证的话可以设置请求头</span><br><span class="line">      header:&#123;</span><br><span class="line">        <span class="string">&#x27;Cookie&#x27;</span>:<span class="string">&#x27;...&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vue2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/16/VueCliProty/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -920,6 +834,82 @@
 
 
   
+    <article id="post-echart_toolbox" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/echart_toolbox/">echart自定义toolbox</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/28/echart_toolbox/" class="archive-article-date">
+  	<time datetime="2017-05-28T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/e3.png" alt="cmd-markdown-logo"></p>
+        
+          <a class="article-more-a" href="/2017/05/28/echart_toolbox/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Echart</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/28/echart_toolbox/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
@@ -1021,11 +1011,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1097,11 +1087,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1099,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">

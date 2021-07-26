@@ -146,82 +146,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-easyui_DataGridFZ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/easyui_DataGridFZ/">Easyui Datagrid封装</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/easyui_DataGridFZ/" class="archive-article-date">
-  	<time datetime="2017-03-17T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用easyui datagrid部分，因为每次用到都会写一堆公共代码，显得代码比较冗长，封装可以稍微精简点，直接调用封装好的方法即可</p>
-        
-          <a class="article-more-a" href="/2017/03/17/easyui_DataGridFZ/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EasyUi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/easyui_DataGridFZ/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-easyui_Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -910,6 +834,108 @@
 
 
   
+    <article id="post-less" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/less/">Less的基本用法</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/05/less/" class="archive-article-date">
+  	<time datetime="2016-08-05T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<h5 id="Less的使用"><a href="#Less的使用" class="headerlink" title="Less的使用"></a>Less的使用</h5><ul>
+<li>Less只有编译后才能被浏览器使用</li>
+<li>Less的编译工具</li>
+<li>考拉 <a target="_blank" rel="noopener" href="http://koala-app.com/index-zh.html">http://koala-app.com/index-zh.html</a> 将less和css文件放到同一文件夹</li>
+<li>WindowsLess  <a target="_blank" rel="noopener" href="http://winless.org/">http://winless.org/</a></li>
+<li>支持延迟加载 放在顶部和末尾都无所谓</li>
+<li>多定义一个变量多次时，只会使用最后一个 跟css一样之前的会被替换掉</li>
+<li>文件引用  @import ‘main.less’<h5 id="Less的基本用法-嵌套"><a href="#Less的基本用法-嵌套" class="headerlink" title="Less的基本用法 嵌套"></a>Less的基本用法 嵌套</h5></li>
+<li>子级可以层层嵌套替代css的层级写法<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    width:100%;</span><br><span class="line">    height:100%;</span><br><span class="line">    .child&#123;</span><br><span class="line">        font-size:0px;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>less的注释要/* */ 否则不会编译到css中<h5 id="Less的基本用法-变量"><a href="#Less的基本用法-变量" class="headerlink" title="Less的基本用法 变量"></a>Less的基本用法 变量</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//less</span><br><span class="line">@40rem 数值和单位</span><br><span class="line">@blue:<span class="comment">#c3adc2</span></span><br><span class="line">color:@blue</span><br><span class="line">width: 480/@rem;(480/40)rem</span><br><span class="line">//等价于css</span><br><span class="line">color:<span class="comment">#c3adc2</span></span><br><span class="line">width:12rem</span><br></pre></td></tr></table></figure>
+<h5 id="作为url"><a href="#作为url" class="headerlink" title="作为url"></a>作为url</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@myUrl:<span class="string">&#x27;www.baidu.com/static/images&#x27;</span></span><br><span class="line">body&#123;</span><br><span class="line">    background:url(<span class="string">&#x27;@myUrl/logo.png&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">//css</span><br><span class="line">body&#123;</span><br><span class="line">    background:url(<span class="string">&#x27;www.baidu.com/static/images/logo.png&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Less的混合"><a href="#Less的混合" class="headerlink" title="Less的混合"></a>Less的混合</h5></li>
+<li>混合就是将一系列的属性重一个规则集引入到另一个规则集<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.ellipsis &#123;</span><br><span class="line">      overflow: hidden;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      text-overflow: ellipsis;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">     font-size:20px;</span><br><span class="line">     .ellipsis</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.text&#123;</span><br><span class="line">     font-size:20px;</span><br><span class="line">     overflow: hidden;</span><br><span class="line">     white-space: nowrap;</span><br><span class="line">     text-overflow: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="不带输出的混合"><a href="#不带输出的混合" class="headerlink" title="不带输出的混合"></a>不带输出的混合</h5></li>
+<li>想要创建一个混合集但是却不想让他输出到你的样式中去</li>
+<li>实现方法 在不想输出的混合集后边加一个括号（）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.color&#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="function"><span class="title">backround</span></span>()&#123;</span><br><span class="line">  background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">.width&#123;</span><br><span class="line">  .color;</span><br><span class="line">  .backround;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.color &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">.width &#123;</span><br><span class="line">  color: red;</span><br><span class="line">  background-color: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>backround并没有编译到css中<h5 id="带选择器的混合"><a href="#带选择器的混合" class="headerlink" title="带选择器的混合"></a>带选择器的混合</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.<span class="function"><span class="title">color</span></span>()&#123;</span><br><span class="line">&amp;:hover&#123;</span><br><span class="line">  border:1px solid red;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">.width&#123;</span><br><span class="line">  .color</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.width:hover &#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="带参数的混合"><a href="#带参数的混合" class="headerlink" title="带参数的混合"></a>带参数的混合</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.border-radius(@radius) &#123;</span><br><span class="line">  border-radius: @radius;</span><br><span class="line">&#125;</span><br><span class="line">.width&#123;</span><br><span class="line">  .border-radius(4px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.width &#123;</span><br><span class="line">  border-radius: 4px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="带默认值的混合"><a href="#带默认值的混合" class="headerlink" title="带默认值的混合"></a>带默认值的混合</h5></li>
+<li>border-radius(@radius:5px) 没传值得话就默认为5px<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.border-radius(@radius:5px) &#123;</span><br><span class="line">  border-radius: @radius;</span><br><span class="line">&#125;</span><br><span class="line">.width&#123;</span><br><span class="line">  .border-radius</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.width &#123;</span><br><span class="line">  border-radius: 5px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="arguments"><a href="#arguments" class="headerlink" title="@arguments"></a>@arguments</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.border(@x:solid;@c:red)&#123;</span><br><span class="line">  border:1px @arguments</span><br><span class="line">&#125;</span><br><span class="line">.width&#123;</span><br><span class="line"> .border</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编译后<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.width &#123;</span><br><span class="line">  border: 1px solid <span class="comment">#ff0000;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Less</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/05/less/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
@@ -1011,11 +1037,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,11 +1113,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
+                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Element-ui</a>
+                <a href="javascript:void(0)" class="js-tag color4">编辑器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1099,11 +1125,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
